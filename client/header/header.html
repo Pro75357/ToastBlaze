@@ -26,23 +26,3 @@
     </div>
 
 </template>
-
-<template name="patientSelect">
-
-    <select id="patientSelect">
-        {{#each patList}}
-            <option value="{{patList.patId}}">{{patList.name}}</option>
-        {{/each}}
-    </select>
-
-    <div class="panel panel-default pull-right">
-
-        <div class="panel-body">
-            {{name}}<br/>
-            {{dob}}
-        </div>
-    </div>
-
-
-
-</template>

@@ -31,9 +31,10 @@ if (Meteor.isServer) {
                 console.log(e.message)
             }
 
-            // If the key is blank, we cannot continue..
-            if (ePSS_Key.key === ''){
-                console.log('ePSS Key blank- please input ePSS key into json file in Private folder')
+            // If the key is blank or not updated, we cannot continue..
+            let blankKeys = ['','PUT_KEY_HERE']
+            if (blankKeys.indexOf(ePSS_Key.key)===-1){
+                console.log('ePSS Key not found- please input ePSS key into json file in Private folder')
                 return false
             } else {
                 // If no params are passed, populate some defaults for testing

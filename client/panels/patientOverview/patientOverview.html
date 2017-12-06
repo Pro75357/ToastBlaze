@@ -5,7 +5,18 @@
             Patient Overview
         </div>
         <div class="panel-body">
-            number of elements {{elements}}
+
+                <ul>
+                    <li>
+                        {{pat.fname}} {{pat.lname}}
+                    </li>
+                    <li>
+                        {{patAge}} year old {{pat.sex}}
+                    </li>
+                    <li>
+                        {{pat.city}}, {{pat.state}} {{pat.zip}}
+                    </li>
+                </ul>
 
         </div>
     </div>
