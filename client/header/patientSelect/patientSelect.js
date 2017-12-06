@@ -18,20 +18,14 @@ Template.patientSelect.helpers({
     },
 
     selectedPatDob(){
-        let dob = Patients.findOne({patId: Session.get('patId')}).dob;
-        if (dob){
-            return "BirthDate: "+dob
-        }
+       if(!(Session.get('patId')==="0")){
+           return "BirthDate: "+Patients.findOne({patId: Session.get('patId')}).dob
+       }
     }
 });
 
 Template.patientSelect.events({
     'change #patientSelect': function(e){
-        if (e.target.value === 0){
-            Session.set('patId', undefined)
-        } else {
             Session.set('patId', e.target.value);
-        }
-        //console.log(Session.get('patId'))
     }
 });

@@ -4,11 +4,10 @@ import {HTTP } from 'meteor/http'
 
 
 /*
-
 Please review the AHRQ Copyright and Disclaimer notice before using the API: https://www.uspreventiveservicestaskforce.org/Page/Name/copyright-notice.
 Instructions for use and access information can be found at:
 •	Instruction for Use:  http://epss.ahrq.gov/PDA/docs/ePSS_Data_API_WI_wLink.pdf
-•	URL for JSON:  http://epssdata.ahrq.gov/
+•	URL:  http://epssdata.ahrq.gov/
  */
 
 if (Meteor.isServer) {
@@ -27,14 +26,14 @@ if (Meteor.isServer) {
             try {
                 var ePSS_Key = JSON.parse(Assets.getText('ePSS_Key.json'))
             } catch(e){
-                console.log('Fetching ePSS key failed. Please make sure ePSS_Key.txt exists in the Private folder.')
+                console.log('Fetching ePSS key failed. Please make sure ePSS_Key.json exists in the private folder.')
                 console.log(e.message)
             }
 
             // If the key is blank or not updated, we cannot continue..
-            let blankKeys = ['','PUT_KEY_HERE']
-            if (blankKeys.indexOf(ePSS_Key.key)===-1){
-                console.log('ePSS Key not found- please input ePSS key into json file in Private folder')
+            //let blankKeys = ['','PUT_KEY_HERE']
+            if (ePSS_Key.key === 'PUT_KEY_HERE'){
+                console.log('ePSS Key not found or invalid- please input your ePSS key into ePSS_Key.json file in private folder')
                 return false
             } else {
                 // If no params are passed, populate some defaults for testing

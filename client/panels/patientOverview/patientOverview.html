@@ -5,6 +5,9 @@
             Patient Overview
         </div>
         <div class="panel-body">
+            {{#if NoPatientSelected}}
+                No patient selected.
+            {{else}}
 
                 <ul>
                     <li>
@@ -17,6 +20,8 @@
                         {{pat.city}}, {{pat.state}} {{pat.zip}}
                     </li>
                 </ul>
+
+            {{/if}}
 
         </div>
     </div>

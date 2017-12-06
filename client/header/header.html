@@ -1,21 +1,19 @@
 
 <template name="header">
 
-<div class="bg-acuere-dark" style="height: 40px">
-    <div class="pull-right" id="mainMenuWrapper">
-        <select id="mainSelect">
-            <option value="default">...Select an action</option>
-            <option value="resetDb">Reset Databases</option>
-            <option value="clearDb">Clear (empty) Databases</option>
-        </select>
+    <div class="bg-acuere-dark" style="height: 40px">
+        <div class="pull-right" id="mainMenuWrapper">
+            <select id="mainSelect">
+                <option value="default">...Select an action</option>
+                <option value="resetDb">Reset Databases</option>
+                <option value="clearDb">Clear (empty) Databases</option>
+            </select>
+        </div>
     </div>
-
-</div>
 
     <div class="container-fluid bg-acuere-light header">
 
         {{> patientSelect}}
-
 
         <div id="titleWrapper">
             <img id="toastIcon" src="toastIcon.png" height="40" width="40"/>

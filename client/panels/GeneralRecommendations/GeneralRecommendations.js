@@ -5,3 +5,9 @@ Template.generalRecommendations.helpers({
         return Patients.find({}).count()
     }
 })
+
+Template.generalRecommendations.events({
+    'change #patientSelect': function(){
+        console.log(Session.get('patId'))
+    }
+})
