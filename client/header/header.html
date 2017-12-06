@@ -1,0 +1,48 @@
+
+<template name="header">
+
+<div class="bg-acuere-dark" style="height: 40px">
+    <div class="pull-right" id="mainMenuWrapper">
+        <select id="mainSelect">
+            <option value="default">...Select an action</option>
+            <option value="resetDb">Reset Databases</option>
+            <option value="clearDb">Clear (empty) Databases</option>
+        </select>
+    </div>
+
+</div>
+
+    <div class="container-fluid bg-acuere-light header">
+
+        {{> patientSelect}}
+
+
+        <div id="titleWrapper">
+            <img id="toastIcon" src="toastIcon.png" height="40" width="40"/>
+            <span id="ToastTitle">TOAST</span>
+            <span class="text-muted " id="ToastSubtitle">The OCHIN Ambulatory Support Tool</span>
+        </div>
+
+    </div>
+
+</template>
+
+<template name="patientSelect">
+
+    <select id="patientSelect">
+        {{#each patList}}
+            <option value="{{patList.patId}}">{{patList.name}}</option>
+        {{/each}}
+    </select>
+
+    <div class="panel panel-default pull-right">
+
+        <div class="panel-body">
+            {{name}}<br/>
+            {{dob}}
+        </div>
+    </div>
+
+
+
+</template>
