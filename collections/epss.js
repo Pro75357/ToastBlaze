@@ -16,21 +16,24 @@ if (Meteor.isServer) {
     Meteor.methods({
 
         'getEpss': function (params) {
+            //Very first, clean out the ePSS data
+            Epss.remove({})
+
             // First, we need to know the epss api url
             const url = 'http://epssdata.ahrq.gov/'
 
             // Next, get the ePSS key from the text file in the Private folder.
             // this folder will not sync with git as it is in the .gitignore
             try {
-                var ePSS_Key = Assets.getText('ePSS_Key.txt')
+                var ePSS_Key = JSON.parse(Assets.getText('ePSS_Key.json'))
             } catch(e){
                 console.log('Fetching ePSS key failed. Please make sure ePSS_Key.txt exists in the Private folder.')
                 console.log(e.message)
             }
 
             // If the key is blank, we cannot continue..
-            if (ePSS_Key === ''){
-                console.log('ePSS Key blank')
+            if (ePSS_Key.key === ''){
+                console.log('ePSS Key blank- please input ePSS key into json file in Private folder')
                 return false
             } else {
                 // If no params are passed, populate some defaults for testing
@@ -45,14 +48,15 @@ if (Meteor.isServer) {
                     }
                 }
                 // lastly, insert key into params
-                params.key = ePSS_Key
+                params.key = ePSS_Key.key;
 
                 // Try to fetch the ePSS recommendations based on the params.
                 try {
-                    var res = HTTP.call('get', url,
+                    var res = HTTP.call('get',
+                        url,
                         {
-                        headers: 'accept: json',
-                        params
+                            headers: 'accept: json',
+                            params
                         }
                     )
 

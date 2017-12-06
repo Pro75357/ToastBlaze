@@ -13,6 +13,6 @@ To Run the application in development mode:
 7. The web application can be accessed from HTTP://localhost:3000
 
 ** To enable the AHRQ ePSS features, you will need a developer key. Instructions to obtain a key can be found here: https://epss.ahrq.gov/PDA/epssjson.jsp
-** The key should be placed in the corresponding text file in the Private folder.
+** The key should be placed in the corresponding file in the Private folder.
 
 ** App currently in heavy development. 

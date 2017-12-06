@@ -2,10 +2,10 @@ import { Patients } from "../../../collections/patients";
 import { Epss } from "../../../collections/epss";
 
 Template.recentObservations.helpers({
-    elements(){
-        return Patients.find({}).count()
+    ePSSelements(){
+        return Epss.find({}).count()
     },
-    patientVomit(){
+    ePSSVomit(){
         return JSON.stringify(Epss.find().fetch(), null, 2)
     }
 })

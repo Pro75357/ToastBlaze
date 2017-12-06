@@ -27,40 +27,34 @@ Meteor.startup(() => {
             Patients.remove({})
         },
 
-        'resetPatients': function(){
+        'resetPatients': function() {
             console.log('resetting patient DB')
             Patients.remove({})
 
-        // The patient data is stored as a CSV file in our "private" folder
-        // This allows us to quick and dirty replicate what might be a view on Acuere
-        // It would actually be easier if this would just pull from Acuere...
+            // The patient data is stored as a CSV file in our "private" folder
+            // This allows us to quick and dirty replicate what might be a view on Acuere
+            // It would actually be easier if this would just pull from Acuere...
 
-        //First, import the csv as a string: https://stackoverflow.com/questions/17453848/is-there-a-way-to-import-strings-from-a-text-file-in-javascript-meteor
-        Assets.getText('patients.csv', function(err, res) {
-            if (err) {
-                console.log('error importing patient data')
-            } else {
-                // console.log(res)
+            //First, import the csv as a string: https://stackoverflow.com/questions/17453848/is-there-a-way-to-import-strings-from-a-text-file-in-javascript-meteor
 
-                // res will contain the data, then we need to parse it to a JSON object.
+            try {
+                const patientString = Assets.getText('patients.csv')
+                // patientString will contain the data as one long string
+                // We need to parse it to a JSON object.
                 // will use the Papa parse package to do this...
 
-                Papa.parse(res, {
-                    header: true,
-                    complete: function (results) {
-                        //console.dir(results.data)
-                        var count=0
-                        for (x in results.data){
-                            Patients.insert(results.data[x])
-                            count+=1
-                        }
-                        console.log(count+' patients entered')
-                    }
-                })
-
+                const patientData = Papa.parse(patientString, {header: true})
+                let count = 0
+                for (let x in patientData.data) {
+                    Patients.insert(patientData.data[x])
+                    count += 1
+                }
+                console.log(count + ' patients entered')
+            } catch (e) {
+                console.log("something went wrong with parsing the patient data")
+                console.log(e.message)
             }
-        })
-    }
+        }
 
     }),
 
