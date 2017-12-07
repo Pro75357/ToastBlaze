@@ -8,16 +8,15 @@
             {{#if NoPatientSelected}}
                 No patient selected.
             {{else}}
-
                 <ul>
                     <li>
-                        {{pat.fname}} {{pat.lname}}
+                        {{pat.name}}
                     </li>
                     <li>
-                        {{patAge}} year old {{pat.sex}}
+                        {{pat.age}} year old {{pat.gen.sex}}
                     </li>
                     <li>
-                        {{pat.city}}, {{pat.state}} {{pat.zip}}
+                        {{pat.gen.city}}, {{pat.gen.state}} {{pat.gen.zip}}
                     </li>
                 </ul>
 

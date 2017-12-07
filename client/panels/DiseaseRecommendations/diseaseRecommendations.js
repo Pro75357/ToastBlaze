@@ -1,12 +1,13 @@
 import { Patients } from "../../../collections/patients";
+import { Pat } from "../../../collections/pat";
 import {Epss} from "../../../collections/epss";
 
 Template.diseaseRecommendations.helpers({
     patElements(){
-        return Patients.find({}).count()
+        return Pat.find({}).count()
     },
     patVomit(){
-        return JSON.stringify(Patients.find().fetch(), null, 2)
+        return JSON.stringify(Pat.find().fetch(), null, 2)
     }
 }),
 

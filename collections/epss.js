@@ -16,10 +16,10 @@ if (Meteor.isServer) {
 
         'getEpss': function (params) {
             //Very first, clean out the ePSS data
-            Epss.remove({})
+            Epss.remove({});
 
             // First, we need to know the epss api url
-            const url = 'http://epssdata.ahrq.gov/'
+            const url = 'http://epssdata.ahrq.gov/';
 
             // Next, get the ePSS key from the text file in the Private folder.
             // this folder will not sync with git as it is in the .gitignore
@@ -75,7 +75,7 @@ if (Meteor.isServer) {
             Epss.remove({})
         }
 
-    }),
+    });
 
         Meteor.publish('epss', function(){
             return Epss.find()
