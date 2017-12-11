@@ -5,8 +5,34 @@
             Recent Observations
         </div>
         <div class="panel-body">
-    Nothing here yet
-            <a class="pull-right dev-tools" data-toggle="collapse" href="#obsVomitDiv">Raw data</a>
+        Vitals:
+            <ul>
+                {{#each sign in vitals}}
+                <li>
+                    {{sign.Name}} -- {{sign.Value}}
+                </li>
+                {{/each}}
+            </ul>
+        <br/>
+        Laboratory:
+            <ul>
+                {{#each lab in laboratory}}
+                    <li>
+                        {{lab.Name}} -- {{lab.Value}}
+                    </li>
+                {{/each}}
+            </ul>
+        <br/>
+            Procedures:
+            <ul>
+                {{#each proc in procedures}}
+                    <li>
+                        {{proc.Name}} -- {{proc.Value}}
+                    </li>
+                {{/each}}
+            </ul>
+
+            <a class="dev-tools" data-toggle="collapse" href="#obsVomitDiv">Raw data</a>
             <div id="obsVomitDiv" class="collapse">
                 <pre class="pre-scrollable">
                     {{obsVomit}}

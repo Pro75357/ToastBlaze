@@ -5,7 +5,8 @@ import {Patients} from "./patients";
 
 export const Pat = new Mongo.Collection('pat');
 
-// Once our patient is selected we need to populate our pat collection.
+// Once our patient is selected we need to populate our collections. The main functions for this are handled here
+// With references to the other collections when needed.
 
 
 if (Meteor.isServer) {
@@ -54,28 +55,7 @@ if (Meteor.isServer) {
             // sort of like how a real SQL call would work.
             // We will store this in our Pat collection under the group 'obs'
 
-            try {
-                const obsString = Assets.getText('observations.csv');
-
-                const obs = Papa.parse(obsString, {header: true});
-                let count = 0;
-                let obsArray = [];
-                for (let x in obs.data) {
-                    if (obs.data[x].patId === patId) {
-                        obsArray.push(obs.data[x]);
-                        count += 1
-                    }
-                    updatePat({
-                        obs: obsArray
-                    });
-                }
-
-                console.log(count + ' observations entered')
-
-            } catch (e) {
-                console.log("something went wrong with parsing the observation data")
-                console.log(e.message)
-            }
+            Meteor.call('getObs', patId)
 
 // Now simulate a call for patient Metrics
             // this will go in a separate collection for searching, so just is a meteor.call

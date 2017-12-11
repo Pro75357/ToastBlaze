@@ -66,7 +66,7 @@ if (Meteor.isServer) {
 
             //console.dir(res.data)
             Epss.insert(res.data)
-            console.log('ePSS Data: ' + Epss.find().count())
+            console.log('ePSS Data inserted')
             return true
         }
     },
