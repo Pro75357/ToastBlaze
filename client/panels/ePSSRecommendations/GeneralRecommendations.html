@@ -7,10 +7,15 @@
         <div class="panel-body">
             <h5>Specific Recommendations</h5>
 
-            <ul>
+            <ul id="recList">
                 {{#each rec in epssSpecific}}
                 <li>
-                    {{{ rec.title }}}
+                    <a class="plainLink" data-toggle="collapse" data-parent="#recList" href="#{{rec.id}}">{{{ rec.title }}}</a>
+                    <ul>
+                        <li id="{{rec.id}}" data-parent="#recList" class="collapse">
+                            {{{rec.text}}}
+                        </li>
+                    </ul>
                 </li>
                 {{/each}}
             </ul>
@@ -23,5 +28,4 @@
             </div>
         </div>
     </div>
-
 </template>
