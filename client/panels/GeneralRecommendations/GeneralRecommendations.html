@@ -2,11 +2,25 @@
 
     <div class="panel panel-primary">
         <div class="panel-heading">
-            General Recommendations
+            AHRQ Electronic Preventative Services Recommendations
         </div>
         <div class="panel-body">
-            number of elements {{elements}}
+            <h5>Specific Recommendations</h5>
 
+            <ul>
+                {{#each rec in epssSpecific}}
+                <li>
+                    {{{ rec.title }}}
+                </li>
+                {{/each}}
+            </ul>
+
+            <a data-toggle="collapse" href="#epssVomitDiv">Raw data</a>
+            <div id="epssVomitDiv" class="collapse">
+                <pre class="pre-scrollable">
+                    {{epssVomit}}
+                </pre>
+            </div>
         </div>
     </div>
 

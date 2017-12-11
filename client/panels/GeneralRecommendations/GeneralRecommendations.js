@@ -1,13 +1,16 @@
 import { Patients } from "../../../collections/patients";
+import { Epss} from "../../../collections/epss";
 
 Template.generalRecommendations.helpers({
-    elements(){
-        return Patients.find({}).count()
-    }
-})
+    epssSpecific(){
+        return Epss.findOne({}).specificRecommendations
+    },
+
+    epssVomit(){
+        return JSON.stringify(Epss.findOne({}).specificRecommendations, null, 2)
+    },
+});
 
 Template.generalRecommendations.events({
-    'change #patientSelect': function(){
-        console.log(Session.get('patId'))
-    }
-})
+
+});

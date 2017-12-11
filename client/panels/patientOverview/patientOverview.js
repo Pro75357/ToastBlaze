@@ -9,5 +9,7 @@ Template.patientOverview.helpers({
             return Pat.findOne({})
         }
     },
-
+    patVomit(){
+        return JSON.stringify(Pat.find().fetch(), null, 2)
+    }
 })

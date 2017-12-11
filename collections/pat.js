@@ -19,24 +19,31 @@ if (Meteor.isServer) {
     Meteor.methods({
         'updatePat': function(patId) {
             console.log("updatePat was run");
-            // First, let's fetch the other data about the patient
-
+            // Ok, First, let's fetch the other data about the patient
             // We'll store this single patient's data in a new Collection, pat
+
+            // If any old data is in Pat, need to clear it
+            Pat.remove({})
+
+            // Now, let's start fresh with our currently selected patient
             Pat.insert({_id: patId});
 
-            // these helper functions might make things easier...
 
+            // these helper functions will make inserting and reading data easier
+
+            // This one adds a new object to the database collection under this patId
             function updatePat(object) {
                 //console.log(object)
                 Pat.update({_id: patId}, {$set:  object})
             }
 
-            //e.g.
+            //e.g. - first let's use our "Patients" list and get the full name and also the age
             updatePat({
                 name: Patients.findOne({patId: patId}).fname + ' ' + Patients.findOne({patId: patId}).lname,
                 age: getAge(Patients.findOne({patId: patId}).dob)
             });
 
+            // Let's throw everything else that is in the "Patients" collection about our patient in a gen (for "general") object
             updatePat({
                 gen: Patients.findOne({patId: patId})
             });
@@ -45,11 +52,10 @@ if (Meteor.isServer) {
 // Simulate a call to a table that holds patient Observations
             // The meteor.call actually just reads from the CSV, but it does then filter by the patId
             // sort of like how a real SQL call would work.
-
-            let obs = {
+            // We will store this in our Pat collection under the group 'obs'
+            updatePat({
                 obs: Meteor.call('getObs', patId)
-            };
-            updatePat(obs);
+            });
 
 // We want to update our ePSS recommendations with our patient information.
 

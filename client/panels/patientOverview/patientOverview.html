@@ -19,7 +19,12 @@
                         {{pat.gen.city}}, {{pat.gen.state}} {{pat.gen.zip}}
                     </li>
                 </ul>
-
+                <a data-toggle="collapse" href="#patVomitDiv">Patient raw data</a>
+            <div id="patVomitDiv" class="collapse">
+                <pre class="pre-scrollable">
+                    {{patVomit}}
+                </pre>
+            </div>
             {{/if}}
 
         </div>
