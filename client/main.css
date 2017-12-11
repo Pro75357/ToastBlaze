@@ -10,6 +10,10 @@
 
 .bg-acuere-light {background: #FFFFFF}
 
+.dev-tools {
+    visibility: visible;
+}
+
 .plainLink {
     color: #393C40;
     text-decoration: none;

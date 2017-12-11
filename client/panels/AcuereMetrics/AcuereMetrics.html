@@ -1,15 +1,17 @@
-<template name="diseaseRecommendations">
+<template name="acuereMetrics">
 
     <div class="panel panel-primary">
         <div class="panel-heading">
-            diseaseRecommendations
+            Acuere Metrics
         </div>
         <div class="panel-body">
-            <button class="testButton">A test button</button>
-            <br>
-            number of patient elements: <span class="bg-warning">{{patElements}}</span>
-            <br>
 
+            <a class="pull-right dev-tools" data-toggle="collapse" href="#acuereVomitDiv">Raw data</a>
+            <div id="acuereVomitDiv" class="collapse">
+                <pre class="pre-scrollable">
+                    {{acuereVomit}}
+                </pre>
+            </div>
         </div>
     </div>
 
