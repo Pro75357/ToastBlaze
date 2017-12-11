@@ -1,14 +1,23 @@
-import { Patients } from "../../../collections/patients";
-import { Pat } from "../../../collections/pat";
-import {Epss} from "../../../collections/epss";
+import {Metrics} from "../../../collections/metrics";
 
 Template.acuereMetrics.helpers({
-    acuereVomit(){
-        return JSON.stringify(Pat.find().fetch(), null, 2)
+    metricsRed(){
+        return Metrics.find({Status: "Red"}).fetch()
+    },
+    metricsYellow(){
+        return Metrics.find({Status: "Yellow"}).fetch()
+    },
+    metricsGreen(){
+        return Metrics.find({Status: "Green"}).fetch()
+    },
+    metricsGrey(){
+        return Metrics.find({Status: "Grey"}).fetch()
+    },
+    metricsVomit(){
+        return JSON.stringify(Metrics.find().fetch(), null, 2)
     },
 });
 
 Template.acuereMetrics.events({
-
 
 });

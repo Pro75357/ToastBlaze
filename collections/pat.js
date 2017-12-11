@@ -53,9 +53,36 @@ if (Meteor.isServer) {
             // The meteor.call actually just reads from the CSV, but it does then filter by the patId
             // sort of like how a real SQL call would work.
             // We will store this in our Pat collection under the group 'obs'
-            updatePat({
-                obs: Meteor.call('getObs', patId)
-            });
+
+            try {
+                const obsString = Assets.getText('observations.csv');
+
+                const obs = Papa.parse(obsString, {header: true});
+                let count = 0;
+                let obsArray = [];
+                for (let x in obs.data) {
+                    if (obs.data[x].patId === patId) {
+                        obsArray.push(obs.data[x]);
+                        count += 1
+                    }
+                    updatePat({
+                        obs: obsArray
+                    });
+                }
+
+                console.log(count + ' observations entered')
+
+            } catch (e) {
+                console.log("something went wrong with parsing the observation data")
+                console.log(e.message)
+            }
+
+// Now simulate a call for patient Metrics
+            // this will go in a separate collection for searching, so just is a meteor.call
+
+            Meteor.call('getMetrics', patId)
+
+
 
 // We want to update our ePSS recommendations with our patient information.
 
@@ -90,10 +117,6 @@ if (Meteor.isServer) {
         'clearPat': function (){
             Pat.remove({})
         },
-        'getObs': function(patId){
-            //todo: get a real function here.
-            return 'no obs for you (yet): '+ patId
-        }
 
     });
 

@@ -5,11 +5,47 @@
             Acuere Metrics
         </div>
         <div class="panel-body">
+            Red Metrics
+            <ul>
+                {{#each metric in metricsRed}}
+                <li>
+                    {{metric.Name}} -- Last completed: //todo: metric date here
+                </li>
+                {{/each}}
+            </ul>
+            <br/>
+            Yellow Metrics (Due Soon)
+            <ul>
+                {{#each metric in metricsYellow}}
+                    <li>
+                        {{metric.Name}} -- Due: {{metric.expirationDate}}
+                    </li>
+                {{/each}}
+            </ul>
+            <br/>
+            Green Metrics
+            <ul>
+                {{#each metric in metricsGreen}}
+                    <li>
+                        {{metric.Name}} -- Due: {{metric.expirationDate}}
+                    </li>
+                {{/each}}
+            </ul>
+
+            <a data-toggle="collapse" href="#greyMetrics">View non-applicable Metrics</a>
+            <ul id="greyMetrics" class="collapse">
+                {{#each metric in metricsGrey}}
+                    <li>
+                        {{metric.Name}}
+                    </li>
+                {{/each}}
+            </ul>
+
 
             <a class="pull-right dev-tools" data-toggle="collapse" href="#acuereVomitDiv">Raw data</a>
             <div id="acuereVomitDiv" class="collapse">
                 <pre class="pre-scrollable">
-                    {{acuereVomit}}
+                    {{metricsVomit}}
                 </pre>
             </div>
         </div>
