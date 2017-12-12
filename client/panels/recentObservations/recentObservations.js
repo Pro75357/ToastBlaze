@@ -3,21 +3,21 @@ import {Obs} from "../../../collections/observations";
 Template.recentObservations.helpers({
 
     vitals(){
-        return Obs.find({Type: "Vital Sign"}).fetch()
+        return Obs.find({category: "vitals"}).fetch()
     },
     laboratory(){
-        return Obs.find({Type: "Laboratory"}).fetch()
+        return Obs.find({category: "labs"}).fetch()
     },
     procedures(){
-        return Obs.find({Type: "Procedure"}).fetch()
+        return Obs.find({category: "procedures"}).fetch()
     },
 
     obsVomit(){
         return JSON.stringify(Obs.find().fetch(), null, 2)
     }
-})
+});
 
 Template.recentObservations.events({
 
 
-})
+});

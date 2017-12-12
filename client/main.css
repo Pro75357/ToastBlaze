@@ -14,7 +14,7 @@
     visibility: visible;
 }
 
-.plainLink {
+a {
     color: #393C40;
     text-decoration: none;
 }

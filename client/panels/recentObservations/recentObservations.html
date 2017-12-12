@@ -9,7 +9,7 @@
             <ul>
                 {{#each sign in vitals}}
                 <li>
-                    {{sign.Name}} -- {{sign.Value}}
+                    {{sign.name}} -- {{sign.value}}
                 </li>
                 {{/each}}
             </ul>
@@ -18,7 +18,7 @@
             <ul>
                 {{#each lab in laboratory}}
                     <li>
-                        {{lab.Name}} -- {{lab.Value}}
+                        {{lab.name}} -- {{lab.value}}
                     </li>
                 {{/each}}
             </ul>
@@ -27,7 +27,7 @@
             <ul>
                 {{#each proc in procedures}}
                     <li>
-                        {{proc.Name}} -- {{proc.Value}}
+                        {{proc.name}} -- {{proc.text}}
                     </li>
                 {{/each}}
             </ul>

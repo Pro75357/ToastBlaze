@@ -15,9 +15,9 @@ if (Meteor.isServer) {
     });
 
 
-    Meteor.publish('metrics', function(){
+    Meteor.publish('obs', function(){
         return Obs.find()
-    })
+    });
 
     Meteor.methods({
         'getObs': function(patId){
@@ -30,7 +30,7 @@ if (Meteor.isServer) {
                 let count = 0;
                 for (let x in parse.data) {
                     if (parse.data[x].patId === patId) {
-                        Obs.insert(parse.data[x])
+                        Obs.insert(parse.data[x]);
                         count += 1
                     }
                 }

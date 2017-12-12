@@ -1,6 +1,5 @@
 import { Mongo } from 'meteor/mongo';
 import {Meteor} from "meteor/meteor";
-import {Session} from "meteor/session";
 import {Patients} from "./patients";
 
 export const Pat = new Mongo.Collection('pat');

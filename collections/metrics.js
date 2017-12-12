@@ -17,11 +17,11 @@ if (Meteor.isServer) {
 
     Meteor.publish('metrics', function(){
         return Metrics.find()
-    })
+    });
 
     Meteor.methods({
         'getMetrics': function(patId){
-            Metrics.remove({})
+            Metrics.remove({});
             try {
                 const metricsString = Assets.getText('metrics.csv');
 
@@ -29,14 +29,14 @@ if (Meteor.isServer) {
                 let count = 0;
                 for (let x in metrics.data) {
                     if (metrics.data[x].patId === patId) {
-                        Metrics.insert(metrics.data[x])
+                        Metrics.insert(metrics.data[x]);
                         count += 1
                     }
                 }
                 console.log(count + ' metrics entered')
             } catch (e) {
-                console.log("something went wrong with parsing the metrics data")
-                console.log(e.message)
+                console.log("something went wrong with parsing the metrics data");
+                console.log(e.message);
                 return false
             }
             return true
