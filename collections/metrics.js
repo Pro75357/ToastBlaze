@@ -21,6 +21,7 @@ if (Meteor.isServer) {
 
     Meteor.methods({
         'getMetrics': function(patId){
+            Metrics.remove({})
             try {
                 const metricsString = Assets.getText('metrics.csv');
 
