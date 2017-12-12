@@ -49,9 +49,7 @@ Tracker.autorun(function(){
     if(Session.equals('patId',undefined)) {
         return;
     }
-
-    console.log("AutoTracker Updated: PatId " + Session.get('patId'))
-
+    //console.log("AutoTracker Updated: PatId " + Session.get('patId'))
     Meteor.call('updatePat', Session.get('patId'))
 
 })
