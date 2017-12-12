@@ -1,0 +1,60 @@
+<head>
+  <title>ToastBlaze</title>
+</head>
+
+<body>
+
+<div id="wrapper">
+    <div id="sidebar" class="bg-acuere-dark">
+        <img src="acuere_white.png" width = 109 height=20 style="margin-top:10px"/>
+    </div>
+    <div id="content">
+
+        {{> header}}
+        <div class="well">
+            {{#if NoPatientSelected}}
+
+                Please select a patient!
+            {{else}}
+
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-sm-7">
+                        <!-- first column -->
+                        <div class="col-sm-12">
+                            {{> acuereMetrics}}
+                        </div>
+                        <div class="col-sm-12">
+                        {{> generalRecommendations}}
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-4">
+                        <!-- Second column -->
+
+                        <div class="col-sm-12">
+                            {{> patientOverview}}
+                        </div>
+                        <div class="col-sm-12">
+                            {{> recentObservations}}
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Second Row -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        second row
+                    </div>
+                </div>
+            </div>
+                {{/if}}
+        </div>
+
+    </div>
+</div>
+</body>

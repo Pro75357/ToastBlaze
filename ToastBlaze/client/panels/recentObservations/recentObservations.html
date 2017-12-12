@@ -1,0 +1,44 @@
+<template name="recentObservations">
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            Recent Observations
+        </div>
+        <div class="panel-body">
+        Vitals:
+            <ul>
+                {{#each sign in vitals}}
+                <li>
+                    {{sign.name}} -- {{sign.value}}
+                </li>
+                {{/each}}
+            </ul>
+        <br/>
+        Laboratory:
+            <ul>
+                {{#each lab in laboratory}}
+                    <li>
+                        {{lab.name}} -- {{lab.value}}
+                    </li>
+                {{/each}}
+            </ul>
+        <br/>
+            Procedures:
+            <ul>
+                {{#each proc in procedures}}
+                    <li>
+                        {{proc.name}} -- {{proc.text}}
+                    </li>
+                {{/each}}
+            </ul>
+
+            <a class="dev-tools" data-toggle="collapse" href="#obsVomitDiv">Raw data</a>
+            <div id="obsVomitDiv" class="collapse">
+                <pre class="pre-scrollable">
+                    {{obsVomit}}
+                </pre>
+            </div>
+        </div>
+    </div>
+
+</template>

@@ -1,0 +1,33 @@
+<template name="patientOverview">
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            Patient Overview
+        </div>
+        <div class="panel-body">
+            {{#if NoPatientSelected}}
+                No patient selected.
+            {{else}}
+                <ul>
+                    <li>
+                        {{pat.name}}
+                    </li>
+                    <li>
+                        {{pat.age}} year old {{pat.gen.sex}}
+                    </li>
+                    <li>
+                        {{pat.gen.city}}, {{pat.gen.state}} {{pat.gen.zip}}
+                    </li>
+                </ul>
+                <a class="pull-right dev-tools" data-toggle="collapse" href="#patVomitDiv">Raw data</a>
+            <div id="patVomitDiv" class="collapse">
+                <pre class="pre-scrollable">
+                    {{patVomit}}
+                </pre>
+            </div>
+            {{/if}}
+
+        </div>
+    </div>
+
+</template>

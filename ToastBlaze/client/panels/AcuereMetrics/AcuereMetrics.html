@@ -1,0 +1,85 @@
+<template name="acuereMetrics">
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            Acuere Metrics
+        </div>
+        <div class="panel-body">
+
+            {{#if Reds}}
+            Red Metrics
+            <ul>
+                {{#each metric in metricsRed}}
+                <li>
+
+                    <a class="plainLink" data-toggle="collapse" href="#{{metric._id}}">{{metric.name}} - {{metric.statusReason}}</a>
+                    {{#if metric.observationId}}
+                    <ul>
+                        <li class="collapse" id="{{metric._id}}">
+                            last {{obsName metric.observationId}}: {{obsDate metric.observationId}}
+                        </li>
+                    </ul>
+                    {{/if}}
+                </li>
+                {{/each}}
+            </ul>
+
+            {{/if}}
+            {{#if Yellows}}
+            Yellow Metrics
+            <ul>
+                {{#each metric in metricsYellow}}
+                    <li>
+                        <a class="plainLink" data-toggle="collapse" href="#{{metric._id}}">{{metric.name}} {{#if metric.observationId}}: Due: {{dueDate metric.observationId metric.period}}{{/if}}</a>
+                        {{#if metric.observationId}}
+                        <ul>
+                            <li class="collapse" id="{{metric._id}}">
+                                last {{obsName metric.observationId}}: {{obsDate metric.observationId}}
+                            </li>
+                        </ul>
+                        {{/if}}
+                    </li>
+                {{/each}}
+            </ul>
+
+            {{/if}}
+            {{#if Greens}}
+            Green Metrics
+            <ul>
+                {{#each metric in metricsGreen}}
+                    <li>
+                        <a class="plainLink" data-toggle="collapse" href="#{{metric._id}}">{{metric.name}}{{#if metric.observationId}} (last {{obsName metric.observationId}}: {{obsValue metric.observationId}}){{/if}}</a>
+                        {{#if metric.observationId}}
+                            <ul>
+                                <li class="collapse" id="{{metric._id}}">
+                                    last {{obsName metric.observationId}} performed: {{obsDate metric.observationId}}
+                                </li>
+                            </ul>
+                        {{/if}}
+                    </li>
+                {{/each}}
+            </ul>
+            {{/if}}
+            {{#if Greys}}
+            <a data-toggle="collapse" href="#greyMetrics">View non-applicable Metrics</a>
+            <ul id="greyMetrics" class="collapse">
+                {{#each metric in metricsGrey}}
+                    <li>
+                        {{metric.name}} - {{metric.statusReason}}
+                    </li>
+                {{/each}}
+            </ul>
+            {{/if}}
+
+            <br/>
+            <a class="dev-tools" data-toggle="collapse" href="#acuereVomitDiv">Raw data</a>
+            <div id="acuereVomitDiv" class="collapse">
+                <span>Counts: {{metricsCount}}</span>
+                <pre class="pre-scrollable">
+                    {{metricsVomit}}
+                </pre>
+            </div>
+        </div>
+    </div>
+
+</template>
