@@ -1,0 +1,24 @@
+_id,patId,category,retroSeq,name,date,text,value,unit,refLow,refHigh
+10123,123,vitals,1,BMI,11/14/2017,,22.9,kg/m^2,18.5,24.9
+10124,123,vitals,1,Height,11/14/2017,,155,cm,,
+10125,123,vitals,1,Weight,11/14/2017,,55,kg,,
+10126,123,vitals,1,Heart Rate,11/14/2017,,77,Beats per minute,60,100
+10127,123,vitals,1,Blood Pressure,11/14/2017,,123/75,mmHg,90/60,140/90
+10129,123,vitals,1,Respiratory Rate,11/14/2017,,14,Breaths per minute,12,18
+10130,123,vitals,1,Temperature,11/14/2017,,36.9,C,36.5,37.2
+10131,123,procedures,1,Mammogram,4/5/2015,Mammography radiology read goes here,1,BI-RADS,,
+10132,123,procedures,2,Mammogram,3/22/2013,Mammography radiology read goes here,1,BI-RADS,,
+10133,123,procedures,1,Colonoscopy,6/6/2014,Colonoscopy and hopefully pathology text here,,,,
+10134,123,vitals,2,Heart Rate,9/5/2017,,65,Beats per minute,60,100
+10135,123,vitals,2,Systolic Blood Pressure,9/5/2017,,135/77,mmHg,90/60,140/90
+10137,123,vitals,2,Respiratory Rate,9/5/2017,,18,Breaths per minute,12,18
+10138,123,vitals,2,Temperature,9/5/2017,,37.4,C,36.5,37.2
+10139,123,labs,1,Hemoglobin,9/5/2017,,14.2,g/dL,12.1,15.1
+10140,123,labs,1,WBC Count,9/5/2017,,14.5,thousand cells/uL,4.5,11
+10141,123,labs,1,Platelet Count,9/5/2017,,250,thousand per uL,150,450
+10142,123,labs,1,Hematocrit,9/5/2017,,42.6,%,37,48
+10143,123,labs,1,A1c,9/5/2017,,5.1,%,4,5.7
+10144,123,labs,1,Pap cytology,1/15/2015,pap smear cytology results text goes here,Normal,,,
+10146,123,problem,1,Diabetes Mellitus II,3/14/2014,,,,,
+10147,123,labs,3,A1c,3/14/2014,,7.9,%,4,5.7
+10148,123,labs,2,A1c,6/17/2014,,6.2,%,4,5.7
