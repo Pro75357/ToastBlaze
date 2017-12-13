@@ -20,25 +20,27 @@
             <div class="container-fluid">
 
                 <div class="row">
-                    <div class="col-sm-7">
+                    <div class="col-md-6">
                         <!-- first column -->
-                        <div class="col-sm-12">
-                            {{> acuereMetrics}}
+                        <div class="col-md-12">
+                            {{> patientOverview}}
+
                         </div>
-                        <div class="col-sm-12">
-                        {{> generalRecommendations}}
+                        <div class="col-md-12">
+                            {{> recentObservations}}
+
                         </div>
 
                     </div>
 
-                    <div class="col-sm-4">
+                    <div class="col-md-5">
                         <!-- Second column -->
 
-                        <div class="col-sm-12">
-                            {{> patientOverview}}
+                        <div class="col-md-12">
+                            {{> acuereMetrics}}
                         </div>
-                        <div class="col-sm-12">
-                            {{> recentObservations}}
+                        <div class="col-md-12">
+                            {{> ePSSRecommendations}}
                         </div>
 
                     </div>

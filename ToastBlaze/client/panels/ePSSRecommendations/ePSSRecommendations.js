@@ -1,7 +1,7 @@
 import { Patients } from "../../../collections/patients";
 import { Epss} from "../../../collections/epss";
 
-Template.generalRecommendations.helpers({
+Template.ePSSRecommendations.helpers({
     epssSpecific(){
         return Epss.findOne({}).specificRecommendations
     },
@@ -11,6 +11,6 @@ Template.generalRecommendations.helpers({
     },
 });
 
-Template.generalRecommendations.events({
+Template.ePSSRecommendations.events({
 
 });
