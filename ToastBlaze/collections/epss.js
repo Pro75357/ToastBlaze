@@ -36,9 +36,11 @@ if (Meteor.isServer) {
                 console.log('ePSS Key not found or invalid- please input your ePSS key into ePSS_Key.json file in private folder')
                 return false
             } else {
-                // If no params are passed, populate some defaults for testing
-                // todo: remove defaults and instead return an error - this should be fetched from patient data
+                // If no params are passed, error and return false
                 if (!params){
+                    console.log("No ePSS parameters found. Not fetching.")
+                    return false
+                    /*
                     params = {
                         age: '18',
                         sex: 'Male',
@@ -46,6 +48,7 @@ if (Meteor.isServer) {
                         sexuallyActive: 'N',
                         grade: 'A'
                     }
+                    */
                 }
                 // lastly, insert key into params
                 params.key = ePSS_Key.key;

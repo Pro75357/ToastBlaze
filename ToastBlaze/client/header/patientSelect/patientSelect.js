@@ -19,7 +19,9 @@ Template.patientSelect.helpers({
 
     selectedPatDob(){
        if(!(Session.get('patId')===undefined)){
-           return "BirthDate: "+Patients.findOne({patId: Session.get('patId')}).dob
+           if(Patients.findOne({patId: Session.get('patId')})) {
+               return "BirthDate: " + Patients.findOne({patId: Session.get('patId')}).dob
+           }
        }
     }
 });

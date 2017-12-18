@@ -1,24 +1,41 @@
-_id,patId,category,retroSeq,name,date,text,value,unit,refLow,refHigh
-10123,123,vitals,1,BMI,11/14/2017,,22.9,kg/m^2,18.5,24.9
-10124,123,vitals,1,Height,11/14/2017,,155,cm,,
-10125,123,vitals,1,Weight,11/14/2017,,55,kg,,
-10126,123,vitals,1,Heart Rate,11/14/2017,,77,Beats per minute,60,100
-10127,123,vitals,1,Blood Pressure,11/14/2017,,123/75,mmHg,90/60,140/90
-10129,123,vitals,1,Respiratory Rate,11/14/2017,,14,Breaths per minute,12,18
-10130,123,vitals,1,Temperature,11/14/2017,,36.9,C,36.5,37.2
-10131,123,procedures,1,Mammogram,4/5/2015,Mammography radiology read goes here,1,BI-RADS,,
-10132,123,procedures,2,Mammogram,3/22/2013,Mammography radiology read goes here,1,BI-RADS,,
-10133,123,procedures,1,Colonoscopy,6/6/2014,Colonoscopy and hopefully pathology text here,,,,
-10134,123,vitals,2,Heart Rate,9/5/2017,,65,Beats per minute,60,100
-10135,123,vitals,2,Systolic Blood Pressure,9/5/2017,,135/77,mmHg,90/60,140/90
-10137,123,vitals,2,Respiratory Rate,9/5/2017,,18,Breaths per minute,12,18
-10138,123,vitals,2,Temperature,9/5/2017,,37.4,C,36.5,37.2
-10139,123,labs,1,Hemoglobin,9/5/2017,,14.2,g/dL,12.1,15.1
-10140,123,labs,1,WBC Count,9/5/2017,,14.5,thousand cells/uL,4.5,11
-10141,123,labs,1,Platelet Count,9/5/2017,,250,thousand per uL,150,450
-10142,123,labs,1,Hematocrit,9/5/2017,,42.6,%,37,48
-10143,123,labs,1,A1c,9/5/2017,,5.1,%,4,5.7
-10144,123,labs,1,Pap cytology,1/15/2015,pap smear cytology results text goes here,Normal,,,
-10146,123,problem,1,Diabetes Mellitus II,3/14/2014,,,,,
-10147,123,labs,3,A1c,3/14/2014,,7.9,%,4,5.7
-10148,123,labs,2,A1c,6/17/2014,,6.2,%,4,5.7
+_id,patId,category,retroSeq,name,date,value,unit,refLow,refHigh,text
+10123,123,vitals,1,BMI,2017-11-14,22.9,kg/m^2,18.5,24.9,
+10124,123,vitals,1,Height,2017-11-14,155,cm,,,
+10125,123,vitals,1,Weight,2017-11-14,55,kg,,,
+10126,123,vitals,1,Heart Rate,2017-11-14,77,Beats per minute,60,100,
+10127,123,vitals,1,Blood Pressure,2017-11-14,123/75,mmHg,90/60,140/90,
+10129,123,vitals,1,Respiratory Rate,2017-11-14,14,Breaths per minute,12,18,
+10130,123,vitals,1,Temperature,2017-11-14,36.9,C,36.5,37.2,
+10131,123,procedures,1,Mammogram,2015-04-05,1,BI-RADS,,,Mammography radiology read goes here
+10132,123,procedures,2,Mammogram,2013-03-22,1,BI-RADS,,,Mammography radiology read goes here
+10133,123,procedures,1,Colonoscopy,2014-06-06,,,,,Colonoscopy and hopefully pathology text here
+10134,123,vitals,2,Heart Rate,2017-09-05,65,Beats per minute,60,100,
+10135,123,vitals,2,Systolic Blood Pressure,2017-09-05,135/77,mmHg,90/60,140/90,
+10137,123,vitals,2,Respiratory Rate,2017-09-05,18,Breaths per minute,12,18,
+10138,123,vitals,2,Temperature,2017-09-05,37.4,C,36.5,37.2,
+10139,123,labs,1,Hemoglobin,2017-09-05,14.2,g/dL,12.1,15.1,
+10140,123,labs,1,WBC Count,2017-09-05,14.5,thousand cells/uL,4.5,11,
+10141,123,labs,1,Platelet Count,2017-09-05,250,thousand per uL,150,450,
+10142,123,labs,1,Hematocrit,2017-09-05,42.6,%,37,48,
+10143,123,labs,1,A1c,2017-09-05,5.1,%,4,5.7,
+10144,123,labs,1,Pap cytology,2015-01-15,Normal,,,,pap smear cytology results text goes here
+10146,123,problem,2,Diabetes Mellitus II,2014-03-14,,,,,
+10147,123,labs,3,A1c,2014-03-14,7.9,%,4,5.7,
+10148,123,labs,2,A1c,2014-06-17,6.2,%,4,5.7,
+10149,123,socialHistory,1,Synopsis,2017-09-05,,,,,Ms. Hawking is a very nice lady from Seattle who moved to Portland in 2009 to be closer to family after her husband passed. Works for Tri-Met part-time as an accountant. Has 2 adult children in the area. Enjoys cycling and gardening.
+10150,123,riskCalc,1,ASCVD,2017-09-05,3.9,%,0,10,
+10151,123,labs,1,Total Cholesterol,2017-09-05,215,mg/dl,,,
+10152,123,labs,1,HDL Cholesterol,2017-09-05,45,mg/dl,,,
+10153,123,labs,1,LDL Cholesterol,2017-09-05,95,mg/dl,,,
+10154,123,socialHistory,1,Smoking Status,2017-09-05,Never,Category,,,"Categories are Never, Former, Current"
+10155,123,Medications,1,Levothyroxine,2017-09-05,,,,,For full medication details please view patient chart
+10156,123,problem,1,Diabetes Mellitus II,2017-09-05,,,,,
+10157,123,problem,1,Hypothyroidism,2017-09-05,,,,,
+10158,123,labs,2,TSH,2015-04-05,8.9,mIU/L,0.5,4.5,
+10159,123,labs,1,TSH,2017-09-05,4.2,mIU/L,0.5,4.5,
+10160,123,labs,3,TSH,2013-03-22,5.5,mIU/L,0.5,4.5,
+10161,123,labs,4,TSH,2012-07-14,4.9,mIU/L,0.5,4.5,
+10162,,,,,,,,,,
+10163,,,,,,,,,,
+10164,,,,,,,,,,
+10165,,,,,,,,,,

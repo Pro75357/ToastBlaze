@@ -87,7 +87,8 @@ if (Meteor.isServer) {
                 //pregnant: 'N' -- (Y,N) - requires Female sex to be present
                 //tobacco: 'N', -- (Y,N)
                 //sexuallyActive: 'N' -- (Y,N)
-                grade: 'A'
+                grade: 'A',
+                grade: 'B'
             };
 
             Meteor.call('getEpss', params)
