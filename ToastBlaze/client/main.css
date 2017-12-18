@@ -14,6 +14,11 @@
     visibility: visible;
 }
 
+.mainContentDiv{
+    margin-left: 20px;
+    padding-top: 5px;
+    padding-left: 1px;
+}
 a {
     color: #393C40;
     text-decoration: none;
@@ -53,4 +58,8 @@ margin-top: -10px;
 #mainMenuWrapper{
     padding-top: 8px;
     padding-right: 10px;
+}
+
+blockquote, blockquote p {
+    font-size: 14px;
 }

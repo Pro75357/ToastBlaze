@@ -22,7 +22,7 @@ _id,patId,category,retroSeq,name,date,value,unit,refLow,refHigh,text
 10146,123,problem,2,Diabetes Mellitus II,2014-03-14,,,,,
 10147,123,labs,3,A1c,2014-03-14,7.9,%,4,5.7,
 10148,123,labs,2,A1c,2014-06-17,6.2,%,4,5.7,
-10149,123,socialHistory,1,Synopsis,2017-09-05,,,,,Ms. Hawking is a very nice lady from Seattle who moved to Portland in 2009 to be closer to family after her husband passed. Works for Tri-Met part-time as an accountant. Has 2 adult children in the area. Enjoys cycling and gardening.
+10149,123,socialHistory,1,Synopsis,2017-09-05,,,,,Ms. Hawking is a very nice lady from Seattle who moved to Portland in 2009 to be closer to family after her husband passed. She works for Tri-Met part-time as an accountant and has 2 adult children who live in the area. She enjoys cycling and gardening.
 10150,123,riskCalc,1,ASCVD,2017-09-05,3.9,%,0,10,
 10151,123,labs,1,Total Cholesterol,2017-09-05,215,mg/dl,,,
 10152,123,labs,1,HDL Cholesterol,2017-09-05,45,mg/dl,,,

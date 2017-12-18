@@ -55,27 +55,32 @@ if (Meteor.isServer) {
 
                 // Try to fetch the ePSS recommendations based on the params.
                 try {
-                    var res = HTTP.call('get',
+                    HTTP.call('get',
                         url,
                         {
                             headers: 'accept: json',
                             params
+                        }, function(err, result){
+                        if(err){
+                            throw err
+                        } else {
+                            //only want to store the specific recommendations array objects
+                            let epssCount = 0;
+                            let recs = result.data.specificRecommendations
+                            for (var x in recs) {
+                                Epss.insert(recs[x]);
+                                epssCount +=1;
+                            }
+                            console.log(epssCount + ' ePSS recs inserted');
+                            return true
                         }
-                    )
-                    console.log(res.url)
+
+                        }
+                    );
+
                 } catch (e) {
                     console.log(e)
                 }
-
-            //only want to store the specific recommendations array objects
-                let recs = res.data.specificRecommendations;
-                var epssCount = 0;
-                for (var x in recs) {
-                    Epss.insert(recs[x]);
-                    epssCount +=1;
-                }
-            console.log(epssCount + ' ePSS recs inserted');
-            return true
         }
     },
 

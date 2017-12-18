@@ -1,28 +1,24 @@
 <template name="patientOverview">
 
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            Patient Overview
-        </div>
-        <div class="panel-body">
+    <div>
+        <div>
             {{#if NoPatientSelected}}
                 No patient selected.
             {{else}}
-                <ul>
-                    <li>
-                        {{pat.name}}
-                    </li>
-                    <li>
-                        {{pat.age}} year old {{pat.gen.sex}}
-                    </li>
-                    <li>
-                        {{pat.gen.city}}, {{pat.gen.state}} {{pat.gen.zip}}
-                    </li>
-                    <li>
-                        One liner-synopsis
-                    </li>
-                </ul>
-                <a class="pull-right aaa-dev-tools" data-toggle="collapse" href="#patVomitDiv">Raw data</a>
+                <p class="pull-right align-right">
+                    123 Some Street, {{pat.gen.city}}, {{pat.gen.state}} {{pat.gen.zip}}
+                    <br/>
+                    &nbsp; Tel: {{pat.gen.phone}}
+                </p>
+
+                <h3>{{pat.name}}</h3>
+            <strong>{{pat.age}}</strong> year old {{pat.gen.race}} {{pat.gen.sex}}
+            <br/>
+            <blockquote>
+                <p>{{getObsTextbyName 'Synopsis'}}</p>
+                <footer>From Epic's Synopsis field</footer>
+            </blockquote>
+                <a class="aaa-dev-tools" data-toggle="collapse" href="#patVomitDiv">Raw data</a>
             <div id="patVomitDiv" class="collapse">
                 <pre class="pre-scrollable">
                     {{patVomit}}
