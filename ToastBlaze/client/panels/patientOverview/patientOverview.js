@@ -15,6 +15,6 @@ Template.patientOverview.helpers({
     },
 
     patVomit(){
-        return JSON.stringify(Obs.findOne(), null, 2)
+        return JSON.stringify(Pat.find().fetch(), null, 2)
     }
 })

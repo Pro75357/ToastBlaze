@@ -5,6 +5,11 @@
             AHRQ - USPSTF Recommendations
         </div>
         <div class="panel-body">
+            {{#if epssNotReady}}
+                Fetching USPSTF recommendations from ePSS...
+                <br/>
+                {{> loader}}
+            {{else}}
             Grade A Recommendations
             <ul id="recList">
                 {{#each rec in epssGradeA}}
@@ -19,7 +24,6 @@
                 </li>
                 {{/each}}
             </ul>
-
 
             Grade B Recommendations
             <ul id="recList">
@@ -43,6 +47,7 @@
                     {{epssVomit}}
                 </pre>
             </div>
+            {{/if}}
         </div>
     </div>
 </template>

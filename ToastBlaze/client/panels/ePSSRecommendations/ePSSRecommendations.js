@@ -2,6 +2,13 @@ import { Patients } from "../../../collections/patients";
 import { Epss} from "../../../collections/epss";
 
 Template.ePSSRecommendations.helpers({
+    epssNotReady(){
+        if(Epss.find().count() > 0 ){
+            return false
+        } else {
+            return true
+        }
+    },
     epssGradeA(){
         if(Epss.find({grade: "A"}).count() > 0) {
             return Epss.find({grade: "A"}).fetch()
