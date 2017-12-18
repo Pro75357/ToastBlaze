@@ -3,10 +3,17 @@
     <div class="panel panel-primary">
         <div class="panel-heading">
             Acuere Metrics
+            <div class="pull-right">
+               Select Program: <select id="metric-select" style="color: black">
+                    {{#each program in metricPrograms}}
+                    <option id="p-{{program}}">{{program}}</option>
+                    {{/each}}
+                </select>
+            </div>
         </div>
         <div class="panel-body">
 
-            {{#if Reds}}
+            {{#if metricsRed}}
             Red Metrics
             <ul>
                 {{#each metric in metricsRed}}
@@ -25,7 +32,7 @@
             </ul>
 
             {{/if}}
-            {{#if Yellows}}
+            {{#if metricsYellow}}
             Yellow Metrics
             <ul>
                 {{#each metric in metricsYellow}}
@@ -43,7 +50,7 @@
             </ul>
 
             {{/if}}
-            {{#if Greens}}
+            {{#if metricsGreen}}
             Green Metrics
             <ul>
                 {{#each metric in metricsGreen}}
@@ -60,7 +67,7 @@
                 {{/each}}
             </ul>
             {{/if}}
-            {{#if Greys}}
+            {{#if metricsGrey}}
             <a data-toggle="collapse" href="#greyMetrics">View non-applicable Metrics</a>
             <ul id="greyMetrics" class="collapse">
                 {{#each metric in metricsGrey}}

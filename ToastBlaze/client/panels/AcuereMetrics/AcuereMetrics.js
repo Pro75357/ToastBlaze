@@ -1,48 +1,64 @@
 import {Metrics} from "../../../collections/metrics";
 import {Obs} from "../../../collections/observations";
+import { Session } from 'meteor/session'
 
+// set our initial metrics to default to MU
+Session.set('select', 'MU');
+
+SelectMetrics = function(color) {
+    return Metrics.find({program: Session.get('select'), status: color})
+}
 
 Template.acuereMetrics.helpers({
 
-    Reds(){
-        if (Metrics.find({status: "Red"}).count() > 0 ) {
-            return true
-        }
+    // dev helpers
+    metricsCount(){
+        return SelectMetrics.count()
     },
+    metricsVomit(){
+        return JSON.stringify(SelectMetrics().fetch(), null, 2)
+    },
+
+    //returns each category based on the helper function SelectMetrics
+
     metricsRed(){
-        return Metrics.find({status: "Red"}).fetch()
-    },
-    Yellows(){
-        if (Metrics.find({status: "Yellow"}).count() > 0 ) {
-            return true
+        let color = "Red"
+        if (SelectMetrics(color).count() > 0 ) {
+            return SelectMetrics(color).fetch()
         }
     },
+
     metricsYellow(){
-        return Metrics.find({status: "Yellow"}).fetch()
-    },
-    Greens(){
-        if (Metrics.find({status: "Green"}).count() > 0 ) {
-            return true
+        let color = "Yellow"
+        if (SelectMetrics(color).count() > 0 ) {
+            return SelectMetrics(color).fetch()
         }
     },
     metricsGreen(){
-        return Metrics.find({status: "Green"}).fetch()
+        let color = "Green"
+        if (SelectMetrics(color).count() > 0 ) {
+            return SelectMetrics(color).fetch()
+        }
     },
 
     // The catch-all for all other statuses - $nin means "Not in"
-    Greys(){
-        if (Metrics.find({status: { $nin: ["Red","Yellow","Green"]}}).count() > 0 ) {
-            return true
+    metricsGrey(){
+        if (SelectMetrics(({$nin: ["Red","Yellow","Green"]})).count() > 0 ) {
+            return SelectMetrics(({$nin: ["Red","Yellow","Green"]})).fetch()
         }
     },
-    metricsGrey(){
-        return Metrics.find({status: { $nin: ["Red","Yellow","Green"]}}).fetch()
-    },
-    metricsCount(){
-        return Metrics.find().count()
-    },
-    metricsVomit(){
-        return JSON.stringify(Metrics.find().fetch(), null, 2)
+
+
+    // This builds the select options for the metrics selector
+    metricPrograms(){
+        let res = Metrics.find().fetch();
+        let programs = [];
+        for (var x in res){
+            if (!programs.includes(res[x].program)){
+                programs.push(res[x].program)
+            }
+        }
+        return programs
     },
 
 
@@ -67,4 +83,8 @@ Template.acuereMetrics.helpers({
 
 Template.acuereMetrics.events({
 
+    // Change the metrics to only show what the selector has selected
+    'change #metric-select': function(event){
+        Session.set('select',event.target.value)
+    }
 });
