@@ -2,13 +2,13 @@
 
     <div class="panel panel-primary">
         <div class="panel-heading">
-            AHRQ Electronic Preventative Services Recommendations
+            AHRQ - USPSTF Recommendations
         </div>
         <div class="panel-body">
-            <h5>Specific Recommendations</h5>
-
+            Grade A Recommendations
             <ul id="recList">
-                {{#each rec in epssSpecific}}
+                {{#each rec in epssGradeA}}
+
                 <li>
                     <a class="plainLink" data-toggle="collapse" data-parent="#recList" href="#{{rec.id}}">{{{ rec.title }}}</a>
                     <ul>
@@ -20,7 +20,24 @@
                 {{/each}}
             </ul>
 
-            <a class="pull-right aaa-dev-tools" data-toggle="collapse" href="#epssVomitDiv">Raw data</a>
+
+            Grade B Recommendations
+            <ul id="recList">
+                {{#each rec in epssGradeB}}
+
+                    <li>
+                        <a class="plainLink" data-toggle="collapse" data-parent="#recList" href="#{{rec.id}}">{{{ rec.title }}}</a>
+                        <ul>
+                            <li id="{{rec.id}}" data-parent="#recList" class="collapse">
+                                {{{rec.text}}}
+                            </li>
+                        </ul>
+                    </li>
+                {{/each}}
+            </ul>
+
+
+            <a class="aaa-dev-tools" data-toggle="collapse" href="#epssVomitDiv">Raw data</a>
             <div id="epssVomitDiv" class="collapse">
                 <pre class="pre-scrollable">
                     {{epssVomit}}
