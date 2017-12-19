@@ -1,5 +1,5 @@
 <template name="patientOverview">
-    <div class="panel">
+    <div>
         {{#if NoPatientSelected}}
             No patient selected.
         {{else}}
@@ -17,17 +17,15 @@
             <footer>From Epic's Synopsis field, updated {{Synopsis.date}}</footer>
         </blockquote>
         <div>
-        <h4>Medications</h4>
+        <h4>Medication Summary</h4>
             <div class="row container-fluid">
-                <ul class="list-group shrinkWrap">
+                <ul class="list-unstyled shrinkWrap">
                     {{#each med in meds}}
                         <li class="medListItem list-group-item col-xs-6">{{med.name}}</li>
                         {{/each}}
                 </ul>
             </div>
         </div>
-
-
 
         <!-- just dev stuff below here -->
             <a style="visibility: {{visibility}}" class="aaa-dev-tools" data-toggle="collapse" href="#patVomitDiv">Raw data</a>

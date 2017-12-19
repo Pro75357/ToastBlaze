@@ -1,19 +1,34 @@
 <template name="Problems">
 
-    <div class="panel">
+    <div>
         {{#if NoPatientSelected}}
-            No patient selected.
+            <!-- this panel shows nothing if no patient is selected -->
         {{else}}
         <div>
-            <h4>Problems</h4>
-            --toDo!
-            <div class="shrinkWrap">
-                <ul>
-                    {{#each prob in probs}}
-                        <li>{{prob.name}}</li>
-                    {{/each}}
-                </ul>
+            <div class="pull-right">
+                Select Program: <select class="metric-select">
+                {{#each program in metricPrograms}}
+                    <option id="p-{{program}}">{{program}}</option>
+                {{/each}}
+            </select>
             </div>
+            <h4>Problem-focused Recommendations</h4>
+            {{#if Diabetes}}
+                Diabetes-specific Recommendations
+                -> Matching diagnosis: [prb here]
+                -> rec 1...
+            {{/if}}
+            {{#if hasHeartFailure}}
+                Systolic Heart Failure Recommendations
+            {{/if}}
+            {{#if hasHypertension}}
+                Hypertension Recommendations
+            {{/if}}
+            {{#if hasHeartDisease}}
+                Coronary Artery Disease Recommendations
+            {{/if}}
+
+            General Health Maintenance Recommendations
 
         </div>
 

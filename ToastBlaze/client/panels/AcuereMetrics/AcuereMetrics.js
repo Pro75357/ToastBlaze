@@ -53,19 +53,6 @@ Template.acuereMetrics.helpers({
         }
     },
 
-    // This builds the select options for the metrics selector
-    metricPrograms(){
-        let res = Metrics.find().fetch();
-        let programs = [];
-        for (var x in res){
-            if (!programs.includes(res[x].program)){
-                programs.push(res[x].program)
-            }
-        }
-        return programs
-    },
-
-
     // These special helpers get passed the ObsID from the corresponding metrics
     // and they fetch the observation data
     obsName(obsId){
@@ -96,7 +83,15 @@ Template.acuereMetrics.helpers({
 Template.acuereMetrics.events({
 
     // Change the metrics to only show what the selector has selected
-    'change #metric-select': function(event){
+    'change .metric-select': function(event){
         Session.set('select',event.target.value)
     }
 });
+
+// this should keep all the "metric-select" classes the same value
+Tracker.autorun(function(){
+    let selects = document.getElementsByClassName('metric-select')
+    for (let x in selects){
+        selects[x].value = Session.get('select')
+    }
+})

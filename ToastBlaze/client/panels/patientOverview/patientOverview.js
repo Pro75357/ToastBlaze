@@ -10,15 +10,17 @@ Template.patientOverview.helpers({
         }
     },
     patSex(){ // return sex formatted as a word
-        switch(Pat.findOne().gen.sex) {
-            case "F":
-                return "female";
+        if(Pat.find().count() > 0) {
+            switch (Pat.findOne().gen.sex) {
+                case "F":
+                    return "female";
 
-            case "M":
-                return "male";
-            // in case is not M or F we just return what it is
-            default:
-                return Pat.findOne().gen.sex
+                case "M":
+                    return "male";
+                // in case is not M or F we just return what it is
+                default:
+                    return Pat.findOne().gen.sex
+            }
         }
     },
 
