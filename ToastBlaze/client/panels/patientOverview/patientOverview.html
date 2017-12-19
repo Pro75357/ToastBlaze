@@ -6,7 +6,7 @@
             <p class="pull-right">
                 123 Some Street, {{pat.gen.city}}, {{pat.gen.state}} {{pat.gen.zip}}
                 <br/>
-                &nbsp; Tel: {{pat.gen.phone}}
+                Tel: {{pat.gen.phone}}
             </p>
 
             <h3>{{pat.name}}</h3>
@@ -16,16 +16,24 @@
             <p>{{Synopsis.text}}</p>
             <footer>From Epic's Synopsis field, updated {{Synopsis.date}}</footer>
         </blockquote>
-        <div>
-        <h4>Medication Summary</h4>
-            <div class="row container-fluid">
-                <ul class="list-unstyled shrinkWrap">
-                    {{#each med in meds}}
-                        <li class="medListItem list-group-item col-xs-6">{{med.name}}</li>
-                        {{/each}}
-                </ul>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <h4>Medication Summary</h4>
+                    <div class="container-fluid shrinkWrap">
+                        <ul class="list-unstyled">
+                            {{#each med in meds}}
+                                <li class="medListItem list-group-item col-sm-6">{{med.name}}</li>
+                                {{/each}}
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <h4>Social Summary</h4>
+                    stuff here
+                </div>
             </div>
-        </div>
+
 
         <!-- just dev stuff below here -->
             <a style="visibility: {{visibility}}" class="aaa-dev-tools" data-toggle="collapse" href="#patVomitDiv">Raw data</a>
