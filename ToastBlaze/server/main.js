@@ -6,17 +6,10 @@ Meteor.startup(() => {
 });
 
 Meteor.methods({
-    'mainMenu': function(option){
-        switch(option){
-            case 'resetDb':
-                {console.log('resetDbCalled')}
-                Meteor.call('resetPatients')
-                break;
-            case 'clearDb':
-                {console.log('clearDB Called')}
-                break;
-            default:
-                console.log('nothing called?')
-        }
+    'resetAll': function(){
+        console.log('Full reset called...');
+        Meteor.call('resetPatients');
+        Meteor.call('clearEpss');
+        Meteor.call('clearPat');
     }
-})
+});

@@ -12,36 +12,20 @@
         {{> header}}
         <div class="mainContentDiv bg-acuere-grey">
             {{#if NoPatientSelected}}
-
                 Please select a patient!
             {{else}}
 
             <div class="container-fluid">
-
                 <div class="row">
-                    <div class="col-md-5">
-                        <!-- first column -->
-                        <div class="col-md-12">
-                            {{> patientOverview}}
 
-                        </div>
-                        <div class="col-md-12">
-                            {{> Problems}}
-
-                        </div>
-
+                    <div class="col-md-6">
+                        {{> patientOverview}}
+                        {{> Problems}}
                     </div>
 
                     <div class="col-md-6">
-                        <!-- Second column -->
-
-                        <div class="col-md-12">
-                            {{> acuereMetrics}}
-                        </div>
-                        <div class="col-md-12">
-                            {{> ePSSRecommendations}}
-                        </div>
-
+                        {{> acuereMetrics}}
+                        {{> ePSSRecommendations}}
                     </div>
 
                 </div>

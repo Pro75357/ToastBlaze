@@ -12,7 +12,6 @@ Template.Problems.helpers({
             return JSON.stringify(Obs.find().fetch(), null, 2)
         }
     }
-
 });
 
 Template.Problems.events({

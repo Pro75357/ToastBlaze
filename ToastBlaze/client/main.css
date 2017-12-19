@@ -11,8 +11,7 @@
 .bg-acuere-light {background: #FFFFFF}
 
 .aaa-dev-tools {
-    visibility: visible;
-    background: mediumpurple;
+    background: lightpink;
 }
 #darkHeader{
     height: 40px;
@@ -28,7 +27,7 @@
     margin-top: 40px;
 }
 .mainContentDiv{
-    margin-left: 30px;
+    margin-left: 50px;
     padding-top: 5px;
     padding-left: 1px;
     height: 100vh;
