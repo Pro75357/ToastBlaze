@@ -48,48 +48,18 @@ if (Meteor.isServer) {
                 gen: Patients.findOne({patId: patId})
             });
 
-
 // Simulate a call to a table that holds patient Observations
             // The meteor.call actually just reads from the CSV, but it does then filter by the patId
             // sort of like how a real SQL call would work.
             // We will store this in our Pat collection under the group 'obs'
 
-            Meteor.call('getObs', patId)
+            Meteor.call('getObs', patId);
 
 // Now simulate a call for patient Metrics
             // this will go in a separate collection for searching, so just is a meteor.call
 
             Meteor.call('getMetrics', patId)
 
-
-
-// We want to update our ePSS recommendations with our patient information.
-
-            // We need to build our param object for the ePSS call
-            // Here is the template with the possible values:
-
-            /*
-            params = {
-            age: '18',  --any integer
-            sex: 'Male', -- (Male, Female)
-            pregnant: 'N' -- (Y,N) - requires Female sex to be present
-            tobacco: 'N', -- (Y,N)
-            sexuallyActive: 'N' -- (Y,N)
-            grade: 'A' (A,B,C,D, I) -- can be repeated to include multiple values
-            }
-             */
-
-            let P = Pat.findOne({})
-
-            let params = {
-                age: getAge(P.gen.dob),
-                sex: P.gen.sex,
-                //pregnant: 'N' -- (Y,N) - requires Female sex to be present
-                //tobacco: 'N', -- (Y,N)
-                //sexuallyActive: 'N' -- (Y,N)
-            };
-
-            Meteor.call('getEpss', params)
         },
 
         'clearPat': function (){

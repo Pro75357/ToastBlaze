@@ -15,7 +15,7 @@ if (Meteor.isServer) {
     Meteor.methods({
 
         'getEpss': function (params) {
-            //Very first, clean out the ePSS data
+            //Very first, clean out old ePSS data (if any)
             Epss.remove({});
 
             // First, we need to know the epss api url
@@ -38,7 +38,7 @@ if (Meteor.isServer) {
             } else {
                 // If no params are passed, error and return false
                 if (!params){
-                    console.log("No ePSS parameters found. Not fetching.")
+                    console.log("No ePSS parameters found. Not fetching.");
                     return false
                     /*
                     params = {

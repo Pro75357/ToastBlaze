@@ -28,6 +28,9 @@ Template.patientSelect.helpers({
 
 Template.patientSelect.events({
     'change #patientSelect': function(e){
+        // all the things that need to happen on a new patient select (most are automated):
+        Session.set('epssRequested', false);  // resets ePSS button regardless of selection
+        Meteor.call('clearEpss'); // go ahead and clear the ePSS data so it doesn't look odd later
         if (e.target.value === "0"){
             Session.set('patId', undefined)
         } else{
