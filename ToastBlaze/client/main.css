@@ -12,12 +12,26 @@
 
 .aaa-dev-tools {
     visibility: visible;
+    background: mediumpurple;
+}
+#darkHeader{
+    height: 40px;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1001;
 }
 
+#lightHeader{
+    height:71px;
+    margin-top: 40px;
+}
 .mainContentDiv{
-    margin-left: 20px;
+    margin-left: 30px;
     padding-top: 5px;
     padding-left: 1px;
+    height: 100vh;
 }
 .col-centered{
     float: none;
@@ -58,14 +72,12 @@ margin-top: -10px;
     float:left;
     width:50px;
     height:100vh;
+    position: fixed;
 }
 #content {
     margin: 0 0 0 0px;
 }
 
-.header{
-    height:71px;
-}
 
 #mainMenuWrapper{
     padding-top: 8px;

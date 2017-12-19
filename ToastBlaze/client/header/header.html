@@ -1,7 +1,7 @@
 
 <template name="header">
 
-    <div class="bg-acuere-dark" style="height: 40px">
+    <div class="bg-acuere-dark" id="darkHeader">
         <div class="pull-right" id="mainMenuWrapper">
             <select id="mainSelect" class="aaa-dev-tools">
                 <option value="default">...Select an action</option>
@@ -9,9 +9,10 @@
                 <option value="clearDb">Clear (empty) Databases</option>
             </select>
         </div>
+        <img src="acuere_white.png" width = 109 height=20 style="margin-top:10px"/>
     </div>
 
-    <div class="container-fluid bg-acuere-light header">
+    <div class="container-fluid bg-acuere-light" id="lightHeader">
 
         {{> patientSelect}}
 

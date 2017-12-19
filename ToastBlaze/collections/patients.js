@@ -49,8 +49,10 @@ Meteor.startup(() => {
                 // Prefer to store each patient as their own "document" to make searches and stuff easier, so loop through the CSV data and insert one at a time
                 let count = 0;
                 for (let x in patientData.data) {
-                    Patients.insert(patientData.data[x]);
-                    count += 1
+                    if(patientData.data[x].patId !==''){ // ignores any blank rows (i.e. last row that always comes back)
+                        Patients.insert(patientData.data[x]);
+                        count += 1
+                    }
                 }
                 console.log(count + ' patients entered')
 

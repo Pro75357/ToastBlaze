@@ -1,9 +1,9 @@
 <template name="patientOverview">
-    <div>
+    <div class="panel">
         {{#if NoPatientSelected}}
             No patient selected.
         {{else}}
-            <p class="pull-right align-right">
+            <p class="pull-right">
                 123 Some Street, {{pat.gen.city}}, {{pat.gen.state}} {{pat.gen.zip}}
                 <br/>
                 &nbsp; Tel: {{pat.gen.phone}}
@@ -16,27 +16,17 @@
             <p>{{Synopsis.text}}</p>
             <footer>From Epic's Synopsis field, updated {{Synopsis.date}}</footer>
         </blockquote>
-
+        <div>
         <h4>Medications</h4>
-        <div class="shrinkWrap">
-            <ul class="list-group row">
-                {{#each med in meds}}
-                    <li class="medListItem list-group-item col-xs-6">{{med.name}}</li>
-                    {{/each}}
-            </ul>
+            <div class="row container-fluid">
+                <ul class="list-group shrinkWrap">
+                    {{#each med in meds}}
+                        <li class="medListItem list-group-item col-xs-6">{{med.name}}</li>
+                        {{/each}}
+                </ul>
+            </div>
         </div>
 
-        <h4>Problems</h4>
-        --toDo!
-        <div class="shrinkWrap">
-        <ul>
-            {{#each prob in probs}}
-            <li>{{prob.name}}</li>
-            {{/each}}
-        </ul>
-
-
-        </div>
 
 
         <!-- just dev stuff below here -->

@@ -1,0 +1,31 @@
+<template name="Problems">
+
+    <div class="panel">
+        {{#if NoPatientSelected}}
+            No patient selected.
+        {{else}}
+        <div>
+            <h4>Problems</h4>
+            --toDo!
+            <div class="shrinkWrap">
+                <ul>
+                    {{#each prob in probs}}
+                        <li>{{prob.name}}</li>
+                    {{/each}}
+                </ul>
+            </div>
+
+        </div>
+
+        <div>
+            <a class="aaa-dev-tools" data-toggle="collapse" href="#obsVomitDiv">Raw data</a>
+            <div id="obsVomitDiv" class="collapse">
+                <pre class="pre-scrollable">
+                    {{obsVomit}}
+                </pre>
+            </div>
+        </div>
+        {{/if}}
+    </div>
+
+</template>

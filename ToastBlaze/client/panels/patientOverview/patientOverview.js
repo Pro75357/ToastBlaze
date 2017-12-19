@@ -12,10 +12,10 @@ Template.patientOverview.helpers({
     patSex(){ // return sex formatted as a word
         switch(Pat.findOne().gen.sex) {
             case "F":
-                return "female"
+                return "female";
 
             case "M":
-                return "male"
+                return "male";
             // in case is not M or F we just return what it is
             default:
                 return Pat.findOne().gen.sex
@@ -29,9 +29,7 @@ Template.patientOverview.helpers({
     meds(){
         return Obs.find({category:'medications'}).fetch()
     },
-    probs(){
-        return Obs.find({category:'problems', retroSeq: '1'}).fetch()
-    },
+
 
     patVomit(){
         return JSON.stringify(Pat.find().fetch(), null, 2)
