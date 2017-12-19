@@ -9,10 +9,27 @@ Template.patientOverview.helpers({
             return Pat.findOne()
         }
     },
+    patSex(){ // return sex formatted as a word
+        switch(Pat.findOne().gen.sex) {
+            case "F":
+                return "female"
 
-    getObsTextbyName(name){
-        return Obs.findOne({name: name}).text
+            case "M":
+                return "male"
+            // in case is not M or F we just return what it is
+            default:
+                return Pat.findOne().gen.sex
+        }
     },
+
+    Synopsis(){
+        return Obs.findOne({name: 'Synopsis'})
+    },
+
+    meds(){
+        return Obs.find({category:'medications'}).fetch()
+    },
+
 
     patVomit(){
         return JSON.stringify(Pat.find().fetch(), null, 2)

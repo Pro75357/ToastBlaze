@@ -23,7 +23,14 @@
     float: none;
     margin: 0 auto;
 }
-
+.shrinkWrap{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.medListItem{
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
 a {
     color: #393C40;
     text-decoration: none;

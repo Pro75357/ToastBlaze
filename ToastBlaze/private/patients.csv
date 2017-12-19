@@ -1,4 +1,4 @@
 patId,fname,lname,dob,sex,race,city,state,zip,phone
 123,Nancy,Hawking,5/22/1964,F,White,Portland,OR,97214,503-645-9054
-321,John,Peterson,7/11/1987,M,White,Oregon City,OR,97045,503-456-9875
+321,John,White,7/11/1987,M,African American,Oregon City,OR,97045,503-456-9875
 564,Sally,Casper,9/14/1983,F,Asian,Beaverton,OR,97007,503-215-5486
