@@ -44,9 +44,17 @@
     padding-top: 4px;
     padding-bottom: 4px;
 }
+.medListItem:hover{
+    background-color: cornsilk;
+}
+
 a {
     color: #393C40;
     text-decoration: none;
+}
+
+.hintText{
+    text-decoration: underline;
 }
 
 #titleWrapper{

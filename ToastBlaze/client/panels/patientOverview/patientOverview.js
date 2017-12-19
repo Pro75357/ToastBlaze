@@ -31,9 +31,27 @@ Template.patientOverview.helpers({
     meds(){
         return Obs.find({category:'medications'}).fetch()
     },
+    social(){
+        return Obs.find({category:'socialHistory'}).fetch()
+    },
 
+    getLastObsValue(category,name){
+        if (Obs.find({category: category, name: name}).count()>0) {
+            return Obs.findOne({category: category, name: name}).value
+        } else {
+            return 'Not found'
+        }
+    },
+    getLastObsDate(category,name) {
+        if (Obs.find({category: category, name: name}).count() > 0) {
+            return Obs.findOne({category: category, name: name}).date
+        } else {
+            return 'Not found'
+        }
+    },
 
     patVomit(){
-        return JSON.stringify(Pat.find().fetch(), null, 2)
+        //return JSON.stringify(Pat.find().fetch(), null, 2)
+       // return JSON.stringify(Obs.find({category: 'socialHistory', name: 'Smoking Status'}).fetch(), null, 2)
     }
 })

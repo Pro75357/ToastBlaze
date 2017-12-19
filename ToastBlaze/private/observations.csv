@@ -42,3 +42,4 @@ _id,patId,category,metricCategory,ProblemCode,name,date,value,unit,refLow,refHig
 10167,123,problems,Other,J30.89,Other allergic rhinitis,2013-03-15,,,,,
 10168,123,problems,Other,M17.0,Bilateral primary osteoarthritis of knee,2013-03-15,,,,,
 10169,123,problems,Other,K21.9,Gastro-esophageal reflux disease without esophagitis,2013-03-15,,,,,
+10170,123,socialHistory,,,Sexually Active,2017-09-05,No,,,,

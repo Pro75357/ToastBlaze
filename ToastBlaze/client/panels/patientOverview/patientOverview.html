@@ -23,14 +23,31 @@
                     <div class="container-fluid shrinkWrap">
                         <ul class="list-unstyled">
                             {{#each med in meds}}
-                                <li class="medListItem list-group-item col-sm-6">{{med.name}}</li>
+                                <a href="https://druginfo.nlm.nih.gov/drugportal/name/{{med.name}}" target="_blank" data-toggle="tooltip" title="Search using NLM">
+                                    <li class="medListItem list-group-item col-sm-6">
+                                    {{med.name}}</li>
+                                </a>
                                 {{/each}}
                         </ul>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <h4>Social Summary</h4>
-                    stuff here
+                    Tobacco use:
+                    <span class="hintText" data-toggle="tooltip" title="updated {{getLastObsDate "socialHistory" "Smoking Status"}}">
+                        {{getLastObsValue "socialHistory" "Smoking Status"}}
+                    </span>
+                    <br/>
+                    Alcohol use:
+                    <span class="hintText" data-toggle="tooltip" title="updated {{getLastObsDate "socialHistory" "Alcohol Use"}}">
+                        {{getLastObsValue "socialHistory" "Alcohol Use"}}
+                    </span>
+                    <br/>
+                    Sexually Active:
+                    <span class="hintText" data-toggle="tooltip" title="updated {{getLastObsDate "socialHistory" "Sexually Active"}}">
+                        {{getLastObsValue "socialHistory" "Sexually Active"}}
+                    </span>
+
                 </div>
             </div>
 
