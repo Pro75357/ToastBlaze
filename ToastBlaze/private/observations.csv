@@ -19,7 +19,7 @@ _id,patId,category,retroSeq,name,date,value,unit,refLow,refHigh,text
 10142,123,labs,1,Hematocrit,2017-09-05,42.6,%,37,48,
 10143,123,labs,1,A1c,2017-09-05,5.1,%,4,5.7,
 10144,123,labs,1,Pap cytology,2015-01-15,Normal,,,,pap smear cytology results text goes here
-10146,123,problem,2,Diabetes Mellitus II,2014-03-14,,,,,
+10146,123,problems,2,Diabetes Mellitus II,2014-03-14,,,,,
 10147,123,labs,3,A1c,2014-03-14,7.9,%,4,5.7,
 10148,123,labs,2,A1c,2014-06-17,6.2,%,4,5.7,
 10149,123,socialHistory,1,Synopsis,2017-09-05,,,,,Ms. Hawking is a very nice lady from Seattle who moved to Portland in 2009 to be closer to family after her husband passed. She works for Tri-Met part-time as an accountant and has 2 adult children who live in the area. She enjoys cycling and gardening.
@@ -28,9 +28,9 @@ _id,patId,category,retroSeq,name,date,value,unit,refLow,refHigh,text
 10152,123,labs,1,HDL Cholesterol,2017-09-05,45,mg/dl,,,
 10153,123,labs,1,LDL Cholesterol,2017-09-05,95,mg/dl,,,
 10154,123,socialHistory,1,Smoking Status,2017-09-05,Never,Category,,,"Categories are Never, Former, Current"
-10155,123,medications,1,Levothyroxine,2017-09-05,,,,,For full medication details please view patient chart
-10156,123,problem,1,Diabetes Mellitus II,2017-09-05,,,,,
-10157,123,problem,1,Hypothyroidism,2017-09-05,,,,,
+10155,123,medications,1,levothyroxine,2017-09-05,,,,,For full medication details please view patient chart
+10156,123,problems,1,Diabetes Mellitus II,2017-09-05,,,,,
+10157,123,problems,1,Hypothyroidism,2017-09-05,,,,,
 10158,123,labs,2,TSH,2015-04-05,8.9,mIU/L,0.5,4.5,
 10159,123,labs,1,TSH,2017-09-05,4.2,mIU/L,0.5,4.5,
 10160,123,labs,3,TSH,2013-03-22,5.5,mIU/L,0.5,4.5,
@@ -39,3 +39,4 @@ _id,patId,category,retroSeq,name,date,value,unit,refLow,refHigh,text
 10163,123,medications,1,acetaminophen,2017-09-05,,,,,
 10164,123,medications,1,melatonin,2017-09-05,,,,,
 10165,123,medications,1,Tums,2017-09-05,,,,,
+10166,123,problems,1,insomnia,2017-09-05,,,,,

@@ -29,7 +29,9 @@ Template.patientOverview.helpers({
     meds(){
         return Obs.find({category:'medications'}).fetch()
     },
-
+    probs(){
+        return Obs.find({category:'problems', retroSeq: '1'}).fetch()
+    },
 
     patVomit(){
         return JSON.stringify(Pat.find().fetch(), null, 2)

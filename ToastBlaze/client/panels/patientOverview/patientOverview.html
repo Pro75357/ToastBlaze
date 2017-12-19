@@ -1,42 +1,52 @@
 <template name="patientOverview">
-
     <div>
-        <div>
-            {{#if NoPatientSelected}}
-                No patient selected.
-            {{else}}
-                <p class="pull-right align-right">
-                    123 Some Street, {{pat.gen.city}}, {{pat.gen.state}} {{pat.gen.zip}}
-                    <br/>
-                    &nbsp; Tel: {{pat.gen.phone}}
-                </p>
+        {{#if NoPatientSelected}}
+            No patient selected.
+        {{else}}
+            <p class="pull-right align-right">
+                123 Some Street, {{pat.gen.city}}, {{pat.gen.state}} {{pat.gen.zip}}
+                <br/>
+                &nbsp; Tel: {{pat.gen.phone}}
+            </p>
 
-                <h3>{{pat.name}}</h3>
-            <strong>{{pat.age}}</strong> year old {{pat.gen.race}} {{patSex}}
-            <br/>
-            <blockquote>
-                <p>{{Synopsis.text}}</p>
-                <footer>From Epic's Synopsis field, updated {{Synopsis.date}}</footer>
-            </blockquote>
+            <h3>{{pat.name}}</h3>
+        <strong>{{pat.age}}</strong> year old {{pat.gen.race}} {{patSex}}
+        <br/>
+        <blockquote>
+            <p>{{Synopsis.text}}</p>
+            <footer>From Epic's Synopsis field, updated {{Synopsis.date}}</footer>
+        </blockquote>
 
-            <h4>Medications</h4>
-            <div class="shrinkWrap">
-                <ul class="list-group row">
-                    {{#each med in meds}}
-                        <li class="medListItem list-group-item col-xs-6">{{med.name}}</li>
-                        {{/each}}
-                </ul>
-            </div>
+        <h4>Medications</h4>
+        <div class="shrinkWrap">
+            <ul class="list-group row">
+                {{#each med in meds}}
+                    <li class="medListItem list-group-item col-xs-6">{{med.name}}</li>
+                    {{/each}}
+            </ul>
+        </div>
 
-                <a class="aaa-dev-tools" data-toggle="collapse" href="#patVomitDiv">Raw data</a>
-            <div id="patVomitDiv" class="collapse">
-                <pre class="pre-scrollable">
-                    {{patVomit}}
-                </pre>
-            </div>
-            {{/if}}
+        <h4>Problems</h4>
+        --toDo!
+        <div class="shrinkWrap">
+        <ul>
+            {{#each prob in probs}}
+            <li>{{prob.name}}</li>
+            {{/each}}
+        </ul>
+
 
         </div>
+
+
+        <!-- just dev stuff below here -->
+            <a class="aaa-dev-tools" data-toggle="collapse" href="#patVomitDiv">Raw data</a>
+        <div id="patVomitDiv" class="collapse">
+            <pre class="pre-scrollable">
+                {{patVomit}}
+            </pre>
+        </div>
+        {{/if}}
     </div>
 
 </template>
