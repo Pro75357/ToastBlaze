@@ -34,6 +34,16 @@ if (Meteor.isServer) {
                         count += 1
                     }
                 }
+                // Observations are in there, but the date field is just a string.
+                // This will transform the string in the "date" field into a javascript date.
+                let all = Obs.find().fetch()
+                for (let x in all){
+                    let _id = all[x]._id
+                    let date = new Date(all[x].date)
+                    //console.log(date)
+                    Obs.upsert({_id: _id},{$set: {date: date}})
+                }
+
                 console.log(count + ' observations entered')
             } catch (e) {
                 console.log("something went wrong with parsing the observations data")

@@ -16,16 +16,16 @@
             <div class="shrinkWrap">
             {{#if Diabetes}}
                 <strong>Diabetes</strong>
-            <br/>
+                <div class="shrinkWrap">
                 Matching diagnosis:
-                <span class="hintText" data-toggle="tooltip" title="updated {{Diabetes.[0].date}}">
+                <span class="hintText" data-toggle="tooltip" title="updated {{formatDate Diabetes.[0].date}}">
                     {{Diabetes.[0].name}} - {{Diabetes.[0].ProblemCode}}
                 </span>
                 <br/>
                 A1c history:
 
                     {{#each lab in A1cList}}
-                        <span class="btn-xs cursor-default" style="background: {{colorValueHighBad lab.value lab.refLow lab.refHigh}}" data-toggle="tooltip" title="{{lab.date}}">
+                        <span class="btn-xs cursor-default" style="background: {{colorValueHighBad lab.value lab.refLow lab.refHigh}}" data-toggle="tooltip" title="{{formatDate lab.date}}">
                         {{lab.value}}{{lab.unit}}
                         </span>
                         &nbsp;
@@ -33,6 +33,7 @@
                     {{/each}}
                 <br/>
                 {{> metricTable metricCategory="Diabetes"}}
+            </div>
             {{/if}}
             {{#if HeartFailure}}
                 Systolic Heart Failure Recommendations
@@ -44,7 +45,10 @@
                 Coronary Artery Disease Recommendations
             {{/if}}
 
-            General Health Maintenance Recommendations
+                <strong>General/Health Maintenance</strong>
+                <div class="shrinkWrap">
+                    Gen/HM stuff here
+                </div>
             </div>
         </div>
 

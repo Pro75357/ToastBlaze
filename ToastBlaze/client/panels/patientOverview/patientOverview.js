@@ -34,6 +34,9 @@ Template.patientOverview.helpers({
     social(){
         return Obs.find({category:'socialHistory'}).fetch()
     },
+    allergies(){
+        return Obs.find({category:'allergy'}).fetch()
+    },
 
     getLastObsValue(category,name){
         if (Obs.find({category: category, name: name}).count()>0) {

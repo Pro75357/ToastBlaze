@@ -29,3 +29,7 @@ Template.registerHelper('metricPrograms', function(){
     }
     return programs
 });
+
+Template.registerHelper('formatDate',function(date){
+    return moment(date).format('MM/DD/YYYY')
+});

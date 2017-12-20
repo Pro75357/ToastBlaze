@@ -14,12 +14,12 @@
         <br/>
         <blockquote>
             <p>{{Synopsis.text}}</p>
-            <footer>From Epic's Synopsis field, updated {{Synopsis.date}}</footer>
+            <footer>From Epic's Synopsis field, updated {{formatDate Synopsis.date}}</footer>
         </blockquote>
 
             <div class="row">
                 <div class="col-sm-6">
-                    <h4>Medication Summary</h4>
+                    <h4>Medications</h4>
                     <div class="container-fluid shrinkWrap">
                         <ul class="list-unstyled">
                             {{#each med in meds}}
@@ -30,24 +30,33 @@
                                 {{/each}}
                         </ul>
                     </div>
+                    <div class="shrinkWrap">
+                        <strong>Allergies:</strong>
+                        {{#each thing in allergies}}
+                        <span class="hintText bg-danger cursor-default" data-toggle="tooltip" title="documented {{formatDate thing.date}} - {{thing.text}}">
+                            {{thing.name}}
+                        </span>
+                        {{/each}}
+                    </div>
                 </div>
                 <div class="col-sm-6">
-                    <h4>Social Summary</h4>
-                    Tobacco use:
-                    <span class="hintText" data-toggle="tooltip" title="updated {{getLastObsDate "socialHistory" "Smoking Status"}}">
-                        {{getLastObsValue "socialHistory" "Smoking Status"}}
-                    </span>
-                    <br/>
-                    Alcohol use:
-                    <span class="hintText" data-toggle="tooltip" title="updated {{getLastObsDate "socialHistory" "Alcohol Use"}}">
-                        {{getLastObsValue "socialHistory" "Alcohol Use"}}
-                    </span>
-                    <br/>
-                    Sexually Active:
-                    <span class="hintText" data-toggle="tooltip" title="updated {{getLastObsDate "socialHistory" "Sexually Active"}}">
-                        {{getLastObsValue "socialHistory" "Sexually Active"}}
-                    </span>
-
+                    <h4>Social</h4>
+                    <div class="shrinkWrap">
+                        Tobacco use:
+                        <span class="hintText cursor-default" data-toggle="tooltip" title="updated {{getLastObsDate "socialHistory" "Smoking Status"}}">
+                            {{getLastObsValue "socialHistory" "Smoking Status"}}
+                        </span>
+                        <br/>
+                        Alcohol use:
+                        <span class="hintText cursor-default" data-toggle="tooltip" title="updated {{getLastObsDate "socialHistory" "Alcohol Use"}}">
+                            {{getLastObsValue "socialHistory" "Alcohol Use"}}
+                        </span>
+                        <br/>
+                        Sexually Active:
+                        <span class="hintText cursor-default" data-toggle="tooltip" title="updated {{getLastObsDate "socialHistory" "Sexually Active"}}">
+                            {{getLastObsValue "socialHistory" "Sexually Active"}}
+                        </span>
+                    </div>
                 </div>
             </div>
 
