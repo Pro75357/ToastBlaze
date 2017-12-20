@@ -1,48 +1,68 @@
 <template name="ePSSRecommendations">
 
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            AHRQ - USPSTF Recommendations
-        </div>
-        <div class="panel-body">
+    <div>
+
+            <h4>AHRQ - USPSTF Recommendations</h4>
+
+        <div class="shrinkWrap">
             {{#if epssRequested}}
 
                 {{#if epssNotReady}}
-                    Fetching USPSTF recommendations from ePSS...
+                    <p>Fetching USPSTF recommendations from ePSS...</p>
                     <br/>
                     {{> loader}}
                 {{else}}
 
+                <table class="table table-hover table-xtra-condensed cursor-default">
+                    {{#if epssGradeA}}
+                        <thead>
+                        <tr class="bg-acuere-blue">
+                            <th>
+                                Grade A Recommendations
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{#each rec in epssGradeA}}
+                            <tr>
+                                <td>
+                                    <a class="plainLink" data-toggle="collapse" href="#{{rec._id}}">{{{ rec.title }}}</a>
+                                    {{#if rec.id}}
+                                        <li id="{{rec.id}}" data-parent="#recList" class="collapse">
+                                            {{{rec.text}}}
+                                        </li>
+                                    {{/if}}
+                                </td>
+                            </tr>
+                        {{/each}}
+                        </tbody>
+                    {{/if}}
+                        {{#if epssGradeB}}
+                            <thead>
+                            <tr class="bg-acuere-blue">
+                                <th>
+                                    Grade B Recommendations
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {{#each rec in epssGradeB}}
+                                <tr>
+                                    <td>
+                                        <a class="plainLink" data-toggle="collapse" href="#{{rec.id}}">{{{ rec.title }}}</a>
+                                        {{#if rec.id}}
+                                            <li id="{{rec.id}}" data-parent="#recList" class="collapse">
+                                                {{{rec.text}}}
+                                            </li>
+                                        {{/if}}
+                                    </td>
+                                </tr>
+                            {{/each}}
+                            </tbody>
+                        {{/if}}
 
-                Grade A Recommendations
-                <ul id="recList">
-                    {{#each rec in epssGradeA}}
+                    </table>
 
-                    <li>
-                        <a class="plainLink" data-toggle="collapse" data-parent="#recList" href="#{{rec.id}}">{{{ rec.title }}}</a>
-                        <ul>
-                            <li id="{{rec.id}}" data-parent="#recList" class="collapse">
-                                {{{rec.text}}}
-                            </li>
-                        </ul>
-                    </li>
-                    {{/each}}
-                </ul>
-
-                Grade B Recommendations
-                <ul id="recList">
-                    {{#each rec in epssGradeB}}
-
-                        <li>
-                            <a class="plainLink" data-toggle="collapse" data-parent="#recList" href="#{{rec.id}}">{{{ rec.title }}}</a>
-                            <ul>
-                                <li id="{{rec.id}}" data-parent="#recList" class="collapse">
-                                    {{{rec.text}}}
-                                </li>
-                            </ul>
-                        </li>
-                    {{/each}}
-                </ul>
 
 
                 <a style="visibility: {{visibility}}" class="aaa-dev-tools" data-toggle="collapse" href="#epssVomitDiv">Raw data</a>
