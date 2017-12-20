@@ -1,12 +1,12 @@
 
 
 <template name="DiabetesTemplate">
-    <strong>Diabetes</strong>
-    <div class="shrinkWrap">
-        Diagnosis:
-        <span class="hintText" data-toggle="tooltip" title="updated {{formatDate Diabetes.[0].date}}">
+    <strong>Diabetes</strong> - <span class="hintText" data-toggle="tooltip" title="Entered {{formatDate Diabetes.[0].date}}">
             {{Diabetes.[0].name}} - {{Diabetes.[0].ProblemCode}}
         </span>
+    <div class="shrinkWrap">
+
+
         <br/>
         A1c history:
         {{#if A1cList}}

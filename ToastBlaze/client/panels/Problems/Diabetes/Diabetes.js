@@ -1,21 +1,27 @@
-import {Obs} from "../../../../collections/observations";
+import {Observations} from "../../../../collections/observations";
 import {Metrics} from "../../../../collections/metrics";
 import {Session} from "meteor/session";
 
 function Pbs(metricCategory){
-    return Obs.find({metricCategory:metricCategory})
+    return Observations.find({metricCategory:metricCategory})
 }
 
 Template.DiabetesTemplate.helpers({
     A1cList(){
-        if(Obs.find({category: 'labs', name: 'A1c'}).count() > 0) {
-            return Obs.find({category: 'labs', name: 'A1c'}, {sort: {date: 1}}).fetch()
+        if(Observations.find({category: 'labs', name: 'A1c'}).count() > 0) {
+            return Observations.find({category: 'labs', name: 'A1c'}, {sort: {date: 1}}).fetch()
         }
     },
     Diabetes(){
         let metricCategory = 'Diabetes';
         if(Pbs(metricCategory).count()>0){
             return Pbs(metricCategory).fetch()
+        }
+    },
+    DiabetesDxCount(){
+        let metricCategory = 'Diabetes';
+        if(Pbs(metricCategory).count()>0){
+            return Pbs(metricCategory).count()
         }
     },
 

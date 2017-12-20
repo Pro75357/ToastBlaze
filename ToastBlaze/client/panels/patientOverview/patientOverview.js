@@ -1,5 +1,5 @@
 import {Pat} from '../../../collections/pat'
-import {Obs} from "../../../collections/observations";
+import {Observations} from "../../../collections/observations";
 import {Session} from "meteor/session";
 
 Template.patientOverview.helpers({
@@ -25,29 +25,29 @@ Template.patientOverview.helpers({
     },
 
     Synopsis(){
-        return Obs.findOne({name: 'Synopsis'})
+        return Observations.findOne({name: 'Synopsis'})
     },
 
     meds(){
-        return Obs.find({category:'medications'}).fetch()
+        return Observations.find({category:'medications'}).fetch()
     },
     social(){
-        return Obs.find({category:'socialHistory'}).fetch()
+        return Observations.find({category:'socialHistory'}).fetch()
     },
     allergies(){
-        return Obs.find({category:'allergy'}).fetch()
+        return Observations.find({category:'allergy'}).fetch()
     },
 
     getLastObsValue(category,name){
-        if (Obs.find({category: category, name: name}).count()>0) {
-            return Obs.findOne({category: category, name: name}).value
+        if (Observations.find({category: category, name: name}).count()>0) {
+            return Observations.findOne({category: category, name: name}).value
         } else {
             return 'Not found'
         }
     },
     getLastObsDate(category,name) {
-        if (Obs.find({category: category, name: name}).count() > 0) {
-            return Obs.findOne({category: category, name: name}).date
+        if (Observations.find({category: category, name: name}).count() > 0) {
+            return Observations.findOne({category: category, name: name}).date
         } else {
             return 'Not found'
         }
@@ -55,6 +55,6 @@ Template.patientOverview.helpers({
 
     patVomit(){
         //return JSON.stringify(Pat.find().fetch(), null, 2)
-       // return JSON.stringify(Obs.find({category: 'socialHistory', name: 'Smoking Status'}).fetch(), null, 2)
+       // return JSON.stringify(Observations.find({category: 'socialHistory', name: 'Smoking Status'}).fetch(), null, 2)
     }
 })

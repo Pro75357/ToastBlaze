@@ -1,5 +1,5 @@
 import {Metrics} from "../../../collections/metrics";
-import {Obs} from "../../../collections/observations";
+import {Observations} from "../../../collections/observations";
 import { Session } from 'meteor/session'
 
 // set our initial metrics to default to all
@@ -60,24 +60,24 @@ Template.acuereMetrics.helpers({
     // These special helpers get passed the ObsID from the corresponding metrics
     // and they fetch the observation data
     obsName(obsId){
-        if(Obs.find({_id: obsId}).count()>0) {
-            return Obs.findOne({_id: obsId}).name
+        if(Observations.find({_id: obsId}).count()>0) {
+            return Observations.findOne({_id: obsId}).name
         }
     },
     obsDate(obsId){
-        if(Obs.find({_id: obsId}).count()>0) {
-            return Obs.findOne({_id: obsId}).date
+        if(Observations.find({_id: obsId}).count()>0) {
+            return Observations.findOne({_id: obsId}).date
         }
     },
     obsValue(obsId){
-        if(Obs.find({_id: obsId}).count()>0) {
-            return Obs.findOne({_id: obsId}).value
+        if(Observations.find({_id: obsId}).count()>0) {
+            return Observations.findOne({_id: obsId}).value
         }
     },
     // this one needs the period as well - it is in months
     dueDate(obsId, period){
-        if(Obs.find({_id: obsId}).count()>0) {
-            let lastDate = moment(Obs.findOne({_id: obsId}).date);
+        if(Observations.find({_id: obsId}).count()>0) {
+            let lastDate = moment(Observations.findOne({_id: obsId}).date);
             return lastDate.add(period, 'month').format('MM/DD/YYYY')
         }
     }

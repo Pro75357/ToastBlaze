@@ -1,9 +1,9 @@
-import {Obs} from "../../../collections/observations";
+import {Observations} from "../../../collections/observations";
 import {Metrics} from "../../../collections/metrics";
 import {Session} from "meteor/session";
 
 function Pbs(metricCategory){
-    return Obs.find({metricCategory:metricCategory})
+    return Observations.find({metricCategory:metricCategory})
 }
 
 Template.Problems.helpers({
@@ -40,8 +40,8 @@ Template.Problems.helpers({
 
 
     obsVomit(){
-        if (Obs.find().count() > 0) {
-            return JSON.stringify(Obs.find({category: 'labs', name: 'A1c'}).fetch(), null, 2)
+        if (Observations.find().count() > 0) {
+            return JSON.stringify(Observations.find({category: 'labs', name: 'A1c'}).fetch(), null, 2)
         }
     }
 });
