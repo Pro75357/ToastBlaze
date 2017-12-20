@@ -4,9 +4,10 @@
     <strong>General/Health Maintenance</strong>
     <div class="shrinkWrap">
         {{#if GeneralMetrics}}
-            <table class="table table-bordered table-hover table-xtra-condensed bg-acuere-light cursor-default">
-                <thead class="bg-acuere-blue">
+            <table class="table table-hover table-xtra-condensed cursor-default">
+                <thead>
                 <tr>
+                    <th><!--blank header row to make them fit with body--></th>
                     <th>
                         Metrics not meeting criteria
                     </th>
@@ -18,8 +19,11 @@
                 <tbody>
                 {{#each GeneralMetrics}}
                     <tr>
-                        <td  title="{{description}}">
-                            {{StatusIndicator status}} {{program}} - {{name}}  - {{status}}
+                        <td class="indicatorRow">
+                            {{StatusIndicator status}}
+                        </td>
+                        <td title="{{description}}">
+                             {{program}} - {{name}}
                         </td>
                         <td>
                             {{statusReason}}

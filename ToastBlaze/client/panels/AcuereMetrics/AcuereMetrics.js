@@ -19,8 +19,10 @@ Template.acuereMetrics.helpers({
 
     // dev helpers
     metricsCount(){
-        if(SelectMetrics().count() > 0) {
-            return SelectMetrics.count()
+        if(Session.equals('select',"All")){
+            return Metrics.find().count()
+        } else {
+            return Metrics.find({program: Session.get('select')}).count()
         }
     },
 

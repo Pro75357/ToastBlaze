@@ -38,10 +38,10 @@ Template.registerHelper('colorValueHighBad',function(value, refLow, refHigh){
     //return a color to indicate when values are higher or lower than the reference value.
     // This one assumes the high values are bad and low are ok.
         if (value > refHigh) {
-            return '#fc9c87'
+            return '#fc2418'
         } else if (value < refLow) {
-            return '#87fcea'
+            return '#48cffc'
         } else {
-            return '#93fc87'
+            return '#02fc1c'
         }
 });

@@ -39,7 +39,7 @@ h4 {color: #1F5F9C}
     margin-left: 50px;
     padding-top: 5px;
     padding-left: 1px;
-    height: 100vh;
+    min-height: 80vh;
 }
 .col-centered{
     float: none;
@@ -50,8 +50,9 @@ h4 {color: #1F5F9C}
     padding-right: 5px;
 }
 .medListItem{
-    padding-top: 4px;
-    padding-bottom: 4px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    text-align: center;
 }
 .medListItem:hover{
     background-color: cornsilk;
@@ -68,6 +69,19 @@ h4 {color: #1F5F9C}
 .table-xtra-condensed > tfoot > tr > td {
     padding: 0.5px;
     font-size: small;
+}
+
+.indicatorRow{
+    width: 15px;
+}
+.problemRow{
+    width: 120px;
+}
+
+
+p {
+    padding-bottom: 2px;
+    margin-bottom: 0px;
 }
 
 a {

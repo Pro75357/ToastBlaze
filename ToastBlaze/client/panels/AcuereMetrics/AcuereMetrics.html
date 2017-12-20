@@ -1,84 +1,138 @@
 <template name="acuereMetrics">
 
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            Acuere Metrics
-            <div class="pull-right">
-               Select Program:
-                <select class="metric-select" style="color: black">
-                    {{#each program in metricPrograms}}
+    <div>
+        <div class="pull-right">
+            Select Program:
+            <select class="metric-select" style="color: black">
+                {{#each program in metricPrograms}}
                     <option id="p-{{program}}">{{program}}</option>
-                    {{/each}}
-                </select>
-            </div>
+                {{/each}}
+            </select>
         </div>
-        <div class="panel-body">
+        <h4>All Acuere Metrics</h4>
+        <div>
 
+        {{#if metricsCount}}
+            <table class="table table-hover table-xtra-condensed cursor-default">
             {{#if metricsRed}}
-            Red Metrics
-            <ul>
+            <thead>
+            <tr class="bg-danger">
+                <th>
+                    Metrics not meeting criteria
+                </th>
+                <th class="problemRow">Note</th>
+            </tr>
+            </thead>
+            <tbody>
                 {{#each metric in metricsRed}}
-                <li>
-
-                    <a class="plainLink" data-toggle="collapse" href="#{{metric._id}}">{{metric.name}} - {{metric.statusReason}}</a>
-                    {{#if metric.observationId}}
-                    <ul>
-                        <li class="collapse" id="{{metric._id}}">
-                            last {{obsName metric.observationId}}: {{obsDate metric.observationId}}
-                        </li>
-                    </ul>
-                    {{/if}}
-                </li>
-                {{/each}}
-            </ul>
-
-            {{/if}}
-            {{#if metricsYellow}}
-            Yellow Metrics
-            <ul>
-                {{#each metric in metricsYellow}}
-                    <li>
-                        <a class="plainLink" data-toggle="collapse" href="#{{metric._id}}">{{metric.name}} {{#if metric.observationId}}: Due: {{dueDate metric.observationId metric.period}}{{/if}}</a>
+                <tr>
+                    <td>
+                        <a class="plainLink" data-toggle="collapse" href="#{{metric._id}}">{{metric.name}}</a>
                         {{#if metric.observationId}}
-                        <ul>
                             <li class="collapse" id="{{metric._id}}">
-                                last {{obsName metric.observationId}}: {{obsDate metric.observationId}}
+                                &nbsp; &nbsp; Last {{obsName metric.observationId}}: {{obsDate metric.observationId}}
                             </li>
-                        </ul>
                         {{/if}}
-                    </li>
+                    </td>
+                    <td>
+                        {{metric.statusReason}}
+                    </td>
+                </tr>
                 {{/each}}
-            </ul>
-
+            </tbody>
             {{/if}}
-            {{#if metricsGreen}}
-            Green Metrics
-            <ul>
-                {{#each metric in metricsGreen}}
-                    <li>
-                        <a class="plainLink" data-toggle="collapse" href="#{{metric._id}}">{{metric.name}}{{#if metric.observationId}} (last {{obsName metric.observationId}}: {{obsValue metric.observationId}}){{/if}}</a>
-                        {{#if metric.observationId}}
-                            <ul>
+
+            {{#if metricsYellow}}
+                <thead>
+                <tr class="bg-warning">
+                    <th>
+                        Metrics expiring soon
+                    </th>
+                    <th class="problemRow">Note</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each metric in metricsYellow}}
+                    <tr>
+                        <td>
+                            <a class="plainLink" data-toggle="collapse" href="#{{metric._id}}">{{metric.name}}</a>
+                            {{#if metric.observationId}}
                                 <li class="collapse" id="{{metric._id}}">
-                                    last {{obsName metric.observationId}} performed: {{obsDate metric.observationId}}
+                                    &nbsp; &nbsp; Last {{obsName metric.observationId}}: {{obsDate metric.observationId}}
                                 </li>
-                            </ul>
-                        {{/if}}
-                    </li>
-                {{/each}}
-            </ul>
-            {{/if}}
-            {{#if metricsGrey}}
-            <a data-toggle="collapse" href="#greyMetrics">View non-applicable Metrics</a>
-            <ul id="greyMetrics" class="collapse">
-                {{#each metric in metricsGrey}}
-                    <li>
-                        {{metric.name}} - {{metric.statusReason}}
-                    </li>
-                {{/each}}
-            </ul>
+                            {{/if}}
+                        </td>
+                        <td>
+                            {{metric.statusReason}}
+                        </td>
+                    </tr>
+            {{/each}}
+            </tbody>
+
             {{/if}}
 
+                {{#if metricsGreen}}
+                    <thead>
+                    <tr class="bg-success">
+                        <th>
+                            Metrics fulfilling criteria
+                        </th>
+                        <th class="problemRow">Note</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each metric in metricsGreen}}
+                        <tr>
+                            <td>
+                                <a class="plainLink" data-toggle="collapse" href="#{{metric._id}}">{{metric.name}}</a>
+                                {{#if metric.observationId}}
+                                    <li class="collapse" id="{{metric._id}}">
+                                        &nbsp; &nbsp; Last {{obsName metric.observationId}}: {{obsDate metric.observationId}}
+                                    </li>
+                                {{/if}}
+                            </td>
+                            <td>
+                                {{metric.statusReason}}
+                            </td>
+                        </tr>
+
+                    {{/each}}
+                    </tbody>
+                {{/if}}
+
+
+                {{#if metricsGrey}}
+                    <thead>
+                    <tr class="bg-acuere-grey">
+                        <th>
+                            <a class="plainLink" data-toggle="collapse" href="#greyMetricsTable">
+                            View Non-qualifying metrics
+                            </a>
+                        </th>
+                        <th class="problemRow">Note</th>
+                    </tr>
+                    </thead>
+                <tbody id="greyMetricsTable" class="collapse">
+                    {{#each metric in metricsGrey}}
+                    <tr>
+                        <td>
+                            <a class="plainLink" data-toggle="collapse" href="#{{metric._id}}">{{metric.name}}</a>
+                            {{#if metric.observationId}}
+                                <li class="collapse" id="{{metric._id}}">
+                                    &nbsp; &nbsp; Last {{obsName metric.observationId}}: {{obsDate metric.observationId}}
+                                </li>
+                            {{/if}}
+                        </td>
+                        <td>
+                            {{metric.statusReason}}
+                        </td>
+                    </tr>
+                    {{/each}}
+
+                    </tbody>
+                {{/if}}
+            </table>
+        {{/if}}
             <br/>
             <a style="visibility: {{visibility}}" class="aaa-dev-tools" data-toggle="collapse" href="#acuereVomitDiv">Raw data</a>
             <div id="acuereVomitDiv" class="collapse">

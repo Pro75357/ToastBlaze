@@ -12,27 +12,28 @@
 {{/each}}">diagnosis</span>)
     {{/if}}
     <div class="shrinkWrap">
-
-        A1c history:
+        <p>
         {{#if A1cList}}
+            Last A1c values:
             {{#each lab in A1cList}}
-                <span class="btn-xs cursor-default" style="background: {{colorValueHighBad lab.value lab.refLow lab.refHigh}}" data-toggle="tooltip" title="{{formatDate lab.date}}">
+                <span class="cursor-default bg-acuere-light" style=" padding-left: 2px; border-left: 3px solid {{colorValueHighBad lab.value lab.refLow lab.refHigh}}" data-toggle="tooltip" title="{{formatDate lab.date}}">
                     {{lab.value}}{{lab.unit}}
                 </span> &nbsp;
             {{/each}}
             {{else}}
                 No A1c values found
             {{/if}}
-            &nbsp;
-        <br/>
+        </p>
+
         {{#if DiabetesMetrics}}
-        <table class="table table-bordered table-hover table-xtra-condensed bg-acuere-light cursor-default">
-            <thead class="bg-acuere-blue">
+        <table class="table table-hover table-xtra-condensed cursor-default">
+            <thead>
             <tr>
+                <th><!--blank header row to make them fit with body--></th>
                 <th>
                     Metrics not meeting criteria
                 </th>
-                <th width="120">
+                <th class="problemRow">
                     Problem
                 </th>
             </tr>
@@ -40,8 +41,11 @@
             <tbody>
             {{#each DiabetesMetrics}}
             <tr>
-                <td  title="{{description}}">
-                    {{StatusIndicator status}} {{program}} - {{name}}  - {{status}}
+                <td class="indicatorRow">
+                    {{StatusIndicator status}}
+                </td>
+                <td title="{{description}}">
+                    {{program}} - {{name}}
                 </td>
                 <td>
                     {{statusReason}}

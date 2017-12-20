@@ -1,0 +1,20 @@
+
+
+<template name="otherProblemsTemplate">
+    {{#if otherProblems}}
+    <strong>Other Problems</strong>
+
+        <div class="container-fluid">
+            <ul class="list-unstyled">
+            {{#each prob in otherProblems}}
+                <li class="col-sm-6 small">
+                    <span title="Entered {{formatDate prob.date}}">
+                    {{prob.name}} ({{prob.ProblemCode}})
+                    </span>
+                </li>
+            {{/each}}
+        </ul>
+
+    </div>
+    {{/if}}
+</template>

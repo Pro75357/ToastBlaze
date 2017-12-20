@@ -31,12 +31,13 @@
                         </ul>
                     </div>
                     <div class="shrinkWrap">
-                        <strong>Allergies:</strong>
+                       <strong>Allergies:</strong>
                         {{#each thing in allergies}}
-                        <span class="hintText bg-danger cursor-default" data-toggle="tooltip" title="documented {{formatDate thing.date}} - {{thing.text}}">
+                        <span class="hintText bg-warning cursor-default" data-toggle="tooltip" title="documented {{formatDate thing.date}} - {{thing.text}}">
                             {{thing.name}}
                         </span>
                         {{/each}}
+
                     </div>
                 </div>
                 <div class="col-sm-6">
