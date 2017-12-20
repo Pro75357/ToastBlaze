@@ -6,7 +6,7 @@
         {{else}}
         <div>
             <div class="pull-right">
-                Select Metrics Program: <select class="metric-select">
+                Metrics Program: <select class="metric-select">
                 {{#each program in metricPrograms}}
                     <option id="p-{{program}}">{{program}}</option>
                 {{/each}}
@@ -45,22 +45,4 @@
         {{/if}}
     </div>
 
-</template>
-
-<template name="metricTable">
-    <ul>
-        {{#each metric in metricsRed}}
-            <li>
-
-                <a class="plainLink" data-toggle="collapse" href="#{{metric._id}}">{{metric.name}} - {{metric.statusReason}}</a>
-                {{#if metric.observationId}}
-                    <ul>
-                        <li class="collapse" id="{{metric._id}}">
-                            last {{obsName metric.observationId}}: {{obsDate metric.observationId}}
-                        </li>
-                    </ul>
-                {{/if}}
-            </li>
-        {{/each}}
-    </ul>
 </template>

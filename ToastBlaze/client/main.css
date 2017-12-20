@@ -1,7 +1,7 @@
 /* CSS declarations go here */
 
 .text-white { color: #FFF; }
-
+.text-black {color :#000000}
 .text-acuere-grey {color: #8e9299;}
 
 .bg-acuere-dark {background: #393C40}
@@ -10,7 +10,10 @@
 
 .bg-acuere-light {background: #FFFFFF}
 
-.bg-acuere-blue {background: #1F5F9C}
+.bg-acuere-blue {
+    background: #1F5F9C;
+    color: #FFF;
+}
 
 .text-acuere-blue {color: #1F5F9C}
 
@@ -52,6 +55,18 @@ h4 {color: #1F5F9C}
 }
 .medListItem:hover{
     background-color: cornsilk;
+}
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: cornsilk;
+}
+
+.table-xtra-condensed > thead > tr > th,
+.table-xtra-condensed > tbody > tr > th,
+.table-xtra-condensed > tfoot > tr > th,
+.table-xtra-condensed > thead > tr > td,
+.table-xtra-condensed > tbody > tr > td,
+.table-xtra-condensed > tfoot > tr > td {
+    padding: 2px;
 }
 
 a {
@@ -103,4 +118,10 @@ margin-top: -10px;
 
 blockquote, blockquote p {
     font-size: 14px;
+}
+
+@media print{
+    a[href]:after {
+        content: none;
+    }
 }

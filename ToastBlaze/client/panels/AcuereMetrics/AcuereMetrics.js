@@ -2,13 +2,17 @@ import {Metrics} from "../../../collections/metrics";
 import {Obs} from "../../../collections/observations";
 import { Session } from 'meteor/session'
 
-// set our initial metrics to default to MU
-Session.set('select','MU');
+// set our initial metrics to default to all
+Session.set('select',"All");
 
 // This shortcut function lets our code be cleaner below.
 
 SelectMetrics = function(color) {
-    return Metrics.find({program: Session.get('select'), status: color})
+    if(Session.equals('select',"All")){
+        return Metrics.find({status: color})
+    } else {
+        return Metrics.find({program: Session.get('select'), status: color})
+    }
 };
 
 Template.acuereMetrics.helpers({
@@ -28,19 +32,19 @@ Template.acuereMetrics.helpers({
 
     //returns each category based on the helper function SelectMetrics
     metricsRed(){
-        let color = "Red"
+        let color = "Red";
         if (SelectMetrics(color).count() > 0 ) {
             return SelectMetrics(color).fetch()
         }
     },
     metricsYellow(){
-        let color = "Yellow"
+        let color = "Yellow";
         if (SelectMetrics(color).count() > 0 ) {
             return SelectMetrics(color).fetch()
         }
     },
     metricsGreen(){
-        let color = "Green"
+        let color = "Green";
         if (SelectMetrics(color).count() > 0 ) {
             return SelectMetrics(color).fetch()
         }

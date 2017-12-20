@@ -21,7 +21,7 @@ Template.registerHelper('visibility', function(){
 
 Template.registerHelper('metricPrograms', function(){
     let res = Metrics.find().fetch();
-    let programs = [];
+    let programs = ['All'];
     for (let x in res){
         if (!programs.includes(res[x].program)){
             programs.push(res[x].program)

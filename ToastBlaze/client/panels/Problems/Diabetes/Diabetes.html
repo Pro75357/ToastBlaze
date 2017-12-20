@@ -20,7 +20,32 @@
             {{/if}}
             &nbsp;
         <br/>
-        {{> metricTable metricCategory="Diabetes"}}
+        {{#if DiabetesMetrics}}
+        <table class="table table-bordered table-hover table-xtra-condensed bg-acuere-light cursor-default">
+            <thead class="bg-acuere-blue">
+            <tr>
+                <th>
+                    Related Metrics
+                </th>
+                <th>
+                    Problem
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each DiabetesMetrics}}
+            <tr>
+                <td  title="{{description}}">
+                    {{program}} - {{name}}
+                </td>
+                <td>
+                    {{statusReason}}
+                </td>
+            </tr>
+            {{/each}}
+            </tbody>
+        </table>
+        {{/if}}
     </div>
 
 </template>
