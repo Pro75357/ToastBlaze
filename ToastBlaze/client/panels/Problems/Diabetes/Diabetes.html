@@ -1,15 +1,18 @@
 
 
 <template name="DiabetesTemplate">
-    <strong>Diabetes</strong> - <span class="hintText" data-toggle="tooltip" title="Entered {{formatDate Diabetes.[0].date}}">
+    <strong>Diabetes</strong> - <span class="hintText" title="Entered {{formatDate Diabetes.[0].date}}">
             {{Diabetes.[0].name}} - {{Diabetes.[0].ProblemCode}}
         </span>
+    &nbsp;
     {{#if Diabetes.[1].name}}
-        ({{DiabetesDxCount}} total)
+        ({{DiabetesDxCount}} total matching
+    <!-- the spacing and everything of this span/each block is important for the popup formatting -->
+        <span class="hintText" title="{{#each dx in Diabetes}}{{formatDate dx.date}} - {{dx.name}} ({{dx.ProblemCode}})
+{{/each}}">diagnosis</span>)
     {{/if}}
     <div class="shrinkWrap">
 
-        <br/>
         A1c history:
         {{#if A1cList}}
             {{#each lab in A1cList}}
@@ -27,7 +30,7 @@
             <thead class="bg-acuere-blue">
             <tr>
                 <th>
-                    Related Metrics
+                    Metrics not meeting criteria
                 </th>
                 <th>
                     Problem
@@ -38,7 +41,7 @@
             {{#each DiabetesMetrics}}
             <tr>
                 <td  title="{{description}}">
-                    {{program}} - {{name}}
+                    {{StatusIndicator status}} {{program}} - {{name}}  - {{status}}
                 </td>
                 <td>
                     {{statusReason}}

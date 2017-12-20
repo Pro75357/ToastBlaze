@@ -2,26 +2,24 @@ import {Observations} from "../../../../collections/observations";
 import {Metrics} from "../../../../collections/metrics";
 import {Session} from "meteor/session";
 
-function Pbs(metricCategory){
-    return Observations.find({metricCategory:metricCategory})
-}
 
 Template.DiabetesTemplate.helpers({
     A1cList(){
-        if(Observations.find({category: 'labs', name: 'A1c'}).count() > 0) {
-            return Observations.find({category: 'labs', name: 'A1c'}, {sort: {date: 1}}).fetch()
+        let Obs = Observations.find({category: 'labs', name: 'A1c'}, {sort: {date: 1}})
+        if(Obs.count() > 0) {
+            return Obs.fetch()
         }
     },
     Diabetes(){
-        let metricCategory = 'Diabetes';
-        if(Pbs(metricCategory).count()>0){
-            return Pbs(metricCategory).fetch()
+        let Obs = Observations.find({category: 'problems', metricCategory: 'Diabetes'});
+        if(Obs.count() > 0){
+            return Obs.fetch()
         }
     },
     DiabetesDxCount(){
-        let metricCategory = 'Diabetes';
-        if(Pbs(metricCategory).count()>0){
-            return Pbs(metricCategory).count()
+        let Obs = Observations.find({category: 'problems', metricCategory: 'Diabetes'});
+        if(Obs.count()>0){
+            return Obs.count()
         }
     },
 
@@ -39,6 +37,16 @@ Template.DiabetesTemplate.helpers({
                 category: 'Diabetes',
                 status: {$in: ['Red','Yellow']}
             }).fetch()
+        }
+    },
+    StatusIndicator(status){
+        switch(status){
+            case 'Red':
+                return new Handlebars.SafeString('<svg height="10" width="10"><circle cx="5" cy="5" r="4" stroke="black" stroke-width="1" fill="red" /></svg>');
+            case 'Yellow':
+                return new Handlebars.SafeString('<svg height="10" width="10"><circle cx="5" cy="5" r="4" stroke="black" stroke-width="1" fill="yellow" /></svg>');
+            default:
+                return; // there should really only be red and yellow here.
         }
     }
 });
