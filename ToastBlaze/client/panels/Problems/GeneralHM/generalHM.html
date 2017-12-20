@@ -1,0 +1,34 @@
+
+
+<template name="generalHMTemplate">
+    <strong>General/Health Maintenance</strong>
+    <div class="shrinkWrap">
+        {{#if GeneralMetrics}}
+            <table class="table table-bordered table-hover table-xtra-condensed bg-acuere-light cursor-default">
+                <thead class="bg-acuere-blue">
+                <tr>
+                    <th>
+                        Metrics not meeting criteria
+                    </th>
+                    <th width="120">
+                        Problem
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each GeneralMetrics}}
+                    <tr>
+                        <td  title="{{description}}">
+                            {{StatusIndicator status}} {{program}} - {{name}}  - {{status}}
+                        </td>
+                        <td>
+                            {{statusReason}}
+                        </td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        {{/if}}
+    </div>
+
+</template>
