@@ -12,24 +12,40 @@
                 {{/each}}
             </select>
             </div>
-            <h4>Problem-focused Recommendations</h4>
+            <h4>Problems Summary</h4>
+            <div class="shrinkWrap">
             {{#if Diabetes}}
-                Diabetes-specific Recommendations
-                -> Matching diagnosis: [prb here]
-                -> rec 1...
+                <strong>Diabetes</strong>
+            <br/>
+                Matching diagnosis:
+                <span class="hintText" data-toggle="tooltip" title="updated {{Diabetes.[0].date}}">
+                    {{Diabetes.[0].name}} - {{Diabetes.[0].ProblemCode}}
+                </span>
+                <br/>
+                A1c history:
+
+                    {{#each lab in A1cList}}
+                        <span class="btn-xs cursor-default" style="background: {{colorValueHighBad lab.value lab.refLow lab.refHigh}}" data-toggle="tooltip" title="{{lab.date}}">
+                        {{lab.value}}{{lab.unit}}
+                        </span>
+                        &nbsp;
+
+                    {{/each}}
+                <br/>
+                {{> metricTable metricCategory="Diabetes"}}
             {{/if}}
-            {{#if hasHeartFailure}}
+            {{#if HeartFailure}}
                 Systolic Heart Failure Recommendations
             {{/if}}
-            {{#if hasHypertension}}
+            {{#if Hypertension}}
                 Hypertension Recommendations
             {{/if}}
-            {{#if hasHeartDisease}}
+            {{#if HeartDisease}}
                 Coronary Artery Disease Recommendations
             {{/if}}
 
             General Health Maintenance Recommendations
-
+            </div>
         </div>
 
         <div>
@@ -43,4 +59,22 @@
         {{/if}}
     </div>
 
+</template>
+
+<template name="metricTable">
+    <ul>
+        {{#each metric in metricsRed}}
+            <li>
+
+                <a class="plainLink" data-toggle="collapse" href="#{{metric._id}}">{{metric.name}} - {{metric.statusReason}}</a>
+                {{#if metric.observationId}}
+                    <ul>
+                        <li class="collapse" id="{{metric._id}}">
+                            last {{obsName metric.observationId}}: {{obsDate metric.observationId}}
+                        </li>
+                    </ul>
+                {{/if}}
+            </li>
+        {{/each}}
+    </ul>
 </template>

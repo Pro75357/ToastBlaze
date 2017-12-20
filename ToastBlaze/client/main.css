@@ -53,6 +53,10 @@ a {
     text-decoration: none;
 }
 
+.cursor-default{
+    cursor: default;
+}
+
 .hintText{
     text-decoration: underline;
 }
