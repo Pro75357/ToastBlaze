@@ -29,7 +29,7 @@ _id,patId,category,metricCategory,ProblemCode,name,date,value,unit,refLow,refHig
 10154,123,socialHistory,,,Smoking Status,2017-09-05,Never,Category,,,"Categories are Never, Former, Current"
 10155,123,medications,Thyroid,,levothyroxine,2017-09-05,,,,,For full medication details please view patient chart
 10156,123,problems,Diabetes,E11.9,Type 2 diabetes mellitus without complications,2017-09-05,,,,,
-10157,123,problems,Thyroid,E03.9 ,"Hypothyroidism, unspecified",2017-09-05,,,,,
+10157,123,problems,Thyroid,E03.9,"Hypothyroidism, unspecified",2017-09-05,,,,,
 10158,123,labs,Thyroid,,TSH,2015-04-05,8.9,mIU/L,0.5,4.5,
 10159,123,labs,Thyroid,,TSH,2017-09-05,4.2,mIU/L,0.5,4.5,
 10160,123,labs,Thyroid,,TSH,2013-03-22,5.5,mIU/L,0.5,4.5,
