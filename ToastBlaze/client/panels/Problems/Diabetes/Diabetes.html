@@ -1,0 +1,26 @@
+
+
+<template name="DiabetesTemplate">
+    <strong>Diabetes</strong>
+    <div class="shrinkWrap">
+        Diagnosis:
+        <span class="hintText" data-toggle="tooltip" title="updated {{formatDate Diabetes.[0].date}}">
+            {{Diabetes.[0].name}} - {{Diabetes.[0].ProblemCode}}
+        </span>
+        <br/>
+        A1c history:
+        {{#if A1cList}}
+            {{#each lab in A1cList}}
+                <span class="btn-xs cursor-default" style="background: {{colorValueHighBad lab.value lab.refLow lab.refHigh}}" data-toggle="tooltip" title="{{formatDate lab.date}}">
+                    {{lab.value}}{{lab.unit}}
+                </span> &nbsp;
+            {{/each}}
+            {{else}}
+                No A1c values found
+            {{/if}}
+            &nbsp;
+        <br/>
+        {{> metricTable metricCategory="Diabetes"}}
+    </div>
+
+</template>

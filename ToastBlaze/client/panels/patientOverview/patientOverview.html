@@ -1,7 +1,7 @@
 <template name="patientOverview">
     <div>
         {{#if NoPatientSelected}}
-            No patient selected.
+            <h3 class="text-acuere-blue">No patient selected</h3>
         {{else}}
             <p class="pull-right">
                 123 Some Street, {{pat.gen.city}}, {{pat.gen.state}} {{pat.gen.zip}}
@@ -9,10 +9,10 @@
                 Tel: {{pat.gen.phone}}
             </p>
 
-            <h3>{{pat.name}}</h3>
+            <h3 class="text-acuere-blue">{{pat.name}}</h3>
         <strong>{{pat.age}}</strong> year old {{pat.gen.race}} {{patSex}}
         <br/>
-        <blockquote>
+        <blockquote class="bg-acuere-light">
             <p>{{Synopsis.text}}</p>
             <footer>From Epic's Synopsis field, updated {{formatDate Synopsis.date}}</footer>
         </blockquote>

@@ -6,34 +6,16 @@
         {{else}}
         <div>
             <div class="pull-right">
-                Select Program: <select class="metric-select">
+                Select Metrics Program: <select class="metric-select">
                 {{#each program in metricPrograms}}
                     <option id="p-{{program}}">{{program}}</option>
                 {{/each}}
             </select>
             </div>
-            <h4>Problems Summary</h4>
+            <h4>Problems</h4>
             <div class="shrinkWrap">
             {{#if Diabetes}}
-                <strong>Diabetes</strong>
-                <div class="shrinkWrap">
-                Matching diagnosis:
-                <span class="hintText" data-toggle="tooltip" title="updated {{formatDate Diabetes.[0].date}}">
-                    {{Diabetes.[0].name}} - {{Diabetes.[0].ProblemCode}}
-                </span>
-                <br/>
-                A1c history:
-
-                    {{#each lab in A1cList}}
-                        <span class="btn-xs cursor-default" style="background: {{colorValueHighBad lab.value lab.refLow lab.refHigh}}" data-toggle="tooltip" title="{{formatDate lab.date}}">
-                        {{lab.value}}{{lab.unit}}
-                        </span>
-                        &nbsp;
-
-                    {{/each}}
-                <br/>
-                {{> metricTable metricCategory="Diabetes"}}
-            </div>
+                {{> DiabetesTemplate}}
             {{/if}}
             {{#if HeartFailure}}
                 Systolic Heart Failure Recommendations

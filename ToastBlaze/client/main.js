@@ -33,3 +33,15 @@ Template.registerHelper('metricPrograms', function(){
 Template.registerHelper('formatDate',function(date){
     return moment(date).format('MM/DD/YYYY')
 });
+
+Template.registerHelper('colorValueHighBad',function(value, refLow, refHigh){
+    //return a color to indicate when values are higher or lower than the reference value.
+    // This one assumes the high values are bad and low are ok.
+        if (value > refHigh) {
+            return '#fc9c87'
+        } else if (value < refLow) {
+            return '#87fcea'
+        } else {
+            return '#93fc87'
+        }
+});
