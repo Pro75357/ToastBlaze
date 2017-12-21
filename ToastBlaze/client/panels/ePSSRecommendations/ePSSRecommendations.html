@@ -18,11 +18,11 @@
                         <thead>
                         <tr class="bg-acuere-blue">
                             <th>
-                                Grade A Recommendations
+                                <a class="text-white plainLink" data-toggle="collapse" href="#GradeARow">Grade A Recommendations</a>
                             </th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="collapse" id="GradeARow">
                         {{#each rec in epssGradeA}}
                             <tr>
                                 <td>
@@ -41,11 +41,11 @@
                             <thead>
                             <tr class="bg-acuere-blue">
                                 <th>
-                                    Grade B Recommendations
+                                    <a class="text-white plainLink" data-toggle="collapse" href="#GradeBRow">Grade B Recommendations</a>
                                 </th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="collapse" id="GradeBRow">
                             {{#each rec in epssGradeB}}
                                 <tr>
                                     <td>
