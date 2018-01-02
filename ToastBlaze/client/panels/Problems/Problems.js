@@ -3,16 +3,11 @@ import {Metrics} from "../../../collections/metrics";
 import {Session} from "meteor/session";
 
 function findMetrics(metricCategory){
-    if(Session.equals('select','All')){
-        return  Metrics.find({
+    return  Metrics.find({
             category: metricCategory,
             status: {$in: ['Red','Green','Yellow']}
-        }).count()
-    } else return Metrics.find({
-            program: Session.get('select'),
-            category: metricCategory,
-            status: {$in: ['Red','Green','Yellow']}
-        }).count()
+            }).count()
+
 }
 
 Template.Problems.helpers({
