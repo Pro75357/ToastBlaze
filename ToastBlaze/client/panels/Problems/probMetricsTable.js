@@ -21,6 +21,25 @@ Template.probMetricsTable.helpers({
         }
     },
 
+    greenMetrics(){
+        let category = this.metric;
+        //console.log(this.metric);
+        if(Session.equals('select','All')){
+            if(Metrics.find({category: category}).count() > 0){
+                return Metrics.find({
+                    category: category,
+                    status: "Green"
+                }).fetch()
+            }
+        } else if(Metrics.find({program: Session.get('select')}, {category: category}).count() > 0) {
+            return Metrics.find({
+                program: Session.get('select'),
+                category: category,
+                status: "Green"
+            }).fetch()
+        }
+    },
+
     StatusIndicator(status){
         switch(status){
             case 'Red':

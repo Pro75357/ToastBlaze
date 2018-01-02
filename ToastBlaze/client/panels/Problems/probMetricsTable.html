@@ -1,13 +1,12 @@
 <template name="probMetricsTable">
-
+    <div>
     {{#if Metrics}}
-
         <table class="table table-hover table-xtra-condensed cursor-default">
             <thead>
             <tr>
-                <th><!--blank header row to make them fit with body--></th>
+                <th> <!-- blank for a reason --> </th>
                 <th>
-                    {{metric}} Metrics not meeting criteria
+                    {{metric}} metrics not meeting criteria
                 </th>
                 <th class="problemRow">
                     Issue
@@ -30,10 +29,29 @@
             {{/each}}
             </tbody>
         </table>
+        {{ else }}
+            {{StatusIndicator 'Green'}} All {{metric}} metrics satisfactory! (<a data-toggle="collapse" href="#greenMetrics">View</a>)
 
-    {{ else }}
-        {{StatusIndicator 'Green'}} - All {{metric}} metrics satisfactory!
-        <br/>
-        <br/>
-    {{/if}}
+        <div class="collapse" id="greenMetrics">
+            <table class="table table-hover table-xtra-condensed cursor-default">
+                <tbody>
+                {{#each greenMetrics}}
+                    <tr>
+                        <td class="indicatorRow">
+                            {{StatusIndicator status}}
+                        </td>
+                        <td title="{{description}}">
+                            {{program}} - {{name}}
+                        </td>
+                        <td class="problemRow">
+                            {{statusReason}}
+                        </td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+
+        {{/if}}
+    </div>
 </template>

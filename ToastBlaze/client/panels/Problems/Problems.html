@@ -15,22 +15,22 @@
             <h4>Problems</h4>
             <div class="shrinkWrap">
 
+                {{> generalHMTemplate}}
 
-            {{#if DiabetesMetrics}}
-                {{> DiabetesProblemsTemplate}}
-            {{/if}}
-            {{#if HeartFailureMetrics}}
-                {{> heartFailureTemplate}}
-            {{/if}}
-            {{#if HypertensionMetrics}}
-                {{> hypertensionTemplate}}
-            {{/if}}
-            {{#if HeartDiseaseMetrics}}
-                {{> heartDiseaseTemplate}}
-            {{/if}}
+                {{#if DiabetesMetrics}}
+                    {{> DiabetesProblemsTemplate}}
+                {{/if}}
+                {{#if HeartFailureMetrics}}
+                    {{> heartFailureTemplate}}
+                {{/if}}
+                {{#if HypertensionMetrics}}
+                    {{> hypertensionTemplate}}
+                {{/if}}
+                {{#if HeartDiseaseMetrics}}
+                    {{> heartDiseaseTemplate}}
+                {{/if}}
 
-            {{> generalHMTemplate}}
-            {{> otherProblemsTemplate}}
+                {{> otherProblemsTemplate}}
 
             </div>
         </div>

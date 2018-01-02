@@ -2,37 +2,9 @@
 
 <template name="generalHMTemplate">
     <strong>General/Health Maintenance</strong>
-    <div class="shrinkWrap">
-        {{#if GeneralMetrics}}
-            <table class="table table-hover table-xtra-condensed cursor-default">
-                <thead>
-                <tr>
-                    <th><!--blank header row to make them fit with body--></th>
-                    <th>
-                        Metrics not meeting criteria
-                    </th>
-                    <th width="120">
-                        Problem
-                    </th>
-                </tr>
-                </thead>
-                <tbody>
-                {{#each GeneralMetrics}}
-                    <tr>
-                        <td class="indicatorRow">
-                            {{StatusIndicator status}}
-                        </td>
-                        <td title="{{description}}">
-                             {{program}} - {{name}}
-                        </td>
-                        <td>
-                            {{statusReason}}
-                        </td>
-                    </tr>
-                {{/each}}
-                </tbody>
-            </table>
-        {{/if}}
+    <div class="leftBorder">
+        More General HM stuff here
+        {{> probMetricsTable metric="Cancer"}}
+        {{> probMetricsTable metric="Prevention"}}
     </div>
-
 </template>

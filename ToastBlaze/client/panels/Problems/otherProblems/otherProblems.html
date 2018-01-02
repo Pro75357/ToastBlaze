@@ -3,8 +3,7 @@
 <template name="otherProblemsTemplate">
     {{#if otherProblems}}
     <strong>Other Problems</strong> (Active)
-
-        <div class="container-fluid">
+        <div class="leftBorder container-fluid">
             <ul class="list-unstyled">
             {{#each prob in otherProblems}}
                 <li class="col-sm-6 small">
@@ -14,7 +13,6 @@
                 </li>
             {{/each}}
         </ul>
-
     </div>
     {{/if}}
 </template>
