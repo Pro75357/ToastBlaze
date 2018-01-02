@@ -42,5 +42,25 @@ _id,patId,category,metricCategory,ProblemCode,name,date,value,unit,refLow,refHig
 10167,123,problems,,J30.89,Other allergic rhinitis,2013-03-15,,,,,
 10168,123,problems,,M17.0,Bilateral primary osteoarthritis of knee,2013-03-15,,,,,
 10169,123,problems,,K21.9,Gastro-esophageal reflux disease without esophagitis,2013-03-15,,,,,
-10170,123,socialHistory,,,Sexually Active,2017-09-05,No,,,,
+10170,123,socialHistory,,,Sexually Active,2017-09-05,No,,,,No
 10171,123,allergy,,,Penicillin,2017-09-05,,,,,Hives as a child
+20010,456,medications,,,lisinopril,2017-05-22,,,,,
+20011,456,medications,,,aspirin,2017-05-22,,,,,
+20230,456,medications,,,KCL,2017-05-22,,,,,
+20231,456,medications,,,Lasix,2017-05-22,,,,,
+20232,456,medications,,,Atorvastatin,2017-05-22,,,,,
+20023,456,vitals,,,Heart Rate,2017-05-22,77,Beats per minute,60,100,
+20012,456,vitals,,,Systolic Blood Pressure,2017-05-22,155/92,mmHg,90/60,140/90,
+20024,456,vitals,,,Respiratory Rate,2017-05-22,16,Breaths per minute,12,18,
+20025,456,vitals,,,Temperature,2017-05-22,36.9,C,36.5,37.2,
+20026,456,vitals,,,BMI,2017-05-22,33.6,kg/m^2,18.5,24.9,
+20027,456,vitals,,,Height,2017-05-22,188,cm,,,
+20028,456,vitals,,,Weight,2017-05-22,121,kg,,,
+20015,456,Screening,,,PHQ-2,2017-05-22,0,,0,1,"Negative- score is from 0-6, though any positive response requires further screening with PHQ-9"
+20101,456,problems,Heart Failure,I50.22,Chronic systolic (congestive) heart failure,2017-05-22,,,,,
+20102,456,problems,Heart Disease,I25.10,Atherosclerotic heart disease of native coronary artery without angina pectoris,2017-05-22,,,,,
+20103,456,problems,,E66.9,"Obesity, unspecified",2017-05-22,,,,,
+20104,456,problems,Hypertension,I10,Essential (primary) hypertension,2017-05-22,,,,,
+20029,456,socialHistory,,,Synopsis,2017-05-22,,,,,Mr. Jackson is a retired firefighter who is relatively healthy other than a bad heart. 
+20014,456,procedures,,,Colonoscopy,2008-02-12,,,,,Normal colonoscopy results-recommend repeat in 10 years
+20105,456,problems,Heart Failure,I50.1,"Left Ventricular failure, unspecified",2008-02-12,,,,,

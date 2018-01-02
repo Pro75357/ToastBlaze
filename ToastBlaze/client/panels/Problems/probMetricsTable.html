@@ -1,0 +1,39 @@
+<template name="probMetricsTable">
+
+    {{#if Metrics}}
+
+        <table class="table table-hover table-xtra-condensed cursor-default">
+            <thead>
+            <tr>
+                <th><!--blank header row to make them fit with body--></th>
+                <th>
+                    {{metric}} Metrics not meeting criteria
+                </th>
+                <th class="problemRow">
+                    Issue
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each Metrics}}
+                <tr>
+                    <td class="indicatorRow">
+                        {{StatusIndicator status}}
+                    </td>
+                    <td title="{{description}}">
+                        {{program}} - {{name}}
+                    </td>
+                    <td>
+                        {{statusReason}}
+                    </td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+
+    {{ else }}
+        {{StatusIndicator 'Green'}} - All {{metric}} metrics satisfactory!
+        <br/>
+        <br/>
+    {{/if}}
+</template>

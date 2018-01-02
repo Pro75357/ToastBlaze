@@ -1,17 +1,10 @@
 
 
-<template name="DiabetesTemplate">
-    <strong>Diabetes</strong> - <span class="hintText" title="Entered {{formatDate Diabetes.[0].date}}">
-            {{Diabetes.[0].name}} - {{Diabetes.[0].ProblemCode}}
-        </span>
-    &nbsp;
-    {{#if Diabetes.[1].name}}
-        ({{DiabetesDxCount}} total matching
-    <!-- the spacing and everything of this span/each block is important for the popup formatting -->
-        <span class="hintText" title="{{#each dx in Diabetes}}{{formatDate dx.date}} - {{dx.name}} ({{dx.ProblemCode}})
-{{/each}}">diagnosis</span>)
-    {{/if}}
+<template name="DiabetesProblemsTemplate">
+    {{> probDxDisplay metric="Diabetes"}}
     <div class="shrinkWrap">
+
+        <!-- PROBLEM-specific stuff here-->
         <p>
         {{#if A1cList}}
             Last A1c values:
@@ -25,36 +18,8 @@
             {{/if}}
         </p>
 
-        {{#if DiabetesMetrics}}
-        <table class="table table-hover table-xtra-condensed cursor-default">
-            <thead>
-            <tr>
-                <th><!--blank header row to make them fit with body--></th>
-                <th>
-                    Metrics not meeting criteria
-                </th>
-                <th class="problemRow">
-                    Problem
-                </th>
-            </tr>
-            </thead>
-            <tbody>
-            {{#each DiabetesMetrics}}
-            <tr>
-                <td class="indicatorRow">
-                    {{StatusIndicator status}}
-                </td>
-                <td title="{{description}}">
-                    {{program}} - {{name}}
-                </td>
-                <td>
-                    {{statusReason}}
-                </td>
-            </tr>
-            {{/each}}
-            </tbody>
-        </table>
-        {{/if}}
+
+        {{> probMetricsTable metric="Diabetes"}}
     </div>
 
 </template>

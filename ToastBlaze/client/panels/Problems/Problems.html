@@ -16,17 +16,17 @@
             <div class="shrinkWrap">
 
 
-            {{#if Diabetes}}
-                {{> DiabetesTemplate}}
+            {{#if DiabetesMetrics}}
+                {{> DiabetesProblemsTemplate}}
             {{/if}}
-            {{#if HeartFailure}}
-                Systolic Heart Failure Recommendations
+            {{#if HeartFailureMetrics}}
+                {{> heartFailureTemplate}}
             {{/if}}
-            {{#if Hypertension}}
-                Hypertension Recommendations
+            {{#if HypertensionMetrics}}
+                {{> hypertensionTemplate}}
             {{/if}}
-            {{#if HeartDisease}}
-                Coronary Artery Disease Recommendations
+            {{#if HeartDiseaseMetrics}}
+                {{> heartDiseaseTemplate}}
             {{/if}}
 
             {{> generalHMTemplate}}

@@ -1,0 +1,13 @@
+<template name="probDxDisplay">
+    <strong>{{metric}}</strong> - <span class="hintText" title="Entered {{formatDate DxObservations.[0].date}}">
+            {{DxObservations.[0].name}} - {{DxObservations.[0].ProblemCode}}
+        </span>
+    &nbsp;<div class="shrinkWrap">
+    {{#if DxObservations.[1].name}}
+        ({{DxCount}} total matching
+        <!-- the spacing and everything of this span/each block is important for the popup formatting -->
+        <span class="hintText" title="{{#each dx in DxObservations}}{{formatDate dx.date}} - {{dx.name}} ({{dx.ProblemCode}})
+{{/each}}">diagnosis</span>)
+    {{/if}}
+    </div>
+</template>

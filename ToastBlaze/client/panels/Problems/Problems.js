@@ -2,46 +2,40 @@ import {Observations} from "../../../collections/observations";
 import {Metrics} from "../../../collections/metrics";
 import {Session} from "meteor/session";
 
-function Pbs(metricCategory){
-    return Observations.find({metricCategory:metricCategory})
+function findMetrics(metricCategory){
+    if(Session.equals('select','All')){
+        return  Metrics.find({
+            category: metricCategory,
+            status: {$in: ['Red','Green','Yellow']}
+        }).count()
+    } else return Metrics.find({
+            program: Session.get('select'),
+            category: metricCategory,
+            status: {$in: ['Red','Green','Yellow']}
+        }).count()
 }
 
 Template.Problems.helpers({
 
-    Diabetes(){
-        let metricCategory = 'Diabetes';
-        if(Pbs(metricCategory).count()>0){
-            return Pbs(metricCategory).fetch()
-        }
+    DiabetesMetrics(){
+        return findMetrics('Diabetes')
     },
 
-    HeartFailure(){
-        let metricCategory='Heart Failure';
-        if(Pbs(metricCategory).count()>0){
-            return Pbs(metricCategory).fetch()
-        }
-    },
-    Hypertension(){
-        let metricCategory='Hypertension';
-        if(Pbs(metricCategory).count()>0){
-            return Pbs(metricCategory).fetch()
-        }
-    },
-    HeartDisease(){
-        let metricCategory='Heart Disease';
-        if(Pbs(metricCategory).count()>0){
-            return Pbs(metricCategory).fetch()
-        }
+    HeartFailureMetrics(){
+        return findMetrics('Heart Failure')
     },
 
-    prevention(){
-        return null;
+    HypertensionMetrics(){
+    return findMetrics('Hypertension')
     },
 
+    HeartDiseaseMetrics(){
+        return findMetrics('Heart Disease')
+    },
 
     obsVomit(){
         if (Observations.find().count() > 0) {
-            return JSON.stringify(Observations.find({category: 'labs', name: 'A1c'}).fetch(), null, 2)
+            return JSON.stringify(findMetrics('Diabetes'), null, 2)
         }
     }
 });
