@@ -26,7 +26,7 @@ _id,patId,category,metricCategory,ProblemCode,name,date,value,unit,refLow,refHig
 10151,123,labs,,,Total Cholesterol,2017-09-05,215,mg/dl,,,
 10152,123,labs,,,HDL Cholesterol,2017-09-05,45,mg/dl,,,
 10153,123,labs,,,LDL Cholesterol,2017-09-05,95,mg/dl,,,
-10154,123,socialHistory,,,Smoking Status,2017-09-05,Never,Category,,,"Categories are Never, Former, Current"
+10154,123,socialHistory,,,Smoking Status,2017-09-05,Never,Category,,,Never
 10155,123,medications,Thyroid,,levothyroxine,2017-09-05,,,,,For full medication details please view patient chart
 10156,123,problems,Diabetes,E11.9,Type 2 diabetes mellitus without complications,2017-09-05,,,,,
 10157,123,problems,Thyroid,E03.9,"Hypothyroidism, unspecified",2017-09-05,,,,,
@@ -42,7 +42,7 @@ _id,patId,category,metricCategory,ProblemCode,name,date,value,unit,refLow,refHig
 10167,123,problems,,J30.89,Other allergic rhinitis,2013-03-15,,,,,
 10168,123,problems,,M17.0,Bilateral primary osteoarthritis of knee,2013-03-15,,,,,
 10169,123,problems,,K21.9,Gastro-esophageal reflux disease without esophagitis,2013-03-15,,,,,
-10170,123,socialHistory,,,Sexually Active,2017-09-05,No,,,,No
+10170,123,socialHistory,,,Sexually Active,2017-09-05,N,,,,No
 10171,123,allergy,,,Penicillin,2017-09-05,,,,,Hives as a child
 20010,456,medications,,,lisinopril,2017-05-22,,,,,
 20011,456,medications,,,aspirin,2017-05-22,,,,,
@@ -64,7 +64,7 @@ _id,patId,category,metricCategory,ProblemCode,name,date,value,unit,refLow,refHig
 20029,456,socialHistory,,,Synopsis,2017-05-22,,,,,Mr. Jackson is a retired firefighter who is relatively healthy other than a bad heart. 
 20014,456,procedures,,,Colonoscopy,2008-02-12,,,,,Normal colonoscopy results-recommend repeat in 10 years
 20105,456,problems,Heart Failure,I50.1,"Left Ventricular failure, unspecified",2008-02-12,,,,,
-20106,456,socialHistory,,,Sexually Active,2017-05-22,Denies,,,,
+20106,456,socialHistory,,,Sexually Active,2017-05-22,N,,,,Denies
 20107,456,socialHistory,,,Alcohol Use,2017-05-22,Never,,,,
 20048,456,vitals,,,Weight,2014-01-12,131,kg,,,
 20030,456,vitals,,,Weight,2014-01-29,128,kg,,,

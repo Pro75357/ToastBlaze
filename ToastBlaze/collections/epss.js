@@ -2,7 +2,7 @@ import { Mongo } from 'meteor/mongo';
 export const Epss = new Mongo.Collection('epss');
 import {HTTP } from 'meteor/http'
 import {Pat} from "./pat";
-
+import {Observations} from "./observations";
 
 
 /*
@@ -18,6 +18,8 @@ if (Meteor.isServer) {
 
         'getEpss': function () {
             //Very first, clean out old ePSS data (if any)
+
+
             Epss.remove({});
 
             // First, we need to know the epss api url
@@ -26,26 +28,35 @@ if (Meteor.isServer) {
             // Next, get the ePSS key from the text file in the Private folder.
             // this folder will not sync with git as it is in the .gitignore
             try {
-                var ePSS_Key = JSON.parse(Assets.getText('ePSS_Key.json'))
+                const ePSS_Key = JSON.parse(Assets.getText('ePSS_Key.json'));
+                // If the key is blank or not updated, we cannot continue..
+                //let blankKeys = ['','PUT_KEY_HERE']
+                if (ePSS_Key.key === 'PUT_KEY_HERE') {
+                    console.log('ePSS Key not found or invalid- please input your ePSS key into ePSS_Key.json file in private folder');
+                    return;
+                }
             } catch(e){
-                console.log('Fetching ePSS key failed. Please make sure ePSS_Key.json exists in the private folder.')
+                console.log('Fetching ePSS key failed. Please make sure ePSS_Key.json exists in the private folder.');
                 console.log(e.message)
             }
 
-            // If the key is blank or not updated, we cannot continue..
-            //let blankKeys = ['','PUT_KEY_HERE']
-            if (ePSS_Key.key === 'PUT_KEY_HERE') {
-                console.log('ePSS Key not found or invalid- please input your ePSS key into ePSS_Key.json file in private folder')
-                return false
-            }
+
 // build our params
+            let sex = Pat.findOne().gen.sex;
+            let age = getAge(Pat.findOne().gen.dob);
+            let tobacco = Observations.findOne({category: 'socialHistory', name: 'Smoking Status'}).value;
+            let sexuallyActive = Observations.findOne({category: 'socialHistory', name: 'Sexually Acitve'}).value;
+            let pregnant = null;
+            if(sex ==='F'){
+                pregnant = 'N' // placeholder for real logic
+            }
 
             let params = {
-                age: getAge(Pat.findOne().gen.dob),
-                sex: Pat.findOne().gen.sex,
-                //pregnant: 'N' -- (Y,N) - requires Female sex to be present
-                //tobacco: 'N', -- (Y,N)
-                //sexuallyActive: 'N' -- (Y,N)
+                age: age,
+                sex: sex,
+                pregnant: pregnant, // 'N' -- (Y,N) - requires Female sex to be present
+                tobacco: tobacco,
+                sexuallyActive: sexuallyActive,
                 grade: ['A', 'B']
             };
 
@@ -66,7 +77,7 @@ if (Meteor.isServer) {
                         //only want to store the specific recommendations array objects
                         let epssCount = 0;
                         let recs = result.data.specificRecommendations;
-                        for (var x in recs) {
+                        for (let x in recs) {
                             Epss.insert(recs[x]);
                             epssCount +=1;
                         }

@@ -8,11 +8,14 @@
         <p>
         {{#if A1cList}}
             Last A1c values:
+        {{> smallChart measure="A1c"}}
+        <!--
             {{#each lab in A1cList}}
                 <span class="cursor-default bg-acuere-light" style=" padding-left: 2px; border-left: 3px solid {{colorValueHighBad lab.value lab.refLow lab.refHigh}}" data-toggle="tooltip" title="{{formatDate lab.date}}">
                     {{lab.value}}{{lab.unit}}
                 </span> &nbsp;
             {{/each}}
+            -->
             {{else}}
                 No A1c values found
             {{/if}}
