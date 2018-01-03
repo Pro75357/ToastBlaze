@@ -15,14 +15,16 @@
                 Please select a patient!
             {{else}}
 
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row">
 
-                    <div class="col-md-12">
+                    <div class="col-lg-6">
                         {{> patientOverview}}
                         {{> Problems}}
                     </div>
-
+                    <div class="col-lg-6">
+                        <!-- Right side separated for page-like formatting -->
+                    </div>
 
                 </div>
             </div>

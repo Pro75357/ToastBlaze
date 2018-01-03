@@ -34,9 +34,9 @@ Template.ePSSRecommendations.helpers({
     },
 });
 
-Template.ePSSRecommendations.events({
-    'click #getEpss': function(){
-    Session.set('epssRequested', true)
+Template.ePSSRecommendations.onRendered( function(){
+    // fetch the Epss recs only if this frame gets rendered.
+    Session.set('epssRequested', true);
         // We want to update our ePSS recommendations with our patient information.
 
         // We need to build our param object for the ePSS call
@@ -66,4 +66,4 @@ Template.ePSSRecommendations.events({
         };
         Meteor.call('getEpss', params)
     }
-});
+);

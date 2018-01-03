@@ -1,4 +1,4 @@
-import {Metrics} from "../../../collections/metrics";
+import {Metrics} from "../../../../collections/metrics";
 import {Session} from "meteor/session";
 
 Template.probMetricsTable.helpers({

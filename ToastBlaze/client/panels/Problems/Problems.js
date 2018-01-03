@@ -39,5 +39,5 @@ Template.Problems.events({
     // Change the metrics to only show what the selector has selected
     'change .metric-select': function(event){
         Session.set('select',event.target.value)
-    }
+    },
 });

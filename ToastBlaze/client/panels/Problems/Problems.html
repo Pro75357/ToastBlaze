@@ -6,9 +6,9 @@
         {{else}}
         <div>
             <div class="pull-right">
-                Metrics Program: <select class="metric-select">
+                <select class="metric-select">
                 {{#each program in metricPrograms}}
-                    <option id="p-{{program}}">{{program}}</option>
+                    <option id="p-{{program}}" value="{{program}}">View {{program}} metrics</option>
                 {{/each}}
             </select>
             </div>
@@ -21,7 +21,7 @@
                     <a data-toggle="pill" href="#allMetrics">All Metrics</a>
                 </li>
                 <li>
-                    <a data-toggle="pill" href="#USPSTF">USPSTF Recommendations</a>
+                    <a data-toggle="pill" id="EpssPill" href="#USPSTF">USPSTF Recommendations</a>
                 </li>
             </ul>
 
