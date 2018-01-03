@@ -83,6 +83,10 @@ div.leftBorder{
     font-size: small;
 }
 
+.nav > li > a {
+    padding: 1px 5px;
+}
+
 .table {
     margin-bottom: 5px;
 }

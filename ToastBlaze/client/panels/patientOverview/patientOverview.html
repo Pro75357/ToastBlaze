@@ -31,12 +31,16 @@
                         </ul>
                     </div>
                     <div class="shrinkWrap">
+                        {{#if allergies}}
                        <strong>Allergies:</strong>
                         {{#each thing in allergies}}
                         <span class="hintText bg-warning cursor-default" data-toggle="tooltip" title="documented {{formatDate thing.date}} - {{thing.text}}">
                             {{thing.name}}
                         </span>
                         {{/each}}
+                        {{else}}
+                            <span>No allergies found</span>
+                        {{/if}}
 
                     </div>
                 </div>

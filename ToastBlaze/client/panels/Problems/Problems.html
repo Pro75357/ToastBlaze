@@ -13,10 +13,22 @@
             </select>
             </div>
 
+            <ul class="nav nav-pills">
+                <li class="active">
+                    <a data-toggle="pill" href="#problems">Problem-Based</a>
+                </li>
+                <li>
+                    <a data-toggle="pill" href="#allMetrics">All Metrics</a>
+                </li>
+                <li>
+                    <a data-toggle="pill" href="#USPSTF">USPSTF Recommendations</a>
+                </li>
+            </ul>
 
-            <h4>Problems</h4>
-            <div class="shrinkWrap">
+            <div class="shrinkWrap tab-content">
+                <div id="problems" class="tab-pane fade in active">
 
+                    <h4>Problems</h4>
                 {{> generalHMTemplate}}
 
                 {{#if DiabetesMetrics}}
@@ -33,7 +45,14 @@
                 {{/if}}
 
                 {{> otherProblemsTemplate}}
+                </div>
 
+                <div id="allMetrics" class="tab-pane fade">
+                    {{> acuereMetrics}}
+                </div>
+                <div id="USPSTF" class="tab-pane fade">
+                    {{> ePSSRecommendations}}
+                </div>
             </div>
         </div>
 

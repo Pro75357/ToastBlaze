@@ -1,14 +1,6 @@
 <template name="acuereMetrics">
 
     <div>
-        <div class="pull-right">
-            Select Program:
-            <select class="metric-select" style="color: black">
-                {{#each program in metricPrograms}}
-                    <option id="p-{{program}}">{{program}}</option>
-                {{/each}}
-            </select>
-        </div>
         <h4>All Acuere Metrics</h4>
         <div>
 
@@ -74,7 +66,7 @@
                 {{#if metricsGreen}}
                     <thead>
                     <tr class="bg-success">
-                        <th>
+                        <th class="col-sm-9">
                             Metrics fulfilling criteria
                         </th>
                         <th class="problemRow">Note</th>
@@ -109,13 +101,15 @@
                             View Non-qualifying metrics
                             </a>
                         </th>
-                        <th class="problemRow">Note</th>
+                        <th>blank</th>
                     </tr>
                     </thead>
-                <tbody id="greyMetricsTable" class="collapse">
+                    <tbody>
+                <div id="greyMetricsTable" class="collapse">
+<!-- todo: fix this does not align -->
                     {{#each metric in metricsGrey}}
                     <tr>
-                        <td>
+                        <td  class="col-sm-9">
                             <a class="plainLink" data-toggle="collapse" href="#{{metric._id}}">{{metric.name}}</a>
                             {{#if metric.observationId}}
                                 <li class="collapse" id="{{metric._id}}">
@@ -123,12 +117,14 @@
                                 </li>
                             {{/if}}
                         </td>
-                        <td>
+                        <td class="problemRow">
                             {{metric.statusReason}}
                         </td>
                     </tr>
                     {{/each}}
 
+
+                </div>
                     </tbody>
                 {{/if}}
             </table>

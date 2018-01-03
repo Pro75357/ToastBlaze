@@ -13,20 +13,18 @@
                     {{> loader}}
                 {{else}}
 
-                <table class="table table-hover table-xtra-condensed cursor-default">
+
                     {{#if epssGradeA}}
-                        <thead>
-                        <tr class="bg-acuere-blue">
-                            <th>
-                                <a class="text-white plainLink" data-toggle="collapse" href="#GradeARow">Grade A Recommendations</a>
-                            </th>
-                        </tr>
-                        </thead>
-                        <tbody class="collapse" id="GradeARow">
+                        <strong>
+                                <a class="plainLink" data-toggle="collapse" href="#GradeARow">Grade A Recommendations</a>
+                        </strong><br/>
+                    <div class="leftBorder collapse in" id="GradeARow">
+                    <table class="table table-hover table-xtra-condensed cursor-default">
+                        <tbody>
                         {{#each rec in epssGradeA}}
                             <tr>
                                 <td>
-                                    <a class="plainLink" data-toggle="collapse" href="#{{rec._id}}">{{{ rec.title }}}</a>
+                                    <a class="plainLink" data-toggle="collapse" href="#{{rec.id}}">{{{ rec.title }}}</a>
                                     {{#if rec.id}}
                                         <li id="{{rec.id}}" data-parent="#recList" class="collapse">
                                             {{{rec.text}}}
@@ -36,22 +34,22 @@
                             </tr>
                         {{/each}}
                         </tbody>
+                    </table>
+                    </div>
                     {{/if}}
                         {{#if epssGradeB}}
-                            <thead>
-                            <tr class="bg-acuere-blue">
-                                <th>
-                                    <a class="text-white plainLink" data-toggle="collapse" href="#GradeBRow">Grade B Recommendations</a>
-                                </th>
-                            </tr>
-                            </thead>
-                            <tbody class="collapse" id="GradeBRow">
+                            <strong>
+                                    <a class="plainLink" data-toggle="collapse" href="#GradeBRow">Grade B Recommendations</a>
+                            </strong>
+                        <div class="collapse leftBorder" id="GradeBRow">
+                        <table class="table table-hover table-xtra-condensed cursor-default">
+                        <tbody>
                             {{#each rec in epssGradeB}}
                                 <tr>
                                     <td>
                                         <a class="plainLink" data-toggle="collapse" href="#{{rec.id}}">{{{ rec.title }}}</a>
                                         {{#if rec.id}}
-                                            <li id="{{rec.id}}" data-parent="#recList" class="collapse">
+                                            <li id="{{rec.id}}" data-parent="#recList" class="collapse shrinkWrap">
                                                 {{{rec.text}}}
                                             </li>
                                         {{/if}}
@@ -59,10 +57,9 @@
                                 </tr>
                             {{/each}}
                             </tbody>
+                            </table>
+                        </div>
                         {{/if}}
-
-                    </table>
-
 
 
                 <a style="visibility: {{visibility}}" class="aaa-dev-tools" data-toggle="collapse" href="#epssVomitDiv">Raw data</a>
