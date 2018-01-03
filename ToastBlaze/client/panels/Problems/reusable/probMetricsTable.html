@@ -30,7 +30,7 @@
             {{#if greenMetricsCount}}
             <tr>
                 <td> {{StatusIndicator "Green"}}</td>
-                <td>Satisfactory: {{greenMetricsCount}} </td>
+                <td>Satisfactory: <span class="hintText" title={{greenMetricsList}}>{{greenMetricsCount}}</span></td>
                 <td> <!-- blank--></td>
             </tr>
             {{/if}}
@@ -39,7 +39,7 @@
 
         {{ else if greenMetricsCount}}
 
-            {{StatusIndicator 'Green'}} All {{metric}} metrics satisfactory!
+        {{StatusIndicator 'Green'}} All applicable <span class="hintText" title={{greenMetricsList}}> {{metric}} metrics</span> satisfactory!
 
         {{/if}}
     </div>

@@ -40,6 +40,35 @@ Template.probMetricsTable.helpers({
         }
     },
 
+    greenMetricsList(){
+        let category = this.metric;
+        //console.log(this.metric);
+        if(Session.equals('select','All')){
+            if(Metrics.find({category: category}).count() > 0){
+                let stringList = '';
+                let metrics = Metrics.find({
+                    category: category,
+                    status: "Green"
+                }).fetch();
+                for (let x in metrics){
+                    stringList += metrics[x].program + ' - ' + metrics[x].name + '\r\n'; //adds a new return line
+                }
+                return new Handlebars.SafeString(stringList);
+            }
+        } else if(Metrics.find({program: Session.get('select')}, {category: category}).count() > 0) {
+                let stringList = '';
+                let metrics = Metrics.find({
+                    program: Session.get('select'), //this is what's different
+                    category: category,
+                    status: "Green"
+                }).fetch();
+                for (let x in metrics){
+                    stringList += metrics[x].program + ' - ' + metrics[x].name + '\r\n'; //adds a new return line
+                }
+                return new Handlebars.SafeString(stringList);
+            }
+    },
+
     StatusIndicator(status){
         switch(status){
             case 'Red':

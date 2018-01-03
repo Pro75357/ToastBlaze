@@ -1,6 +1,7 @@
 import {Observations} from "../../../collections/observations";
 import {Metrics} from "../../../collections/metrics";
 import {Session} from "meteor/session";
+import {Meteor} from "meteor/meteor";
 
 function findMetrics(metricCategory){
     return  Metrics.find({
@@ -40,4 +41,9 @@ Template.Problems.events({
     'change .metric-select': function(event){
         Session.set('select',event.target.value)
     },
+
+    'click #EpssPill': function(){
+        Session.set('epssRequested', true);
+        Meteor.call('getEpss')
+    }
 });

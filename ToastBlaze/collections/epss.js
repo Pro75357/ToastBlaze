@@ -1,6 +1,8 @@
 import { Mongo } from 'meteor/mongo';
 export const Epss = new Mongo.Collection('epss');
 import {HTTP } from 'meteor/http'
+import {Pat} from "./pat";
+
 
 
 /*
@@ -14,7 +16,7 @@ if (Meteor.isServer) {
 
     Meteor.methods({
 
-        'getEpss': function (params) {
+        'getEpss': function () {
             //Very first, clean out old ePSS data (if any)
             Epss.remove({});
 
@@ -32,57 +34,53 @@ if (Meteor.isServer) {
 
             // If the key is blank or not updated, we cannot continue..
             //let blankKeys = ['','PUT_KEY_HERE']
-            if (ePSS_Key.key === 'PUT_KEY_HERE'){
+            if (ePSS_Key.key === 'PUT_KEY_HERE') {
                 console.log('ePSS Key not found or invalid- please input your ePSS key into ePSS_Key.json file in private folder')
                 return false
-            } else {
-                // If no params are passed, error and return false
-                if (!params){
-                    console.log("No ePSS parameters found. Not fetching.");
-                    return false
-                    /*
-                    params = {
-                        age: '18',
-                        sex: 'Male',
-                        tobacco: 'N',
-                        sexuallyActive: 'N',
-                        grade: 'A'
+            }
+// build our params
+
+            let params = {
+                age: getAge(Pat.findOne().gen.dob),
+                sex: Pat.findOne().gen.sex,
+                //pregnant: 'N' -- (Y,N) - requires Female sex to be present
+                //tobacco: 'N', -- (Y,N)
+                //sexuallyActive: 'N' -- (Y,N)
+                grade: ['A', 'B']
+            };
+
+            // lastly, insert key into params
+            params.key = ePSS_Key.key;
+
+            // Try to fetch the ePSS recommendations based on the params.
+            try {
+                HTTP.call('get',
+                    url,
+                    {
+                        headers: 'accept: json',
+                        params
+                    }, function(err, result){
+                    if(err){
+                        throw err
+                    } else {
+                        //only want to store the specific recommendations array objects
+                        let epssCount = 0;
+                        let recs = result.data.specificRecommendations;
+                        for (var x in recs) {
+                            Epss.insert(recs[x]);
+                            epssCount +=1;
+                        }
+                        console.log(epssCount + ' ePSS recs inserted');
+                        return true
                     }
-                    */
-                }
-                // lastly, insert key into params
-                params.key = ePSS_Key.key;
 
-                // Try to fetch the ePSS recommendations based on the params.
-                try {
-                    HTTP.call('get',
-                        url,
-                        {
-                            headers: 'accept: json',
-                            params
-                        }, function(err, result){
-                        if(err){
-                            throw err
-                        } else {
-                            //only want to store the specific recommendations array objects
-                            let epssCount = 0;
-                            let recs = result.data.specificRecommendations
-                            for (var x in recs) {
-                                Epss.insert(recs[x]);
-                                epssCount +=1;
-                            }
-                            console.log(epssCount + ' ePSS recs inserted');
-                            return true
-                        }
+                    }
+                );
 
-                        }
-                    );
-
-                } catch (e) {
-                    console.log(e)
-                }
-        }
-    },
+            } catch (e) {
+                console.log(e)
+            }
+        },
 
         'clearEpss': function (){
             Epss.remove({})

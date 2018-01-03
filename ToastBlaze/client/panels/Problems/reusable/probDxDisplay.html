@@ -5,9 +5,9 @@
     {{#if DxObservations.[1].name}}
         &nbsp; <small>({{DxCount}}  matching
 
-        <!-- the spacing and everything of this span/each block is important for the popup formatting -->
+        <!-- the spacing and everything of this span/each block is important for the mouse-over popup formatting -->
         <span class="hintText" title="{{#each dx in DxObservations}}{{formatDate dx.date}} - {{dx.name}} ({{dx.ProblemCode}})
-{{/each}}">diagnosis</span>)</small>
+{{/each}}">diagnoses</span>)</small>
     {{/if}}
 
 </template>

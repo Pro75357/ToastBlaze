@@ -1,12 +1,7 @@
 <template name="heartFailureTemplate">
     {{> probDxDisplay metric="Heart Failure"}}
         <div class="leftBorder">
-            <div class="shrinkWrap">
-                <!--
-                <canvas id="HFChart"></canvas>
-                -->
-            </div>
-
+{{> smallChart measure="Weight"}}
 
         {{> probMetricsTable metric="Heart Failure"}}
         </div>
