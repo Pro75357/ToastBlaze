@@ -24,11 +24,12 @@ if (Meteor.isServer) {
 
             // First, we need to know the epss api url
             const url = 'http://epssdata.ahrq.gov/';
-
+            let ePSS_Key = '';
             // Next, get the ePSS key from the text file in the Private folder.
             // this folder will not sync with git as it is in the .gitignore
+
             try {
-                const ePSS_Key = JSON.parse(Assets.getText('ePSS_Key.json'));
+                ePSS_Key = JSON.parse(Assets.getText('ePSS_Key.json'));
                 // If the key is blank or not updated, we cannot continue..
                 //let blankKeys = ['','PUT_KEY_HERE']
                 if (ePSS_Key.key === 'PUT_KEY_HERE') {
@@ -44,8 +45,14 @@ if (Meteor.isServer) {
 // build our params
             let sex = Pat.findOne().gen.sex;
             let age = getAge(Pat.findOne().gen.dob);
-            let tobacco = Observations.findOne({category: 'socialHistory', name: 'Smoking Status'}).value;
-            let sexuallyActive = Observations.findOne({category: 'socialHistory', name: 'Sexually Acitve'}).value;
+            let tobacco = '';
+            if (Observations.findOne({category: 'socialHistory', name: 'Smoking Status'})) {
+                tobacco = Observations.findOne({category: 'socialHistory', name: 'Smoking Status'}).value;
+            }
+
+            let sexuallyActive = '';
+            if (Observations.findOne({category: 'socialHistory', name: 'Sexually Active'}))
+                sexuallyActive = Observations.findOne({category: 'socialHistory', name: 'Sexually Active'}).value;
             let pregnant = null;
             if(sex ==='F'){
                 pregnant = 'N' // placeholder for real logic

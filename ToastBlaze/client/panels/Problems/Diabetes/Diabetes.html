@@ -3,24 +3,13 @@
 <template name="DiabetesProblemsTemplate">
     {{> probDxDisplay metric="Diabetes"}}
     <div class="leftBorder">
+        <div id="DMCustom" class="text-acuere-blue">
+            Last A1c: <span class="hintText" title={{getLastObsDate "A1c"}}><a data-toggle="collapse" href="#A1cChart">{{getLastObsValue "A1c"}}</a></span>
+        </div>
+        <div class="text-acuere-blue collapse" id="A1cChart">
 
-        <!-- PROBLEM-specific stuff here-->
-        <p>
-        {{#if A1cList}}
-            Last A1c values:
         {{> smallChart measure="A1c"}}
-        <!--
-            {{#each lab in A1cList}}
-                <span class="cursor-default bg-acuere-light" style=" padding-left: 2px; border-left: 3px solid {{colorValueHighBad lab.value lab.refLow lab.refHigh}}" data-toggle="tooltip" title="{{formatDate lab.date}}">
-                    {{lab.value}}{{lab.unit}}
-                </span> &nbsp;
-            {{/each}}
-            -->
-            {{else}}
-                No A1c values found
-            {{/if}}
-        </p>
-
+        </div>
 
         {{> probMetricsTable metric="Diabetes"}}
     </div>

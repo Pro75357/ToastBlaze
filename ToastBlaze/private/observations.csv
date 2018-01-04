@@ -65,7 +65,7 @@ _id,patId,category,metricCategory,ProblemCode,name,date,value,unit,refLow,refHig
 20014,456,procedures,,,Colonoscopy,2008-02-12,,,,,Normal colonoscopy results-recommend repeat in 10 years
 20105,456,problems,Heart Failure,I50.1,"Left Ventricular failure, unspecified",2008-02-12,,,,,
 20106,456,socialHistory,,,Sexually Active,2017-05-22,N,,,,Denies
-20107,456,socialHistory,,,Alcohol Use,2017-05-22,Never,,,,
+20107,456,socialHistory,,,Alcohol Use,2017-05-22,Never,,,,Never
 20048,456,vitals,,,Weight,2014-01-12,131,kg,,,
 20030,456,vitals,,,Weight,2014-01-29,128,kg,,,
 20031,456,vitals,,,Weight,2014-02-22,126,kg,,,

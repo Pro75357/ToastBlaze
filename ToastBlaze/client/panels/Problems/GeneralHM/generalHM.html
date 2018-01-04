@@ -3,6 +3,9 @@
 <template name="generalHMTemplate">
     <strong>General/Health Maintenance</strong>
     <div class="leftBorder">
+        <div class="text-acuere-blue">
+            Last ASCVD Risk score: <span class="hintText" title="{{getLastObsDate "ASCVD"}}">{{getLastObsValue "ASCVD"}}</span>
+        </div>
         {{> probMetricsTable metric="Cancer"}}
         {{> probMetricsTable metric="Prevention"}}
     </div>

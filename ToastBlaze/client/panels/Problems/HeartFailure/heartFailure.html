@@ -1,8 +1,15 @@
 <template name="heartFailureTemplate">
     {{> probDxDisplay metric="Heart Failure"}}
-        <div class="leftBorder">
-{{> smallChart measure="Weight"}}
+        <div class="leftBorder container-fluid">
+            <div id="HFCustom" class="text-acuere-blue">
+                Last Weight: <a data-toggle="collapse" href="#weightChart">{{getLastObsValue "Weight"}}<span class="hintText" title="{{getLastObsDate "Weight"}}"></span></a>
+            </div>
+            <div id="weightChart" class="collapse">
+                {{> smallChart measure="Weight"}}
+            </div>
 
-        {{> probMetricsTable metric="Heart Failure"}}
+            <div>
+                {{> probMetricsTable metric="Heart Failure"}}
+            </div>
         </div>
 </template>

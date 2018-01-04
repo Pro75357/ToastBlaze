@@ -2,10 +2,10 @@
 
     <div>
         <h4>All Acuere Metrics</h4>
-        <div>
+        <div class="bg-acuere-light">
 
         {{#if metricsCount}}
-            <table class="table table-hover table-xtra-condensed cursor-default">
+            <table class="table table-hover table-xtra-condensed cursor-default bg-acuere-light">
             {{#if metricsRed}}
             <thead>
             <tr class="bg-danger">
@@ -91,22 +91,18 @@
                     {{/each}}
                     </tbody>
                 {{/if}}
-
+            </table>
 
                 {{#if metricsGrey}}
-                    <thead>
-                    <tr class="bg-acuere-grey">
-                        <th>
+                    <div class="bg-acuere-light">
                             <a class="plainLink" data-toggle="collapse" href="#greyMetricsTable">
-                            View Non-qualifying metrics
+                                <strong class="hintText">Non-qualifying metrics</strong>
                             </a>
-                        </th>
-                        <th>blank</th>
-                    </tr>
-                    </thead>
+                    </div>
+
+                <div id="greyMetricsTable" class="collapse bg-acuere-light">
+                    <table  class="table table-hover table-xtra-condensed cursor-default bg-acuere-light">
                     <tbody>
-                <div id="greyMetricsTable" class="collapse">
-<!-- todo: fix this does not align -->
                     {{#each metric in metricsGrey}}
                     <tr>
                         <td  class="col-sm-9">
@@ -122,14 +118,12 @@
                         </td>
                     </tr>
                     {{/each}}
-
-
-                </div>
                     </tbody>
-                {{/if}}
+
             </table>
+        </div>
+                {{/if}}
         {{/if}}
-            <br/>
             <a style="visibility: {{visibility}}" class="aaa-dev-tools" data-toggle="collapse" href="#acuereVomitDiv">Raw data</a>
             <div id="acuereVomitDiv" class="collapse">
                 <span>Counts: {{metricsCount}}</span>

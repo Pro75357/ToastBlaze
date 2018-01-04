@@ -54,6 +54,7 @@ Template.smallChart.onRendered( function(){
 
     let tick = Math.floor((maxTick-minTick)/2);
 
+    let myUnit = Observations.findOne({name: this.data.measure}).unit
 
     // set this X-axis scale to be based on time
     let options = {
@@ -67,9 +68,9 @@ Template.smallChart.onRendered( function(){
                 time: {
                     displayFormats: {
                         'quarter': 'MMM YY',
-                        'year': 'YYYY',
+                        'year': "'YY",
                     },
-                    tooltipFormat: 'YYYY-M-D'
+                    tooltipFormat: 'YY-M-D'
                 },
                 scaleLabel: {
                     display: false
@@ -79,7 +80,7 @@ Template.smallChart.onRendered( function(){
             yAxes: [{
                 scaleLabel: {
                     display: true,
-                    labelString: Observations.findOne({name: this.data.measure}).unit
+                    labelString: myUnit
                 },
                 ticks: {
                     max: maxTick,
@@ -87,6 +88,16 @@ Template.smallChart.onRendered( function(){
                     stepSize: tick,
                 }
             }]
+        },
+        tooltips: {
+            enabled: true,
+            displayColors: false,
+            mode: 'single',
+            callbacks: {
+                label: function(tooltipItems, data){
+                    return tooltipItems.yLabel+' '+myUnit
+                }
+            }
         }
     };
 
@@ -97,7 +108,7 @@ Template.smallChart.onRendered( function(){
         options: options
     };
 
-    console.dir(config);
+    //console.dir(config);
 
     const HFChart = new Chart(canvas, config)
 

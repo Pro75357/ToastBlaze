@@ -38,23 +38,8 @@ Template.patientOverview.helpers({
         return Observations.find({category:'allergy'}).fetch()
     },
 
-    getLastObsValue(category,name){
-        if (Observations.find({category: category, name: name}).count()>0) {
-            return Observations.findOne({category: category, name: name}).value
-        } else {
-            return 'Not found'
-        }
-    },
-    getLastObsDate(category,name) {
-        if (Observations.find({category: category, name: name}).count() > 0) {
-            return Observations.findOne({category: category, name: name}).date
-        } else {
-            return 'Not found'
-        }
-    },
-
     patVomit(){
         //return JSON.stringify(Pat.find().fetch(), null, 2)
        // return JSON.stringify(Observations.find({category: 'socialHistory', name: 'Smoking Status'}).fetch(), null, 2)
     }
-})
+});

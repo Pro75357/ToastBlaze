@@ -8,12 +8,12 @@
             <div class="pull-right">
                 <select class="metric-select">
                 {{#each program in metricPrograms}}
-                    <option id="p-{{program}}" value="{{program}}">View {{program}} metrics</option>
+                    <option id="p-{{program}}" value="{{program}}">{{program}} metrics</option>
                 {{/each}}
             </select>
             </div>
 
-            <ul class="nav nav-pills">
+            <ul class="nav nav-pills hidden-print">
                 <li class="active">
                     <a data-toggle="pill" href="#problems">Problem-Based</a>
                 </li>

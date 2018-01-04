@@ -1,6 +1,7 @@
 import './main.html';
 import '../imports/global';
 import {Metrics} from "../collections/metrics";
+import {Observations} from "../collections/observations";
 
 Template.body.onCreated( function(){
     if(Session.equals('visibility', undefined)) {
@@ -44,4 +45,29 @@ Template.registerHelper('colorValueHighBad',function(value, refLow, refHigh){
         } else {
             return '#02fc1c'
         }
+});
+
+Template.registerHelper('getLastObsText',function(name){
+    if (Observations.find({name: name}).count()>0) {
+        return Observations.findOne({name: name}, {sort: {date: -1}}).text
+    } else {
+        return 'Not found'
+    }
+});
+
+Template.registerHelper('getLastObsDate', function(name) {
+    if (Observations.find({name: name}).count() > 0) {
+        return moment(Observations.findOne({name: name}, {sort: {date: -1}}).date).format('YYYY-MM-DD')
+    } else {
+        return 'Not found'
+    }
+});
+
+Template.registerHelper('getLastObsValue', function(name){
+    if (Observations.find({name: name}).count()>0) {
+        let obs =Observations.findOne({name: name}, {sort: {date: -1}});
+        return obs.value + obs.unit
+    } else {
+        return 'Not found'
+    }
 });
