@@ -1,5 +1,5 @@
 
-// Global template helpers-
+// Global template helpers- these can be called from any template.
 
 import {Observations} from "../collections/observations";
 import {Metrics} from "../collections/metrics";
@@ -13,6 +13,7 @@ Template.registerHelper('visibility', function(){
 });
 
 Template.registerHelper('metricPrograms', function(){
+    // returns all applicable metric program names found in Metrics collection, and adds an "All" option
     let res = Metrics.find().fetch();
     let programs = ['All'];
     for (let x in res){
@@ -24,6 +25,7 @@ Template.registerHelper('metricPrograms', function(){
 });
 
 Template.registerHelper('formatDate',function(date){
+    // simply formats whatever date is passed to mm/dd/yyyy using moment.
     return moment(date).format('MM/DD/YYYY')
 });
 
@@ -40,6 +42,8 @@ Template.registerHelper('colorValueHighBad',function(value, refLow, refHigh){
 });
 
 Template.registerHelper('getLastObsText',function(name){
+    // returns the most recent observation text, based on the passed observation name.
+    // not the most elegant solution, but it works.
     if (Observations.find({name: name}).count()>0) {
         return Observations.findOne({name: name}, {sort: {date: -1}}).text
     } else {
@@ -48,6 +52,7 @@ Template.registerHelper('getLastObsText',function(name){
 });
 
 Template.registerHelper('getLastObsDate', function(name) {
+    // returns the most recent observation date, based on the name
     if (Observations.find({name: name}).count() > 0) {
         return moment(Observations.findOne({name: name}, {sort: {date: -1}}).date).format('YYYY-MM-DD')
     } else {
@@ -56,6 +61,7 @@ Template.registerHelper('getLastObsDate', function(name) {
 });
 
 Template.registerHelper('getLastObsValue', function(name){
+    // returns the most recent observation value, based on the name. also adds the value's unit
     if (Observations.find({name: name}).count()>0) {
         let obs =Observations.findOne({name: name}, {sort: {date: -1}});
         return obs.value + obs.unit
@@ -64,6 +70,7 @@ Template.registerHelper('getLastObsValue', function(name){
     }
 });
 Template.registerHelper('getLastObsValueNoUnit', function(name){
+    // this one leaves off the unit.
     if (Observations.find({name: name}).count()>0) {
         let obs =Observations.findOne({name: name}, {sort: {date: -1}});
         return obs.value

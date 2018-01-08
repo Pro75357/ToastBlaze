@@ -2,6 +2,8 @@ import {Patients} from "../../../collections/patients";
 import { Session }from 'meteor/session'
 
 Template.patientSelect.helpers({
+
+    // build the list of patients in our patient selection dropdown
     patList(){
         let Pats = Patients.find({}).fetch();
         //console.dir(Pats)
@@ -17,8 +19,11 @@ Template.patientSelect.helpers({
         return list
     },
 
+    // if a patient is selected, return their dob
     selectedPatDob(){
+        // only return if a patient is actually selected
        if(!(Session.get('patId')===undefined)){
+           // get DOB from Patients collection, if it exists
            if(Patients.findOne({patId: Session.get('patId')})) {
                return "BirthDate: " + Patients.findOne({patId: Session.get('patId')}).dob
            }
@@ -28,23 +33,20 @@ Template.patientSelect.helpers({
 
 Template.patientSelect.events({
     'change #patientSelect': function(e){
-        // all the things that need to happen on a new patient select (most are automated):
-        Session.set('epssRequested', false);  // resets ePSS button regardless of selection
-        Meteor.call('clearEpss'); // go ahead and clear the ePSS data so it doesn't look odd later
+
+        // all the things that need to happen on a new patient select:
+        Session.set('epssRequested', false);  // resets ePSS loader state
+
+        // set the session variable based on what was selected
         if (e.target.value === "0"){
+            // if they select "no patient selected" need this to be undefined
             Session.set('patId', undefined)
         } else{
+            // otherwise, just set it whatever the select value is
             Session.set('patId', e.target.value);
         }
     }
 });
-
-// API stuff:
-
-/* the majority of functions for this app will run
-    when a patient is selected.
-    todo: organize these functions better
- */
 
 
 //Tracker function will run when the patId session variable changes...
@@ -57,4 +59,4 @@ Tracker.autorun(function(){
     //console.log("AutoTracker Updated: PatId " + Session.get('patId'))
     Meteor.call('updatePat', Session.get('patId'))
 
-})
+});

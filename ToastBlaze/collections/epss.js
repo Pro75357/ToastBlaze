@@ -37,12 +37,12 @@ if (Meteor.isServer) {
             const url = 'http://epssdata.ahrq.gov/';
             let ePSS_Key = '';
             // Next, get the ePSS key from the text file in the Private folder.
-            // this folder will not sync with git as it is in the .gitignore
+            // this file will not sync with git if it is in the .gitignore
 
             try {
                 ePSS_Key = JSON.parse(Assets.getText('ePSS_Key.json'));
                 // If the key is blank or not updated, we cannot continue..
-                //let blankKeys = ['','PUT_KEY_HERE']
+
                 if (ePSS_Key.key === 'PUT_KEY_HERE') {
                     console.log('ePSS Key not found or invalid- please input your ePSS key into ePSS_Key.json file in private folder');
                     return;
@@ -53,7 +53,8 @@ if (Meteor.isServer) {
             }
 
 
-// build our params
+            // get info from Pat, Observations collections
+
             let sex = Pat.findOne().gen.sex;
             let age = getAge(Pat.findOne().gen.dob);
             let tobacco = '';
@@ -69,6 +70,7 @@ if (Meteor.isServer) {
                 pregnant = 'N' // placeholder for real logic
             }
 
+            //build the params object
             let params = {
                 age: age,
                 sex: sex,
@@ -83,9 +85,7 @@ if (Meteor.isServer) {
 
             // Try to fetch the ePSS recommendations based on the params.
             try {
-                HTTP.call('get',
-                    url,
-                    {
+                HTTP.call('get', url,{
                         headers: 'accept: json',
                         params
                     }, function(err, result){

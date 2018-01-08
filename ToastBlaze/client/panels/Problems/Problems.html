@@ -1,5 +1,13 @@
 <template name="Problems">
+<!-- this is the main template for the "Problems" section
+It shows the metric selector, as well as a toggle-able nav-pills
+The three pills are "Problem-based" , "All Metrics" and "USPSTS Recommendations"
 
+Each pill has it's own template except problem-based, which is defined here.
+
+The Problem-based view will show template modules IF the patient has ANY metric that fits that category. It will always at least show
+the generalHMTemplate and other problems template.
+-->
     <div>
         {{#if NoPatientSelected}}
             <!-- this panel shows nothing if no patient is selected -->
@@ -50,9 +58,11 @@
                 <div id="allMetrics" class="tab-pane fade">
                     {{> acuereMetrics}}
                 </div>
+
                 <div id="USPSTF" class="tab-pane fade">
                     {{> ePSSRecommendations}}
                 </div>
+
             </div>
         </div>
 
