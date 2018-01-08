@@ -1,0 +1,15 @@
+<template name="hypertensionTemplate">
+    {{> probDxDisplay metric="Hypertension"}}
+        <div class="leftBorder">
+
+            <div id="DMCustom" class="text-acuere-blue">
+                Last Blood Pressure: <span class="hintText" title={{getLastObsDate "Systolic Blood Pressure"}}>{{getLastObsValueNoUnit "Systolic Blood Pressure"}}/{{getLastObsValue "Diastolic Blood Pressure"}}</span>
+                <a data-toggle="collapse" href="#BPChart"><i class="fa fa-line-chart"></i></a>
+            </div>
+            <div class="text-acuere-blue collapse" id="BPChart">
+                {{> htnChart}}
+            </div>
+
+            {{> probMetricsTable metric="Hypertension"}}
+        </div>
+</template>

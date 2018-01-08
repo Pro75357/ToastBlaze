@@ -1,4 +1,4 @@
-import {Observations} from "../../../../collections/observations";
+import {Observations} from "../../../../../collections/observations";
 
 Template.otherProblemsTemplate.helpers({
 

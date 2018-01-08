@@ -1,0 +1,5 @@
+
+
+Template.hypertensionTemplate.helpers({
+
+});

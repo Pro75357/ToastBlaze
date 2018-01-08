@@ -110,6 +110,6 @@ Template.smallChart.onRendered( function(){
 
     //console.dir(config);
 
-    const HFChart = new Chart(canvas, config)
+    const MyChart = new Chart(canvas, config)
 
 });

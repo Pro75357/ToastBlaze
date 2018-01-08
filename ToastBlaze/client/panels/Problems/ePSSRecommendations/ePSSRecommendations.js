@@ -1,4 +1,4 @@
-import { Epss} from "../../../collections/epss";
+import { Epss} from "../../../../collections/epss";
 
 import {Meteor} from "meteor/meteor";
 

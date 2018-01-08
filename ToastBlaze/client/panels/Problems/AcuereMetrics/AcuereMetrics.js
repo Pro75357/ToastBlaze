@@ -1,5 +1,5 @@
-import {Metrics} from "../../../collections/metrics";
-import {Observations} from "../../../collections/observations";
+import {Metrics} from "../../../../collections/metrics";
+import {Observations} from "../../../../collections/observations";
 import { Session } from 'meteor/session'
 
 // set our initial metrics to default to all

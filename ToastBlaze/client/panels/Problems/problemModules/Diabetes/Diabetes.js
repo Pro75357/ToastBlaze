@@ -1,5 +1,5 @@
-import {Observations} from "../../../../collections/observations";
-import {Metrics} from "../../../../collections/metrics";
+import {Observations} from "../../../../../collections/observations";
+import {Metrics} from "../../../../../collections/metrics";
 import {Session} from "meteor/session";
 
 

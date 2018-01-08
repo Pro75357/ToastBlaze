@@ -1,0 +1,18 @@
+<template name="heartFailureTemplate">
+    {{> probDxDisplay metric="Heart Failure"}}
+        <div class="leftBorder container-fluid">
+            <div class="text-acuere-blue">
+                Last Weight: <span class="hintText" title="{{getLastObsDate "Weight"}}">{{getLastObsValue "Weight"}}</span>
+                <a data-toggle="collapse" href="#weightChart" title="view chart"><i class="fa fa-line-chart"></i></a>
+                <div id="weightChart" class="collapse">
+                    {{> smallChart measure="Weight"}}
+                </div>
+            </div>
+            <div class="text-acuere-blue">
+                Last Ejection Fraction: <span class="hintText" title="{{getLastObsDate "EF"}} - {{getLastObsText "EF"}}">{{getLastObsValue "EF"}}</span>
+            </div>
+            <div>
+                {{> probMetricsTable metric="Heart Failure"}}
+            </div>
+        </div>
+</template>

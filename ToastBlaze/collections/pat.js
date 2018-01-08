@@ -1,6 +1,7 @@
 import { Mongo } from 'meteor/mongo';
 import {Meteor} from "meteor/meteor";
 import {Patients} from "./patients";
+import {Epss} from "./epss";
 
 export const Pat = new Mongo.Collection('pat');
 
@@ -19,11 +20,14 @@ if (Meteor.isServer) {
     Meteor.methods({
         'updatePat': function(patId) {
             console.log("updatePat was run");
+
+
             // Ok, First, let's fetch the other data about the patient
             // We'll store this single patient's data in a new Collection, pat
 
-            // If any old data is in Pat, need to clear it
-            Pat.remove({})
+            // If any old data is in Pat or Epss need to clear it
+            Pat.remove({});
+            Epss.remove({});
 
             // Now, let's start fresh with our currently selected patient
             Pat.insert({_id: patId});

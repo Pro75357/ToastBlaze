@@ -5,7 +5,17 @@ import {Pat} from "./pat";
 import {Observations} from "./observations";
 
 
+
 /*
+This is where we will fetch and store the AHRQ EPSS recommendations
+use of this requires an ePSS key, and there is some logic to fetch and validate the key here
+The key should be placed in the Private folder, in a file called 'ePSS_Key.json'
+THe file should be a simple json object:
+
+{
+  "Key":"PUT_KEY_HERE"
+}
+
 Please review the AHRQ Copyright and Disclaimer notice before using the API: https://www.uspreventiveservicestaskforce.org/Page/Name/copyright-notice.
 Instructions for use and access information can be found at:
 •	Instruction for Use:  http://epss.ahrq.gov/PDA/docs/ePSS_Data_API_WI_wLink.pdf
@@ -17,10 +27,11 @@ if (Meteor.isServer) {
     Meteor.methods({
 
         'getEpss': function () {
-            //Very first, clean out old ePSS data (if any)
 
-
-            Epss.remove({});
+            // only update if empty- updatePat should empty this collection...
+            if (Epss.find().count() > 0 ) {
+                return
+            }
 
             // First, we need to know the epss api url
             const url = 'http://epssdata.ahrq.gov/';
@@ -106,11 +117,13 @@ if (Meteor.isServer) {
 
     });
 
+        // Publication function from the server- this let's us define what the client-side db gets
         Meteor.publish('epss', function(){
+            // we will return the entire collection.
             return Epss.find()
         })
 }
-
+        // as the client, subscribes to the above publication
 if (Meteor.isClient){
     Meteor.subscribe('epss')
 }
