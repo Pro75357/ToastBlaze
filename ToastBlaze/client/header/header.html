@@ -19,16 +19,16 @@
         <img src="acuere_white.png" width = 109 height=20 style="margin-top:10px"/>
     </div>
 
-    <div class="container-fluid bg-acuere-light" id="lightHeader">
+    <div class="container-fluid row bg-acuere-light" id="lightHeader">
+        <div class="col-lg-7"> <!-- keeps right-aligned with main page -->
+            {{> patientSelect}}
 
-        {{> patientSelect}}
-
-        <div id="titleWrapper">
-            <img id="toastIcon" src="toastButtered.png" height="40" width="40"/>
-            <span id="ToastTitle">TOAST</span>
-            <span class="text-muted " id="ToastSubtitle">The OCHIN Ambulatory Support Tool</span>
+            <div id="titleWrapper">
+                <img id="toastIcon" src="toastButtered.png" height="40" width="40"/>
+                <span id="ToastTitle">TOAST</span>
+                <span class="text-muted " id="ToastSubtitle">The OCHIN Ambulatory Support Tool</span>
+            </div>
         </div>
-
     </div>
 
 </template>

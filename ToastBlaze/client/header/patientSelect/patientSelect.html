@@ -3,15 +3,15 @@
     and also show the dob of the selected patient.
 -->
 <template name="patientSelect">
-    <div class="panel panel-info pull-right">
-        <div class="panel-body bg-acuere-blue">
-            <select id="patientSelect" class="text-black">
-                <option value="0">Please select a patient...</option>
-                {{#each patList}}
-                    <option value="{{patId}}">{{name}}</option>
-                {{/each}}
-            </select><br/>
-            {{selectedPatDob}}
+        <div class="panel panel-info pull-right">
+            <div class="panel-body bg-acuere-blue">
+                <select id="patientSelect" class="text-black">
+                    <option value="0">Please select a patient...</option>
+                    {{#each patList}}
+                        <option value="{{patId}}">{{name}}</option>
+                    {{/each}}
+                </select><br/>
+                {{selectedPatDob}}
+            </div>
         </div>
-    </div>
 </template>
