@@ -6,7 +6,7 @@
             <tr>
                 <th> <!-- blank for a reason --> </th>
                 <th>
-                    {{metric}} metrics not meeting criteria
+                    {{metric}} metrics
                 </th>
                 <th class="problemRow">
                     Issue
@@ -21,14 +21,14 @@
                     </td>
                     {{#if observationId}}
                         <td title="{{description}}">
-                            <a href="#probMetrics{{_id}}" data-toggle="collapse">{{program}} - {{name}} <i class="fa fa-angle-double-down"></i></a>
+                            <a href="#probMetrics{{_id}}" data-toggle="collapse"><span class="metric-text">{{program}}</span> - {{name}} <i class="fa fa-angle-double-down"></i></a>
                             <li class="collapse" id="probMetrics{{_id}}">
                                 &nbsp; &nbsp;Last {{obsName observationId}}: <span class="text-acuere-blue" title="{{obsDate observationId}}">{{obsValue observationId}} ({{obsDate observationId}})</span>
                             </li>
                         </td>
                     {{else}}
                         <td title="{{description}}">
-                            {{program}} - {{name}}
+                            <span class="metric-text">{{program}}</span> - {{name}}
                         </td>
                     {{/if}}
                     <td>
@@ -39,7 +39,7 @@
             {{#if greenMetricsCount}}
             <tr>
                 <td> {{StatusIndicator "Green"}}</td>
-                <td>Satisfactory: <span class="hintText" title={{greenMetricsList}}>{{greenMetricsCount}}</span></td>
+                <td><span title={{greenMetricsList}}>Satisfactory: <strong>{{greenMetricsCount}}</strong></span></td>
                 <td> <!-- blank--></td>
             </tr>
             {{/if}}

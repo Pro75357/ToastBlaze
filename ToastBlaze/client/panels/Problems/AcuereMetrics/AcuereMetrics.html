@@ -96,13 +96,13 @@ it depends a lot on the associated helpers
                 <!-- if we have an associated observation with this metric, we can show a collapsable div with more info
                 and also some formatting to indicate that this can be expanded
                 -->
-            <a class="plainLink" title="{{metric.description}}" data-toggle="collapse" href="#{{metric._id}}">{{metric.name}} <i class="fa fa-angle-double-down"></i></a>
+                <a class="plainLink" title="{{metric.description}}" data-toggle="collapse" href="#{{metric._id}}"><span class="metric-text">{{metric.program}}</span> {{metric.name}} <i class="fa fa-angle-double-down"></i></a>
                 <li class="collapse" id="{{metric._id}}">
                     &nbsp; &nbsp; Last {{obsName metric.observationId}}: <span class="text-acuere-blue" title="{{obsDate metric.text}}">{{obsValue metric.observationId}} ({{obsDate metric.observationId}})</span>
                 </li>
             {{else}}
                 <!-- else, just show the metric's name -->
-                {{metric.name}}
+                <span class="metric-text">{{metric.program}}</span> - {{metric.name}}
             {{/if}}
         </td>
         <td class="problemRow">

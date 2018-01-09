@@ -34,9 +34,10 @@ Template.patientSelect.helpers({
 Template.patientSelect.events({
     'change #patientSelect': function(e){
 
-        // all the things that need to happen on a new patient select:
+        // all the things that need to happen on a new patient select (Basically a reset):
         Session.set('epssRequested', false);  // resets ePSS loader state
         Session.set('dataLoading', true); // resets main page data loader
+        Session.set('select', "All"); // reset the metric selector to the default all
 
         // set the session variable based on what was selected
         if (e.target.value === "0"){

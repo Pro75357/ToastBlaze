@@ -124,6 +124,11 @@ a {
     text-decoration: underline;
 }
 
+.metric-text{
+    font-style: italic;
+}
+
+
 #titleWrapper{
     padding-left: 55px;
     padding-top: 12px;
