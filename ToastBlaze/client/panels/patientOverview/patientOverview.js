@@ -43,7 +43,7 @@ Template.patientOverview.helpers({
     },
 
     patVomit(){
-        //return JSON.stringify(Pat.find().fetch(), null, 2)
+        return JSON.stringify(Pat.find().fetch(), null, 2)
        // return JSON.stringify(Observations.find({category: 'socialHistory', name: 'Smoking Status'}).fetch(), null, 2)
     }
 });

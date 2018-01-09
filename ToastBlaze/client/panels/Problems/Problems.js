@@ -31,7 +31,7 @@ Template.Problems.helpers({
 
     obsVomit(){
         if (Observations.find().count() > 0) {
-            return JSON.stringify(findMetrics('Diabetes'), null, 2)
+            return JSON.stringify(Metrics.find({}).fetch(), null, 2)
         }
     }
 });

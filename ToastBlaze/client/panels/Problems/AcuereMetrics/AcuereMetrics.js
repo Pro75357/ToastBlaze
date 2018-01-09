@@ -26,12 +26,6 @@ Template.acuereMetrics.helpers({
         }
     },
 
-    metricsVomit() {
-        if (SelectMetrics().count() > 0) {
-            return JSON.stringify(SelectMetrics().find().fetch(), null, 2)
-        }
-    },
-
     //returns each category based on the helper function SelectMetrics
     metricsRed() {
         let color = "Red";
@@ -59,6 +53,7 @@ Template.acuereMetrics.helpers({
         }
     },
 });
+
 Template.tableSection.helpers({
     // These special helpers get passed the ObsID from the corresponding metrics
     // and they fetch the observation data
@@ -78,15 +73,7 @@ Template.tableSection.helpers({
             let unit = Observations.findOne({_id: obsId}).unit;
             return value+unit;
         }
-    },
-    // this one needs the period as well - it is in months
-    dueDate(obsId, period){
-        if(Observations.find({_id: obsId}).count()>0) {
-            let lastDate = moment(Observations.findOne({_id: obsId}).date);
-            return lastDate.add(period, 'month').format('MM/DD/YYYY')
-        }
     }
-
 });
 
 Template.acuereMetrics.events({
@@ -99,8 +86,8 @@ Template.acuereMetrics.events({
 
 // this should keep all the "metric-select" classes the same value
 Tracker.autorun(function(){
-    let selects = document.getElementsByClassName('metric-select')
+    let selects = document.getElementsByClassName('metric-select');
     for (let x in selects){
         selects[x].value = Session.get('select')
     }
-})
+});

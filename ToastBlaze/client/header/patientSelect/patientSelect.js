@@ -37,6 +37,7 @@ Template.patientSelect.events({
         // all the things that need to happen on a new patient select:
         Session.set('epssRequested', false);  // resets ePSS loader state
         Session.set('dataLoading', true); // resets main page data loader
+
         // set the session variable based on what was selected
         if (e.target.value === "0"){
             // if they select "no patient selected" need this to be undefined
