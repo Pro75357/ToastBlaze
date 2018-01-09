@@ -52,9 +52,10 @@ Template.registerHelper('getLastObsText',function(name){
 });
 
 Template.registerHelper('getLastObsDate', function(name) {
-    // returns the most recent observation date, based on the name
+    // returns the most recent observation date (for that patient), based on the name
+
     if (Observations.find({name: name}).count() > 0) {
-        return moment(Observations.findOne({name: name}, {sort: {date: -1}}).date).format('YYYY-MM-DD')
+        return moment(Observations.findOne({name: name}, {sort: {date: -1}}).date).format('YYYY-MM-DD');
     } else {
         return 'Not found'
     }

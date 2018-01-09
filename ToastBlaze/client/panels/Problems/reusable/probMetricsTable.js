@@ -1,5 +1,6 @@
 import {Metrics} from "../../../../collections/metrics";
 import {Session} from "meteor/session";
+import {Observations} from "../../../../collections/observations";
 
 Template.probMetricsTable.helpers({
     Metrics(){
@@ -80,6 +81,25 @@ Template.probMetricsTable.helpers({
             default:
                 return new Handlebars.SafeString('<svg height="10" width="10"><circle cx="5" cy="5" r="4" stroke="black" stroke-width="1" fill="grey" /></svg>');
         }
-    }
+    },
+    // These special helpers get passed the ObsID from the corresponding metrics
+    // and they fetch the observation data
+    obsName(obsId){
+        if(Observations.find({_id: obsId}).count()>0) {
+            return Observations.findOne({_id: obsId}).name
+        }
+    },
+    obsDate(obsId){
+        if(Observations.find({_id: obsId}).count()>0) {
+            return moment(Observations.findOne({_id: obsId}).date).format('MM-DD-YYYY')
+        }
+    },
+    obsValue(obsId){
+        if(Observations.find({_id: obsId}).count()>0) {
+            let value = Observations.findOne({_id: obsId}).value;
+            let unit = Observations.findOne({_id: obsId}).unit;
+            return value+unit;
+        }
+    },
 
 });

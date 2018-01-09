@@ -49,12 +49,14 @@ Template.smallChart.onRendered( function(){
     };
 
     //define some max and min so it better fits our data
-    let maxTick = Math.floor(parseFloat(Observations.findOne({name: this.data.measure}, {sort: {value: -1}}).value)+0.5); // will result in rounding up
+    let maxTick = parseInt(Observations.findOne({name: this.data.measure}, {sort: {value: -1}}).value)+1; // will result in rounding up
     let minTick = parseInt(Observations.findOne({name: this.data.measure}, {sort: {value: 1}}).value); // will by default round down
 
     let tick = Math.floor((maxTick-minTick)/2);
 
-    let myUnit = Observations.findOne({name: this.data.measure}).unit
+    //console.log("min: "+minTick+', max: '+maxTick+', tick: '+tick);
+
+    let myUnit = Observations.findOne({name: this.data.measure}).unit;
 
     // set this X-axis scale to be based on time
     let options = {

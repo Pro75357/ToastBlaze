@@ -6,9 +6,10 @@ _id,patId,category,metricCategory,ProblemCode,name,date,value,unit,refLow,refHig
 10127,123,vitals,,,Blood Pressure,11/14/2017,123/75,mmHg,90/60,140/90,
 10129,123,vitals,,,Respiratory Rate,11/14/2017,14,Breaths per minute,12,18,
 10130,123,vitals,,,Temperature,11/14/2017,36.9,C,36.5,37.2,
-10131,123,procedures,,,Mammogram,4/5/2015,1,BI-RADS,,,Mammography radiology read goes here
-10132,123,procedures,,,Mammogram,3/22/2013,1,BI-RADS,,,Mammography radiology read goes here
-10133,123,procedures,,,Colonoscopy,6/6/2014,,,,,Colonoscopy and hopefully pathology text here
+10131,123,procedures,,,Mammogram,4/5/2015,1, (BI-RADS),,,Mammography radiology read goes here
+10132,123,procedures,,,Mammogram,3/22/2013,1, (BI-RADS),,,Mammography radiology read goes here
+10133,123,procedures,,,Colonoscopy,6/6/2014,Normal,,,,Colonoscopy and hopefully pathology text here
+11011,123,procedures,,,Eye Exam,2/1/2017,Normal,,,,Normal diabetic eye exam
 10134,123,vitals,,,Heart Rate,9/5/2017,65,Beats per minute,60,100,
 10135,123,vitals,,,Systolic Blood Pressure,9/5/2017,135/77,mmHg,90/60,140/90,
 10137,123,vitals,,,Respiratory Rate,9/5/2017,18,Breaths per minute,12,18,
@@ -17,16 +18,19 @@ _id,patId,category,metricCategory,ProblemCode,name,date,value,unit,refLow,refHig
 10140,123,labs,,,WBC Count,9/5/2017,14.5,thousand cells/uL,4.5,11,
 10141,123,labs,,,Platelet Count,9/5/2017,250,thousand per uL,150,450,
 10142,123,labs,,,Hematocrit,9/5/2017,42.6,%,37,48,
-10143,123,labs,,,A1c,9/5/2017,5.1,%,4,5.7,
+10143,123,labs,,,A1c,9/5/2017,5.9,%,4,5.7,
 10144,123,labs,,,Pap cytology,1/15/2015,Normal,,,,pap smear cytology results text goes here
-10147,123,labs,,,A1c,3/14/2014,7.9,%,4,5.7,
-10148,123,labs,,,A1c,6/17/2014,6.2,%,4,5.7,
+10147,123,labs,,,A1c,3/14/2014,9.1,%,4,5.7,
+10148,123,labs,,,A1c,6/17/2014,8.1,%,4,5.7,
+11001,123,labs,,,A1c,4/11/2016,6.9,,,,
+11002,123,labs,,,A1c,9/7/2016,7.3,,,,
+11003,123,labs,,,A1c,2/1/2017,5.9,,,,
 10149,123,socialHistory,,,Synopsis,9/5/2017,,,,,Ms. Hawking is a nice lady from Seattle who moved to Portland in 2009 to be closer to family after her husband passed. She works for Tri-Met part-time as an accountant and has 2 adult children who live in the area. She enjoys cycling and gardening.
 10150,123,riskCalc,,,ASCVD,9/5/2017,3.9,%,0,10,
 10151,123,labs,,,Total Cholesterol,9/5/2017,215,mg/dl,,,
 10152,123,labs,,,HDL Cholesterol,9/5/2017,45,mg/dl,,,
 10153,123,labs,,,LDL Cholesterol,9/5/2017,95,mg/dl,,,
-10154,123,socialHistory,,,Smoking Status,9/5/2017,Never,Category,,,Never
+10154,123,socialHistory,,,Smoking Status,9/5/2017,Never, (Smoking status category),,,Never
 10155,123,medications,Thyroid,,levothyroxine,9/5/2017,,,,,For full medication details please view patient chart
 10156,123,problems,Diabetes,E11.9,Type 2 diabetes mellitus without complications,9/5/2017,,,,,
 10157,123,problems,Thyroid,E03.9,"Hypothyroidism, unspecified",9/5/2017,,,,,

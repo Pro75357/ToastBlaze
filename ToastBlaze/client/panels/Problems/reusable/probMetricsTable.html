@@ -19,9 +19,18 @@
                     <td class="indicatorRow">
                         {{StatusIndicator status}}
                     </td>
-                    <td title="{{description}}">
-                        {{program}} - {{name}}
-                    </td>
+                    {{#if observationId}}
+                        <td title="{{description}}">
+                            <a href="#probMetrics{{_id}}" data-toggle="collapse">{{program}} - {{name}} <i class="fa fa-angle-double-down"></i></a>
+                            <li class="collapse" id="probMetrics{{_id}}">
+                                &nbsp; &nbsp;Last {{obsName observationId}}: <span class="text-acuere-blue" title="{{obsDate observationId}}">{{obsValue observationId}} ({{obsDate observationId}})</span>
+                            </li>
+                        </td>
+                    {{else}}
+                        <td title="{{description}}">
+                            {{program}} - {{name}}
+                        </td>
+                    {{/if}}
                     <td>
                         {{statusReason}}
                     </td>

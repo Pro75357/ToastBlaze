@@ -18,47 +18,48 @@ SelectMetrics = function(color) {
 Template.acuereMetrics.helpers({
 
     // dev helpers
-    metricsCount(){
-        if(Session.equals('select',"All")){
+    metricsCount() {
+        if (Session.equals('select', "All")) {
             return Metrics.find().count()
         } else {
             return Metrics.find({program: Session.get('select')}).count()
         }
     },
 
-    metricsVomit(){
-        if(SelectMetrics().count() > 0) {
+    metricsVomit() {
+        if (SelectMetrics().count() > 0) {
             return JSON.stringify(SelectMetrics().find().fetch(), null, 2)
         }
     },
 
     //returns each category based on the helper function SelectMetrics
-    metricsRed(){
+    metricsRed() {
         let color = "Red";
-        if (SelectMetrics(color).count() > 0 ) {
+        if (SelectMetrics(color).count() > 0) {
             return SelectMetrics(color).fetch()
         }
     },
-    metricsYellow(){
+    metricsYellow() {
         let color = "Yellow";
-        if (SelectMetrics(color).count() > 0 ) {
+        if (SelectMetrics(color).count() > 0) {
             return SelectMetrics(color).fetch()
         }
     },
-    metricsGreen(){
+    metricsGreen() {
         let color = "Green";
-        if (SelectMetrics(color).count() > 0 ) {
+        if (SelectMetrics(color).count() > 0) {
             return SelectMetrics(color).fetch()
         }
     },
     // The catch-all for all other statuses - $nin means "Not in"
-    metricsGrey(){
-        let color = {$nin: ["Red","Yellow","Green"]};
-        if (SelectMetrics(color).count() > 0 ) {
+    metricsGrey() {
+        let color = {$nin: ["Red", "Yellow", "Green"]};
+        if (SelectMetrics(color).count() > 0) {
             return SelectMetrics(color).fetch()
         }
     },
-
+});
+Template.tableSection.helpers({
     // These special helpers get passed the ObsID from the corresponding metrics
     // and they fetch the observation data
     obsName(obsId){
@@ -68,12 +69,14 @@ Template.acuereMetrics.helpers({
     },
     obsDate(obsId){
         if(Observations.find({_id: obsId}).count()>0) {
-            return Observations.findOne({_id: obsId}).date
+            return moment(Observations.findOne({_id: obsId}).date).format('MM-DD-YYYY')
         }
     },
     obsValue(obsId){
         if(Observations.find({_id: obsId}).count()>0) {
-            return Observations.findOne({_id: obsId}).value
+            let value = Observations.findOne({_id: obsId}).value;
+            let unit = Observations.findOne({_id: obsId}).unit;
+            return value+unit;
         }
     },
     // this one needs the period as well - it is in months

@@ -1,3 +1,10 @@
+<!--
+This build this table for "All Metrics"
+It could probably be better coded, there is a lot of repetition
+it depends a lot on the associated helpers
+-->
+
+
 <template name="acuereMetrics">
 
     <div>
@@ -17,19 +24,7 @@
             </thead>
             <tbody>
                 {{#each metric in metricsRed}}
-                <tr>
-                    <td>
-                        <a class="plainLink" data-toggle="collapse" href="#{{metric._id}}">{{metric.name}}</a>
-                        {{#if metric.observationId}}
-                            <li class="collapse" id="{{metric._id}}">
-                                &nbsp; &nbsp; Last {{obsName metric.observationId}}: {{obsDate metric.observationId}}
-                            </li>
-                        {{/if}}
-                    </td>
-                    <td>
-                        {{metric.statusReason}}
-                    </td>
-                </tr>
+                    {{> tableSection metric=metric}}
                 {{/each}}
             </tbody>
             {{/if}}
@@ -45,19 +40,7 @@
                 </thead>
                 <tbody>
                 {{#each metric in metricsYellow}}
-                    <tr>
-                        <td>
-                            <a class="plainLink" data-toggle="collapse" href="#{{metric._id}}">{{metric.name}}</a>
-                            {{#if metric.observationId}}
-                                <li class="collapse" id="{{metric._id}}">
-                                    &nbsp; &nbsp; Last {{obsName metric.observationId}}: {{obsDate metric.observationId}}
-                                </li>
-                            {{/if}}
-                        </td>
-                        <td>
-                            {{metric.statusReason}}
-                        </td>
-                    </tr>
+                    {{> tableSection metric=metric}}
             {{/each}}
             </tbody>
 
@@ -74,20 +57,7 @@
                     </thead>
                     <tbody>
                     {{#each metric in metricsGreen}}
-                        <tr>
-                            <td>
-                                <a class="plainLink" data-toggle="collapse" href="#{{metric._id}}">{{metric.name}}</a>
-                                {{#if metric.observationId}}
-                                    <li class="collapse" id="{{metric._id}}">
-                                        &nbsp; &nbsp; Last {{obsName metric.observationId}}: {{obsDate metric.observationId}}
-                                    </li>
-                                {{/if}}
-                            </td>
-                            <td>
-                                {{metric.statusReason}}
-                            </td>
-                        </tr>
-
+                        {{> tableSection metric=metric}}
                     {{/each}}
                     </tbody>
                 {{/if}}
@@ -104,19 +74,7 @@
                     <table  class="table table-hover table-xtra-condensed cursor-default bg-acuere-light">
                     <tbody>
                     {{#each metric in metricsGrey}}
-                    <tr>
-                        <td  class="col-sm-9">
-                            <a class="plainLink" data-toggle="collapse" href="#{{metric._id}}">{{metric.name}}</a>
-                            {{#if metric.observationId}}
-                                <li class="collapse" id="{{metric._id}}">
-                                    &nbsp; &nbsp; Last {{obsName metric.observationId}}: {{obsDate metric.observationId}}
-                                </li>
-                            {{/if}}
-                        </td>
-                        <td class="problemRow">
-                            {{metric.statusReason}}
-                        </td>
-                    </tr>
+                        {{> tableSection metric=metric}}
                     {{/each}}
                     </tbody>
 
@@ -134,4 +92,28 @@
         </div>
     </div>
 
+</template>
+
+<template name="tableSection">
+    <!-- expects to be passed "metric" from above -->
+    <tr>
+        <td  class="col-sm-9">
+
+            {{#if metric.observationId}}
+                <!-- if we have an associated observation with this metric, we can show a collapsable div with more info
+                and also some formatting to indicate that this can be expanded
+                -->
+            <a class="plainLink" title="{{metric.description}}" data-toggle="collapse" href="#{{metric._id}}">{{metric.name}} <i class="fa fa-angle-double-down"></i></a>
+                <li class="collapse" id="{{metric._id}}">
+                    &nbsp; &nbsp; Last {{obsName metric.observationId}}: <span class="text-acuere-blue" title="{{obsDate metric.text}}">{{obsValue metric.observationId}} ({{obsDate metric.observationId}})</span>
+                </li>
+            {{else}}
+                <!-- else, just show the metric's name -->
+                {{metric.name}}
+            {{/if}}
+        </td>
+        <td class="problemRow">
+            {{metric.statusReason}}
+        </td>
+    </tr>
 </template>
