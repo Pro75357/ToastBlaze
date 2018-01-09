@@ -77,7 +77,7 @@ if (Meteor.isServer) {
                 pregnant: pregnant, // 'N' -- (Y,N) - requires Female sex to be present
                 tobacco: tobacco,
                 sexuallyActive: sexuallyActive,
-                grade: ['A', 'B']
+                //grade: ['A', 'B']
             };
 
             // lastly, insert key into params
@@ -85,26 +85,45 @@ if (Meteor.isServer) {
 
             // Try to fetch the ePSS recommendations based on the params.
             try {
-                HTTP.call('get', url,{
-                        headers: 'accept: json',
-                        params
-                    }, function(err, result){
-                    if(err){
-                        throw err
-                    } else {
-                        //only want to store the specific recommendations array objects
-                        let epssCount = 0;
-                        let recs = result.data.specificRecommendations;
-                        for (let x in recs) {
-                            Epss.insert(recs[x]);
-                            epssCount +=1;
-                        }
-                        console.log(epssCount + ' ePSS recs inserted');
-                        return true
-                    }
 
-                    }
-                );
+                // to speed this up, and to be able to grab multiple grades, we will do this twice
+                // the first time, we will use grade: 'A',
+                // the second time, we will use grade: 'B
+
+                // to simplify code, we will define the http call as a function with a grade argument
+
+                const getEpss = function(grade){
+                    // plug grade into the params
+                    params.grade = grade;
+                    HTTP.call('get', url,{
+                            headers: 'Accept: application/json',
+                        // params go here
+                            params
+                        // async callback
+                        }, function(err, result){
+                        if(err){
+                            throw err
+                        } else {
+                            //results end up here: we only want to store the specific recommendations array objects
+                            // so, we will just insert these into our Epss collection individually.
+                            // this will make them easy to search.
+                            let epssCount = 0;
+                            let recs = result.data.specificRecommendations;
+                            for (let x in recs) {
+                                Epss.insert(recs[x]);
+                                epssCount +=1;
+                            }
+                            console.log(epssCount + ' Grade '+grade+' ePSS recs inserted');
+                            return true
+                        }
+
+                        }
+                    )
+                };
+
+                getEpss('A');
+                getEpss('B');
+
 
             } catch (e) {
                 console.log(e)
