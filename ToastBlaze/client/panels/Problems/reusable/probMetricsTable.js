@@ -3,6 +3,9 @@ import {Session} from "meteor/session";
 import {Observations} from "../../../../collections/observations";
 
 Template.probMetricsTable.helpers({
+    // Here is where we define the helpers for the problem-based metrics table
+    // it gets the metric name from what is passed to the template.
+
     Metrics(){
         let category = this.metric;
         //console.log(this.metric);
@@ -70,6 +73,7 @@ Template.probMetricsTable.helpers({
             }
     },
 
+    // returns a little colored circle based on the status
     StatusIndicator(status){
         switch(status){
             case 'Red':
@@ -84,6 +88,7 @@ Template.probMetricsTable.helpers({
     },
     // These special helpers get passed the ObsID from the corresponding metrics
     // and they fetch the observation data
+    // these are the same that are in "all metrics"
     obsName(obsId){
         if(Observations.find({_id: obsId}).count()>0) {
             return Observations.findOne({_id: obsId}).name
