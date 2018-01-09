@@ -12,10 +12,10 @@
             <h3 class="text-acuere-blue">{{pat.name}}</h3>
         <strong>{{pat.age}}</strong> year old {{pat.gen.race}} {{patSex}}
         <br/>
-        <blockquote class="bg-acuere-light">
-            <p>{{Synopsis.text}}</p>
-            <footer>From Epic's Social History field, updated {{formatDate Synopsis.date}}</footer>
-        </blockquote>
+        <div class="quotePadding">
+            <p class="shrinkWrap">{{Synopsis.text}}</p>
+            <small class="text-muted"> - From Epic's Social History field, updated {{formatDate Synopsis.date}}</small>
+        </div>
 
             <div class="row">
                 <div class="col-sm-6">

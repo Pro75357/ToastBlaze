@@ -36,7 +36,7 @@ Template.patientSelect.events({
 
         // all the things that need to happen on a new patient select:
         Session.set('epssRequested', false);  // resets ePSS loader state
-
+        Session.set('dataLoading', true); // resets main page data loader
         // set the session variable based on what was selected
         if (e.target.value === "0"){
             // if they select "no patient selected" need this to be undefined
@@ -44,6 +44,15 @@ Template.patientSelect.events({
         } else{
             // otherwise, just set it whatever the select value is
             Session.set('patId', e.target.value);
+            Meteor.call('updatePat', Session.get('patId'),
+                function(err,res){
+                    if(err){console.log(err)
+                    }else{
+                        // if updatePat finishes, we will consider data loaded.
+                        Session.set('dataLoading',false)
+                    }
+                }
+            )
         }
     }
 });
@@ -51,12 +60,13 @@ Template.patientSelect.events({
 
 //Tracker function will run when the patId session variable changes...
 // We want this to run only if the patId gets changed to a real one
-
+/*
 Tracker.autorun(function(){
     if(Session.equals('patId',undefined)) {
         return;
     }
     //console.log("AutoTracker Updated: PatId " + Session.get('patId'))
-    Meteor.call('updatePat', Session.get('patId'))
+
 
 });
+*/

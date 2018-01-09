@@ -58,6 +58,15 @@ div.leftBorder{
     padding-right: 5px;
 }
 
+.quotePadding{
+    padding-top: 8px;
+    padding-left: 15px;
+    border-left: 6px solid cornsilk;
+    margin-left: 2px;
+    background: #FFFFFF;
+    padding-bottom: 8px;
+}
+
 
 .medListItem{
     padding-top: 0px;

@@ -2,6 +2,10 @@ import {Pat} from '../../../collections/pat'
 import {Observations} from "../../../collections/observations";
 import {Session} from "meteor/session";
 
+Template.patientOverview.onRendered({
+
+})
+
 Template.patientOverview.helpers({
 
     pat() {
@@ -10,7 +14,7 @@ Template.patientOverview.helpers({
         }
     },
     patSex(){ // return sex formatted as a word
-        if(Pat.find().count() > 0) {
+        if(Pat.find().count() > 0 && Pat.findOne().gen.sex) {
             switch (Pat.findOne().gen.sex) {
                 case "F":
                     return "female";
